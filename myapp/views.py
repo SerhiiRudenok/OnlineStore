@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from .models import Product
 
-# Create your views here.
 def index_page(req):
-    return render(req, 'myapp/index.html')
+    products = Product.objects.filter(is_active=True).all()
+    context = {
+        'products': products
+    }
+    return render(req, 'myapp/template.html', context)
+

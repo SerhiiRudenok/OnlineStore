@@ -1,0 +1,142 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+
+/*нав панель*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-logo {
+    margin-right: 80px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+/*поле поиска*/
+.search-box {
+    margin-left: 80px;
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.search-box input {
+    width: 400px;
+    height: 40px;
+    border: none;
+    padding: 8px;
+    outline: none;
+    font-size: 16px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.search-box button {
+    width: 60px;
+    border: none;
+    background-color: #d4d3d2;
+    padding: 8px;
+    cursor: pointer;
+    margin-left: -5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #333;
+}
+
+/*кнопки и иконки справа */
+.icon-btn {
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.2s;
+}
+
+.icon-btn:hover {
+    color: #e44d26;
+}
+
+/*кнопка каталог*/
+.btn-dark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    height: 45px;
+    padding: 8px 20px;
+
+    border: 1px solid #555;
+    border-radius: 5px;
+
+    background-color: #333 !important;
+    color: #ccc !important;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-dark:hover {
+    background-color: #555 !important;
+    color: #fff !important;
+}
+
+/*карточки товаров*/
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 15px;
+}
+
+.product-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    color: #e44d26;
+    font-weight: bold;
+}
