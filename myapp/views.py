@@ -8,3 +8,6 @@ def index_page(req):
     }
     return render(req, 'myapp/template.html', context)
 
+def product_detail_page_placeholder(request, product_id):
+    return render(request, 'myapp/product_detail.html')
+
