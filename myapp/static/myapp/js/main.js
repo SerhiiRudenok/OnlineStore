@@ -14,3 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const backButton = document.querySelector('.back-button');
+
+    if (backButton) {
+        backButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            window.location.href = '/';
+        });
+    }
+});
