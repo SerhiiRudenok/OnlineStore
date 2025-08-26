@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>Головна сторінка</title>
-</head>
-<body>
-    <h1>Вітаємо!</h1>
-</body>
-</html>
+{% extends 'myapp/template.html' %}
+{% load static %}  {% block title %}Магазин OnlineStore{% endblock %}
+
+{% block content %}
+
+<!--Вітаємо!-->
+
+
+<div class="products-grid container-fluid">
+    <div class="product-card">
+        <a href="{% url 'product_detail' product_id=1 %}" class="product-link">
+            <img src="{% static 'images/no-image.jpg' %}" alt="Фото товару 1" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Заглушка товару 1</div>
+                <div class="product-price">1250 грн</div>
+            </div>
+        </a>
+    </div>
+
+    <div class="product-card">
+        <a href="{% url 'product_detail' product_id=2 %}" class="product-link">
+            <img src="{% static 'images/no-image.jpg' %}" alt="Фото товару 2" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Заглушка товару 2</div>
+                <div class="product-price">2500 грн</div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

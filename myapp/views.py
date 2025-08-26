@@ -8,18 +8,17 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from myapp.models import Product, Category
 
 
-
 # --- index
 def index_page(req):
     products = Product.objects.filter(is_active=True).all()
     context = {
         'products': products
     }
-    return render(req, 'myapp/template.html', context)
+    return render(req, 'myapp/index.html')
 
 
 def product_detail_page_placeholder(request, product_id):
-    return render(request, 'myapp/product_detail.html')
+    return render(request, 'myapp/product/product_detail.html')
 
 
 # --- Category
