@@ -15,7 +15,7 @@
                 <img src="{% static 'images/logo.png' %}" alt="Логотип">
             </a>
 
-            <button class="btn btn-dark">
+            <button class="btn btn-dark" id="catalog-trigger">
                 <i class="fas fa-bars"></i>
                 <span>Каталог</span>
             </button>
@@ -31,20 +31,51 @@
         </div>
     </div>
 
+
+    <!--окно каталога-->
+
+   <!--временные поля-->
     <div class="products-grid container-fluid">
-        {% for product in products %}
-            <div class="product-card">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+        <div class="product-card">
+            <a href="{% url 'product_detail' product_id=1 %}" class="product-link">
+                <img src="{% static 'images/placeholder-1.jpg' %}" alt="Фото товару 1" class="product-image">
                 <div class="product-info">
-                    <div class="product-name">{{ product.name }}</div>
-                    <div class="product-price">{{ product.price }} грн</div>
+                    <div class="product-name">Заглушка товару 1</div>
+                    <div class="product-price">1250 грн</div>
                 </div>
-            </div>
-        {% empty %}
-            <p>Товаров пока нету</p>
-        {% endfor %}
+            </a>
+        </div>
+
+        <div class="product-card">
+            <a href="{% url 'product_detail' product_id=2 %}" class="product-link">
+                <img src="{% static 'images/placeholder-2.jpg' %}" alt="Фото товару 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Заглушка товару 2</div>
+                    <div class="product-price">2500 грн</div>
+                </div>
+            </a>
+        </div>
     </div>
 
+
+
+    <!--ОСНОВНЫЕ ПОЛЯ---------------------------  -->
+
+<!--    <div class="products-grid container-fluid">-->
+<!--        {% for product in products %}-->
+<!--            <div class="product-card">-->
+<!--                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">-->
+<!--                <div class="product-info">-->
+<!--                    <div class="product-name">{{ product.name }}</div>-->
+<!--                    <div class="product-price">{{ product.price }} грн</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        {% empty %}-->
+<!--            <p>Товаров пока нету</p>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'myapp/js/main.js' %}"></script>
 </body>
 </html>

@@ -7,12 +7,16 @@ body {
 
 /*нав панель*/
 .navbar {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #333;
     padding: 10px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Делаем элемент "липким" */
+    top: 0; /* Фиксируем его в верхней части экрана */
+    z-index: 1000;
 }
 
 .navbar-left, .navbar-right {
@@ -139,4 +143,175 @@ body {
 .product-price {
     color: #e44d26;
     font-weight: bold;
+}
+
+/* окно каталога */
+
+
+
+/* Стилі для детальної сторінки товару */
+
+/* Основной контейнер страницы товара */
+.product-detail-container {
+    display: flex; /* Используем flexbox для размещения блоков */
+    justify-content: flex-start;
+    gap: 40px; /* Расстояние между блоками */
+    padding: 30px;
+    background-color: #fff; /* Белый фон для секции */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+    max-width: 1200px; /* Ограничиваем ширину контейнера */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Секция с изображением */
+.product-image-section {
+    flex-basis: 45%; /* Изображение занимает 45% ширины */
+    text-align: center;
+}
+
+.detail-product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Секция с информацией о товаре */
+.product-info-section {
+    flex-basis: 55%; /* Информация занимает 55% ширины */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Расстояние между элементами */
+}
+
+.detail-product-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.product-availability {
+    font-size: 0.9rem;
+    color: #28a745; /* Зеленый цвет для "В наявності" */
+    font-weight: 500;
+}
+
+/* Рейтинг товара */
+.product-rating {
+    color: #ffc107; /* Желтый цвет звезд */
+    font-size: 1.1rem;
+}
+
+.product-rating .rating-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Цена товара */
+.detail-product-price {
+    font-size: 2rem;
+    color: #e44d26; /* Оранжевый цвет, похожий на логотип */
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Кнопки действий */
+.product-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.add-to-cart-btn {
+    padding: 12px 25px;
+    background-color: #e44d26; /* Оранжевая кнопка */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #c74320;
+}
+
+.add-to-wishlist-btn {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.add-to-wishlist-btn:hover {
+    background-color: #ddd;
+    color: #e44d26; /* Сердечко становится оранжевым */
+}
+
+/* Описание и характеристики */
+.product-description-container,
+.product-specs-container {
+    margin-top: 20px;
+}
+
+.product-description-container h2,
+.product-specs-container h2 {
+    font-size: 1.5rem;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.product-specs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-specs li {
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+/* Навигация по вкладкам */
+.product-tabs-nav {
+    padding-left: 75px;
+    display: flex;
+    position: sticky;
+    top: 60px;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-tabs-nav a {
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #6c757d;
+    font-weight: 500;
+    transition: all 0.3s ease; /* Ensure smooth transitions for all properties */
+    border-bottom: 3px solid transparent;
+}
+
+/* Стиль для активной вкладки */
+.product-tabs-nav a.active {
+    color: #e44d26;
+    border-bottom-color: #e44d26;
+    font-weight: bold; /* Make the active tab bold */
+}
+
+.product-tabs-nav a:hover {
+    color: #333;
 }
