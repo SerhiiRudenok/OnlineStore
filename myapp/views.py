@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
-from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import Group, User
 from django.contrib.auth import login, logout
-from django.views.generic import TemplateView, View
+from django.views.generic import TemplateView, View, ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from django.http import JsonResponse
 
 from myapp.models import Product, Category, Comment
-from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm
+from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm, UserUpdateForm
 
 
 
@@ -178,13 +178,13 @@ class ConfirmLogoutView(LoginRequiredMixin, View):
 # --- User
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
-    template_name = 'myapp/users/profile.html'
+    template_name = 'myapp/user/profile.html'
     context_object_name = 'profile_user'
 
     def get_object(self, queryset=None):
         return self.request.user
 
-    # кількість коментарів кожного користувача
+    # кількість коментарів кожного користувача 'comments_count'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.get_object()
@@ -193,18 +193,67 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 
 
 
-
 class UserUpdateView(LoginRequiredMixin, UpdateView):
-    pass
+    model = User
+    form_class = UserUpdateForm
+    template_name = 'myapp/user/profile_update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('profile_user', kwargs={'user_id': self.request.user.id})
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
 
 
 class UserPasswordUpdateView(LoginRequiredMixin, UpdateView):
-    pass
+    model = User
+    form_class = UserPasswordUpdateForm
+    template_name = 'myapp/user/password_update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('profile_user', kwargs={'user_id': self.request.user.id})
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        login(self.request, self.object)
+        return response
 
 
-class UserCommentsAllView(LoginRequiredMixin, ListView):
-    pass
+# список всіх коментарів користувача
+class UserCommentsListView(LoginRequiredMixin, ListView):
+    model = Comment
+    template_name = 'myapp/user/user_comments.html'
+    context_object_name = 'comments'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Comment.objects.filter(user=self.request.user).select_related('product')
 
 
-def user_favorites(request, user_id):
-    pass
+
+# список всіх улюблених товарів
+class UserFavoritesListView(LoginRequiredMixin, ListView):
+    model = Product
+    template_name = 'myapp/user/user_favorites.html'
+    context_object_name = 'favorite_products'
+    paginate_by = 10
+
+    def get_queryset(self):
+        self.profile_user = self.request.user
+        return self.profile_user.favorite_product.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profile_user'] = self.profile_user
+        return context
+
