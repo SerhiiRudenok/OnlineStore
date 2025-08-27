@@ -336,3 +336,87 @@ body {
 .back-button:hover {
     color: #333;
 }
+
+/* --- Стили для страницы корзины --- */
+
+/* Общий контейнер для элементов корзины */
+.cart-items-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+/* Отдельный элемент товара в корзине */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Убираем нижнюю границу у последнего элемента */
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+/* Изображение товара в корзине */
+.cart-item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Блок с деталями товара */
+.cart-item-details {
+    flex-grow: 1; /* Занимает все доступное пространство */
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    color: #e44d26; /* Оранжевый цвет, как в других ценах */
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.cart-item-quantity {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Общий блок для суммы и кнопки заказа */
+.cart-summary {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    text-align: right;
+}
+
+/* Общая сумма */
+.cart-total-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Кнопка "Оформити замовлення" */
+.btn-checkout {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+

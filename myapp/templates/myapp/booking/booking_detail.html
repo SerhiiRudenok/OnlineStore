@@ -1,0 +1,41 @@
+{% extends 'myapp/template.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <button class="btn btn-secondary back-button-slide">
+                <i class="fas fa-arrow-left"></i> Назад
+            </button>
+            <h1 class="text-center">Кошик</h1>
+
+            <div class="cart-items-container">
+                {% for item in cart_items %}
+                <div class="cart-item" data-product-id="{{ item.product.id }}">
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">{{ item.product.name }}</div>
+                        <div class="cart-item-price">{{ item.product.price }} грн</div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <button class="btn btn-sm btn-outline-danger remove-item-btn" data-product-id="{{ item.product.id }}">
+                            <i class="fas fa-trash-alt"></i> Видалити
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <footer>
+                <div class="text-center mt-4">
+                    Загальна сума: <strong id="total-price">{{ total_price }} грн</strong>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-success">Оформити замовлення</a>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+{% endblock %}
