@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from myapp.views import index_page
+from django.contrib.auth.views import LoginView, LogoutView
+from myapp.views import index_page, RegisterView, ConfirmLogoutView
+from myapp.forms import LoginForm
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -24,4 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_page, name='index'),
     path('store/', include('myapp.urls')),
+    path('login/', LoginView.as_view(template_name="myapp/login.html", form_class=LoginForm), name='login'),
+    path('logout/', LogoutView.as_view(next_page='index'), name='logout'),
+    path('logout/confirm/', ConfirmLogoutView.as_view(), name='confirm_logout'),
+    path('register/', RegisterView.as_view(), name='register'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

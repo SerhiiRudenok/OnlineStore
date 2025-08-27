@@ -25,7 +25,9 @@
             </div>
         </div>
         <div class="navbar-right">
-            <button class="icon-btn"><i class="fas fa-user"></i></button>
+            <a href="{% url 'login' %}" class="icon-btn">
+                 <i class="fas fa-user"></i>
+            </a>
             <button class="icon-btn"><i class="fas fa-heart"></i></button>
 
             <a href="{% url 'booking_detail' %}" class="icon-btn">

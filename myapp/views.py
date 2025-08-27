@@ -3,10 +3,14 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.models import Group, User
+from django.contrib.auth import login, logout
 from django.views.generic import TemplateView, View
 from django.http import JsonResponse
 
 from myapp.models import Product, Category
+from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm
+
 
 
 # --- index
@@ -117,3 +121,77 @@ class BookingDeleteView(View):
         request.session['cart'] = updated_cart
         total_price = get_cart_total_price(request)
         return JsonResponse({'success': True, 'total_price': total_price})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# --- Register
+class RegisterView(View):
+    def get(self, request):
+        form = MyUserRegistrationForm()
+        context = {
+            'form': form
+        }
+        return render(request, 'myapp/register.html', context)
+
+    def post(self, request):
+        form = MyUserRegistrationForm(request.POST)
+
+        if form.is_valid():
+            user = form.save()
+            hr_group = Group.objects.get(name='Client')
+            user.groups.add(hr_group)
+
+            login(request, user)
+            return redirect('index')
+
+        return render(request, 'myapp/register.html', {'form': form})
+
+
+class ConfirmLogoutView(LoginRequiredMixin, View):
+    template_name = 'myapp/user/confirm_logout.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        logout(request)
+        return redirect('index')
+
+
+# --- User
+class UserDetailView(LoginRequiredMixin, DetailView):
+    pass
+
+
+
+class UserUpdateView(LoginRequiredMixin, UpdateView):
+    pass
+
+
+class UserPasswordUpdateView(LoginRequiredMixin, UpdateView):
+    pass
+
+
+class UserCommentsAllView(LoginRequiredMixin, ListView):
+    pass
+
+
+def user_favorites(request, user_id):
+    pass
