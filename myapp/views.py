@@ -8,7 +8,7 @@ from django.contrib.auth import login, logout
 from django.views.generic import TemplateView, View
 from django.http import JsonResponse
 
-from myapp.models import Product, Category
+from myapp.models import Product, Category, Comment
 from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm
 
 
@@ -177,7 +177,20 @@ class ConfirmLogoutView(LoginRequiredMixin, View):
 
 # --- User
 class UserDetailView(LoginRequiredMixin, DetailView):
-    pass
+    model = User
+    template_name = 'myapp/users/profile.html'
+    context_object_name = 'profile_user'
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    # кількість коментарів кожного користувача
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.get_object()
+        context['comments_count'] = Comment.objects.filter(user=user).count()
+        return context
+
 
 
 
