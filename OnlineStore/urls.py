@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_page, name='index'),
     path('store/', include('myapp.urls')),
+
     path('login/', LoginView.as_view(template_name="myapp/login.html", form_class=LoginForm), name='login'),
     path('logout/', LogoutView.as_view(next_page='index'), name='logout'),
     path('logout/confirm/', ConfirmLogoutView.as_view(), name='confirm_logout'),

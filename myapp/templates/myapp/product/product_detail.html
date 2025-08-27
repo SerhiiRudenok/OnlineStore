@@ -64,7 +64,19 @@
             </div>
             <div class="detail-product-price">{{ product.price }} грн</div>
             <div class="product-actions">
-                <button class="add-to-cart-btn" data-product-id="{{ product.id }}">Додати в кошик</button>
+                 {% if is_in_cart %}
+                    <button class="add-to-cart-btn btn btn-success d-none" data-product-id="{{ product.id }}">
+                        Додати в кошик
+                    </button>
+                    <a href="{% url 'booking_detail' %}" class="btn btn-secondary added-to-cart-link">Товар в кошику</a>
+                {% else %}
+                    <button class="add-to-cart-btn btn btn-success" data-product-id="{{ product.id }}">
+                        Додати в кошик
+                    </button>
+                    <a href="{% url 'booking_detail' %}" class="btn btn-secondary added-to-cart-link d-none">Товар в кошику</a>
+                {% endif %}
+
+
                 <button class="add-to-wishlist-btn"><i class="far fa-heart"></i></button>
             </div>
             <div class="product-description-container">

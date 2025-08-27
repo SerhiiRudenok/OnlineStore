@@ -47,6 +47,17 @@ class ProductDetailView(DetailView):
     template_name = 'myapp/product/product_detail.html'
     context_object_name = 'product'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cart = self.request.session.get('cart', [])
+
+        # Проверяем, есть ли текущий товар в корзине
+        context['is_in_cart'] = str(self.object.id) in cart
+
+        return context
+
+
+
 
 # Вспомогательная функция для расчета общей стоимости
 def get_cart_total_price(request):
@@ -97,12 +108,11 @@ class BookingCreateView(View):
         if product_id is None:
             return JsonResponse({'success': False, 'error': 'Product ID is missing.'}, status=400)
 
-        cart = request.session.get('cart', [])  # Корзина - это список
-
-        cart.append(str(product_id))  # Добавляем каждый товар как отдельный элемент
-
+        cart = request.session.get('cart', [])
+        cart.append(str(product_id))
         request.session['cart'] = cart
         total_price = get_cart_total_price(request)
+
         return JsonResponse({'success': True, 'total_price': total_price})
 
 
@@ -120,7 +130,9 @@ class BookingDeleteView(View):
 
         request.session['cart'] = updated_cart
         total_price = get_cart_total_price(request)
-        return JsonResponse({'success': True, 'total_price': total_price})
+
+        # Добавляем product_id в JSON-ответ
+        return JsonResponse({'success': True, 'total_price': total_price, 'deleted_product_id': product_id})
 
 
 
