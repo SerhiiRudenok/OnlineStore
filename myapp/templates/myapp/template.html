@@ -15,10 +15,10 @@
             <a href="/" class="navbar-logo">
                 <img src="{% static 'images/logo.png' %}" alt="Логотип">
             </a>
-            <button class="btn btn-dark" id="catalog-trigger">
-                <i class="fas fa-bars"></i>
-                <span>Каталог</span>
-            </button>
+            <a href="{% url 'product_list' %}" class="btn btn-dark" id="catalog-trigger">
+              <i class="fas fa-bars"></i>
+              <span>Каталог</span>
+            </a>
             <div class="search-box">
                 <input type="text" placeholder="Пошук">
                 <button class="btn btn-light"><i class="fas fa-search"></i></button>
