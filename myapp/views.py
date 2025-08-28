@@ -7,6 +7,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.http import JsonResponse
+from django.contrib.auth.forms import AuthenticationForm
 
 from myapp.models import Product, Category, Comment
 from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm, UserUpdateForm
@@ -80,15 +81,13 @@ class BookingDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        cart = self.request.session.get('cart', [])  # Корзина - это список
+        cart = self.request.session.get('cart', [])
         cart_items = []
 
-        # Получаем все ID товаров из списка
+        #все ID товаров из списка
         product_ids = [int(product_id) for product_id in cart]
-        # За один запрос получаем все объекты Product
         products = Product.objects.in_bulk(product_ids)
 
-        # Формируем список товаров для шаблона
         for product_id_str in cart:
             product = products.get(int(product_id_str))
             if product:
@@ -139,19 +138,40 @@ class BookingDeleteView(View):
 
 
 
+# --- Login
+class LoginView(View):
+    def get(self, request):
+        # We need to pass the forms to the template for initial rendering
+        login_form = AuthenticationForm()
+        register_form = MyUserRegistrationForm()
+        context = {
+            'login_form': login_form,
+            'register_form': register_form
+        }
+        return render(request, 'myapp/login.html', context)
 
+    def post(self, request):
+        if 'login_submit' in request.POST:
+            login_form = AuthenticationForm(data=request.POST)
+            if login_form.is_valid():
+                user = login_form.get_user()
+                login(request, user)
+                return JsonResponse({'success': True, 'redirect_url': '/'})
+            else:
+                return JsonResponse({'success': False, 'errors': login_form.errors})
 
+        elif 'register_submit' in request.POST:
+            register_form = MyUserRegistrationForm(request.POST)
+            if register_form.is_valid():
+                user = register_form.save()
+                hr_group = Group.objects.get(name='Client')
+                user.groups.add(hr_group)
+                login(request, user)
+                return JsonResponse({'success': True, 'redirect_url': '/'})
+            else:
+                return JsonResponse({'success': False, 'errors': register_form.errors})
 
-
-
-
-
-
-
-
-
-
-
+        return JsonResponse({'success': False, 'error': 'Invalid request'})
 
 # --- Register
 class RegisterView(View):
@@ -268,4 +288,5 @@ class UserFavoritesListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['profile_user'] = self.profile_user
         return context
+
 

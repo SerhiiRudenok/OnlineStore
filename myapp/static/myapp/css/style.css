@@ -420,3 +420,96 @@ body {
     font-weight: 500;
 }
 
+
+
+/* Общие стили для контейнера и блока формы */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.auth-box {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+    text-align: center; /* Центрируем содержимое */
+}
+
+/* Заголовки и текст */
+.auth-title {
+    color: #333333;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.auth-description {
+    color: #777777;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* Группа кнопок */
+.auth-buttons-group {
+    display: flex;
+    gap: 15px; /* Пространство между кнопками */
+    margin-bottom: 20px;
+}
+
+/* Общие стили для кнопок */
+.auth-btn {
+    flex: 1; /* Кнопки занимают одинаковое пространство */
+    padding: 14px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Стили для кнопки "Войти" (заполненная) */
+.auth-btn-login {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.auth-btn-login:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для кнопки "Регистрация" (только рамка) */
+.auth-btn-register {
+    background-color: transparent;
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.auth-btn-register:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Текст под кнопками */
+.auth-small-text {
+    font-size: 14px;
+    color: #777777;
+    margin-top: 20px;
+}
+
+.auth-small-text a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-small-text a:hover {
+    text-decoration: underline;
+}

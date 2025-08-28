@@ -17,4 +17,8 @@ urlpatterns = [
     path('user/comments/', views.UserCommentsListView.as_view(), name='user_comments'),
     path('user/favorites/', views.UserFavoritesListView.as_view(), name='user_favorites'),
 
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('register/', views.RegisterView.as_view(), name='register'),
+    path('auth/post/', views.LoginView.as_view(), name='auth_post'),
+
 ]

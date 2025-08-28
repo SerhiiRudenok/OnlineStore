@@ -1,10 +1,39 @@
 {% extends 'myapp/template.html' %}
+{% load static %}
 
 {% block title %} Реєстрація {% endblock %}
 
 {% block content %}
+<div class="auth-container">
+    <div class="auth-box">
+        <h2 class="auth-title">Створити акаунт</h2>
+        <form method="post" class="auth-form" action="{% url 'register' %}">
+            {% csrf_token %}
 
-    Реєстрація користувача...
+            {% if form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+                {% for error in form.non_field_errors %}
+                {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
 
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                <ul class="errorlist">
+                    {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
 
+            <button type="submit" class="auth-btn auth-btn-register mt-3">Зареєструватися</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

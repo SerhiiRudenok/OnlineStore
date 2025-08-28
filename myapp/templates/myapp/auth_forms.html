@@ -1,0 +1,11 @@
+<form id="login-form" class="auth-form" method="post" action="{% url 'auth_post' %}">
+    {% csrf_token %}
+    {{ login_form.as_p }}
+    <button class="auth-btn auth-btn-login mt-3" type="submit" name="login_submit">Увійти</button>
+</form>
+
+<form id="register-form" class="auth-form" method="post" action="{% url 'auth_post' %}" style="display: none;">
+    {% csrf_token %}
+    {{ register_form.as_p }}
+    <button class="auth-btn auth-btn-register mt-3" type="submit" name="register_submit">Зареєструватися</button>
+</form>
