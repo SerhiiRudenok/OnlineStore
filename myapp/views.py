@@ -50,11 +50,10 @@ class CategoryDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView
     success_url = reverse_lazy('category_list')
 
 
-class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+class CategoryListView(ListView):
     model = Category
     template_name = 'myapp/category/category_list.html'
     context_object_name = 'categories'
-    permission_required = 'myapp.view_category'
 
 
 
