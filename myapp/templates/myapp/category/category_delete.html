@@ -1,0 +1,15 @@
+{% extends 'myapp/template.html' %}
+
+{% block title %} Видалити категорію {% endblock %}
+
+{% block content %}
+
+    <h2>Ви впевнені, що хочете видалити категорію "{{ object.name }}"?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Підтвердити видалення</button>
+        <a href="{% url 'category_list' %}">Скасувати</a>
+    </form>
+
+
+{% endblock %}

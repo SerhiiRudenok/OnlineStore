@@ -11,6 +11,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from myapp.models import Product, Category, Comment
 from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm, UserUpdateForm
+from myapp.forms import CategoryForm
 
 
 
@@ -28,9 +29,33 @@ def index_page(req):
 # --- Category
 class CategoryCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Category
-    # form_class = CategoryForm
+    form_class = CategoryForm
     template_name = 'myapp/category/category_create.html'
     permission_required = 'myapp.add_category'
+    success_url = reverse_lazy('category_list')
+
+
+class CategoryUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'myapp/category/category_update.html'
+    permission_required = 'myapp.change_category'
+    success_url = reverse_lazy('category_list')
+
+
+class CategoryDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = Category
+    template_name = 'myapp/category/category_delete.html'
+    permission_required = 'myapp.delete_category'
+    success_url = reverse_lazy('category_list')
+
+
+class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    model = Category
+    template_name = 'myapp/category/category_list.html'
+    context_object_name = 'categories'
+    permission_required = 'myapp.view_category'
+
 
 
 

@@ -1,0 +1,25 @@
+{% extends 'myapp/template.html' %}
+
+{% block title %} Список категорій {% endblock %}
+
+{% block content %}
+
+    <h2>Список категорій</h2>
+
+    <a href="{% url 'category_create' %}">Створити нову категорію</a>
+
+    <ul>
+        {% for category in categories %}
+            <li>
+                {{ category.name }}
+                — <a href="{% url 'category_update' category.pk %}">Редагувати</a>
+                | <a href="{% url 'category_delete' category.pk %}">Видалити</a>
+            </li>
+        {% empty %}
+            <li>Категорій поки немає.</li>
+        {% endfor %}
+    </ul>
+
+
+
+{% endblock %}

@@ -10,7 +10,7 @@ urlpatterns = [
     path('booking/detail/', views.BookingDetailView.as_view(), name='booking_detail'),
     path('booking/delete/', views.BookingDeleteView.as_view(), name='booking_delete'),
 
-    # ---users
+    # User
     path('profile/', views.UserDetailView.as_view(), name='profile_user'),
     path('user/profile/update/', views.UserUpdateView.as_view(), name='profile_update'),
     path('user/password/update/', views.UserPasswordUpdateView.as_view(), name='password_update'),
@@ -20,5 +20,11 @@ urlpatterns = [
     path('login/', views.LoginView.as_view(), name='login'),
     path('register/', views.RegisterView.as_view(), name='register'),
     path('auth/post/', views.LoginView.as_view(), name='auth_post'),
+
+    # Category
+    path('category/create/', views.CategoryCreateView.as_view(), name='category_create'),
+    path('category/<int:pk>/update/', views.CategoryUpdateView.as_view(), name='category_update'),
+    path('category/<int:pk>/delete/', views.CategoryDeleteView.as_view(), name='category_delete'),
+    path('category/all', views.CategoryListView.as_view(), name='category_list'),
 
 ]

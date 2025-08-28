@@ -1,0 +1,16 @@
+{% extends 'myapp/template.html' %}
+
+{% block title %} Створити нову категорію {% endblock %}
+
+{% block content %}
+
+    <h2>Створити нову категорію</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Зберегти</button>
+    </form>
+
+
+
+{% endblock %}
