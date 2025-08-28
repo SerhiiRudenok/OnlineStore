@@ -1,0 +1,37 @@
+{% extends 'myapp/template.html' %}
+
+{% block title %} Усі товари {% endblock %}
+
+{% block content %}
+  <h2>Усі товари</h2>
+
+  <form method="get" class="filter-form" style="margin-bottom: 20px;">
+    <label for="category">Категорія:</label>
+    <select name="category" id="category" onchange="this.form.submit()">
+      <option value="">Всі категорії</option>
+      {% for cat in categories %}
+        <option value="{{ cat.id }}" {% if cat.id == selected_category %}selected{% endif %}>
+          {{ cat.name }}
+        </option>
+      {% endfor %}
+    </select>
+
+    <label for="sort">Сортування:</label>
+    <select name="sort" id="sort" onchange="this.form.submit()">
+      <option value="">Без сортування</option>
+      <option value="price_asc" {% if selected_sort == 'price_asc' %}selected{% endif %}>Від дешевих до дорогих</option>
+      <option value="price_desc" {% if selected_sort == 'price_desc' %}selected{% endif %}>Від дорогих до дешевих</option>
+    </select>
+  </form>
+
+  <ul class="product-list">
+    {% for product in products %}
+      <li>
+        <strong>{{ product.name }}</strong> — {{ product.price }} грн
+        {% if product.category %}<br><small>Категорія: {{ product.category.name }}</small>{% endif %}
+      </li>
+    {% empty %}
+      <li>Немає товарів за обраними параметрами.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

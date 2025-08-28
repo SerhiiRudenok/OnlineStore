@@ -84,6 +84,37 @@ class ProductDetailView(DetailView):
 
 
 
+
+
+class ProductListView(ListView):
+    model = Product
+    template_name = 'myapp/product/product_list.html'
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        queryset = Product.objects.filter(is_active=True)
+        category_id = self.request.GET.get('category')
+        sort_order = self.request.GET.get('sort')
+
+        if category_id:
+            queryset = queryset.filter(category_id=category_id)
+
+        if sort_order == 'price_asc':
+            queryset = queryset.order_by('price')
+        elif sort_order == 'price_desc':
+            queryset = queryset.order_by('-price')
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        context['selected_category'] = int(self.request.GET['category']) if self.request.GET.get('category', '').isdigit() else 0
+        context['selected_sort'] = self.request.GET.get('sort', '')
+        return context
+
+
+
 # Вспомогательная функция для расчета общей стоимости
 def get_cart_total_price(request):
     cart = request.session.get('cart', [])  # Корзина - это список
