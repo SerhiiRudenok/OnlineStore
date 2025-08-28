@@ -423,91 +423,101 @@ body {
 
 
 /* Общие стили для контейнера и блока формы */
+/* myapp/static/css/style.css */
+
 .auth-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
-    padding: 20px;
-    background-color: #f0f2f5;
+    min-height: 100vh;
+    background-color: #f8f9fa; /* Light gray background */
 }
 
 .auth-box {
     background-color: #ffffff;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 3rem;
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
     width: 100%;
-    max-width: 450px;
-    box-sizing: border-box;
-    text-align: center; /* Центрируем содержимое */
 }
 
-/* Заголовки и текст */
 .auth-title {
-    color: #333333;
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #343a40;
 }
 
 .auth-description {
-    color: #777777;
-    font-size: 16px;
-    margin-bottom: 30px;
+    color: #6c757d;
+    margin-bottom: 2rem;
 }
 
-/* Группа кнопок */
-.auth-buttons-group {
-    display: flex;
-    gap: 15px; /* Пространство между кнопками */
-    margin-bottom: 20px;
+.form-label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.5rem;
 }
 
-/* Общие стили для кнопок */
+/* Styling for the input fields */
+.auth-box input[type="text"],
+.auth-box input[type="password"] {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 25px; /* Rounded input fields */
+    transition: all 0.3s ease-in-out;
+}
+
+.auth-box input[type="text"]:focus,
+.auth-box input[type="password"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
 .auth-btn {
-    flex: 1; /* Кнопки занимают одинаковое пространство */
-    padding: 14px;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
-/* Стили для кнопки "Войти" (заполненная) */
 .auth-btn-login {
     background-color: #007bff;
-    color: #ffffff;
+    color: #fff;
 }
 
 .auth-btn-login:hover {
     background-color: #0056b3;
 }
 
-/* Стили для кнопки "Регистрация" (только рамка) */
 .auth-btn-register {
-    background-color: transparent;
-    color: #007bff;
-    border-color: #007bff;
+    background-color: #28a745;
+    color: #fff;
 }
 
 .auth-btn-register:hover {
-    background-color: rgba(0, 123, 255, 0.1);
+    background-color: #218838;
 }
 
-/* Текст под кнопками */
 .auth-small-text {
-    font-size: 14px;
-    color: #777777;
-    margin-top: 20px;
+    margin-top: 1.5rem;
+    color: #6c757d;
 }
 
 .auth-small-text a {
     color: #007bff;
     text-decoration: none;
-    font-weight: 500;
+}
+
+.auth-small-text a:hover {
+    text-decoration: underline;
 }
 
 .auth-small-text a:hover {

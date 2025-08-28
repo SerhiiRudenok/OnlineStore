@@ -1,69 +1,28 @@
 {% extends 'myapp/template.html' %}
 {% load static %}
 
-{% block title %} Авторизація {% endblock %}
+{% block title %} Реєстрація {% endblock %}
 
 {% block content %}
     <div class="auth-container">
         <div class="auth-box">
-            <h2 class="auth-title">Ласкаво просимо!</h2>
-            <p class="auth-description">Будь ласка, увійдіть або зареєструйтеся, щоб продовжити.</p>
+            <h2 class="auth-title">Створити акаунт</h2>
+            <p class="auth-description">Будь ласка, зареєструйтеся, щоб продовжити.</p>
 
-            <div class="auth-buttons-group">
-                <button class="auth-btn auth-btn-login" data-bs-toggle="modal" data-bs-target="#authModal" data-action="login">
-                    Увійти
-                </button>
-            </div>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <button class="auth-btn auth-btn-register mt-3" type="submit">Зареєструватися</button>
+            </form>
 
-            <p class="auth-small-text">Не має акаунту?
-                <a href="#" data-bs-toggle="modal" data-bs-target="#authModal" data-action="register">Зареєструйтесь!</a>
+            <p class="auth-small-text">Вже є акаунт?
+                <a href="{% url 'login_account' %}">Увійти!</a>
             </p>
-        </div>
-    </div>
-
-    <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="authModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="login-form" class="auth-form" method="post" action="{% url 'auth_post' %}">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="id_username_login" class="form-label">Логін</label>
-                            <input type="text" name="username" id="id_username_login" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_password_login" class="form-label">Пароль</label>
-                            <input type="password" name="password" id="id_password_login" class="form-control" required>
-                        </div>
-                        <button class="auth-btn auth-btn-login mt-3" type="submit" name="login_submit">Увійти</button>
-                    </form>
-
-                    <form id="register-form" class="auth-form" method="post" action="{% url 'auth_post' %}" style="display: none;">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="id_username_register" class="form-label">Логін</label>
-                            <input type="text" name="username" id="id_username_register" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_first_name" class="form-label">Ім'я</label>
-                            <input type="text" name="first_name" id="id_first_name" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_last_name" class="form-label">Прізвище</label>
-                            <input type="text" name="last_name" id="id_last_name" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_password_register" class="form-label">Пароль</label>
-                            <input type="password" name="password" id="id_password_register" class="form-control" required>
-                        </div>
-                        <button class="auth-btn auth-btn-register mt-3" type="submit" name="register_submit">Зареєструватися</button>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 {% endblock %}

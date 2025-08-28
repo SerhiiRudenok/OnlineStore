@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.contrib.auth.forms import AuthenticationForm
+from django.urls import reverse
 
 from myapp.models import Product, Category, Comment
 from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm, UserUpdateForm
@@ -196,37 +197,30 @@ class BookingDeleteView(View):
 # --- Login
 class LoginView(View):
     def get(self, request):
-        # We need to pass the forms to the template for initial rendering
+        if request.user.is_authenticated:
+            return redirect(reverse('profile_user'))
+        return render(request, 'myapp/login.html')
+
+
+class LoginAccountView(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            return redirect(reverse('profile_user'))
+
         login_form = AuthenticationForm()
-        register_form = MyUserRegistrationForm()
-        context = {
-            'login_form': login_form,
-            'register_form': register_form
-        }
-        return render(request, 'myapp/login.html', context)
+        return render(request, 'myapp/login_account.html', {'login_form': login_form})
 
     def post(self, request):
-        if 'login_submit' in request.POST:
-            login_form = AuthenticationForm(data=request.POST)
-            if login_form.is_valid():
-                user = login_form.get_user()
-                login(request, user)
-                return JsonResponse({'success': True, 'redirect_url': '/'})
-            else:
-                return JsonResponse({'success': False, 'errors': login_form.errors})
+        login_form = AuthenticationForm(data=request.POST)
+        if login_form.is_valid():
+            user = login_form.get_user()
+            login(request, user)
+            return redirect(reverse('profile_user'))
+        else:
+            return render(request, 'myapp/login_account.html', {'login_form': login_form})
 
-        elif 'register_submit' in request.POST:
-            register_form = MyUserRegistrationForm(request.POST)
-            if register_form.is_valid():
-                user = register_form.save()
-                hr_group = Group.objects.get(name='Client')
-                user.groups.add(hr_group)
-                login(request, user)
-                return JsonResponse({'success': True, 'redirect_url': '/'})
-            else:
-                return JsonResponse({'success': False, 'errors': register_form.errors})
 
-        return JsonResponse({'success': False, 'error': 'Invalid request'})
+
 
 # --- Register
 class RegisterView(View):

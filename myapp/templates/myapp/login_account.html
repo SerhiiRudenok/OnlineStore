@@ -1,0 +1,28 @@
+{% extends 'myapp/template.html' %}
+{% load static %}
+
+{% block title %} Вхід до акаунту {% endblock %}
+
+{% block content %}
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2 class="auth-title">Вхід до акаунту</h2>
+            <p class="auth-description">Будь ласка, введіть свої дані, щоб увійти.</p>
+
+            <form method="post" action="{% url 'login_account' %}">
+                {% csrf_token %}
+                {% for field in login_form %}
+                    <div class="mb-3 d-flex flex-column align-items-center">
+                        <label for="{{ field.id_for_label }}" class="form-label text-start w-100">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <button class="auth-btn auth-btn-login mt-3" type="submit">Увійти</button>
+            </form>
+
+            <p class="auth-small-text">Не має акаунту?
+                <a href="{% url 'register' %}">Зареєструйтесь!</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
