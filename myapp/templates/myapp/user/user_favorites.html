@@ -1,11 +1,33 @@
 {% extends 'myapp/template.html' %}
 
-{% block title %} Список бажань {% endblock %}
+{% block title %} Список бажань {{ profile_user.username }} {% endblock %}
 
 {% block content %}
+    <h1>Список бажань {{ profile_user.username }}</h1>
+    <div>
+        {% for product in favorite_products %}
+        <div>
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <div>
+                <h2>{{product.name}}</h2>
+                <div> {{ product.description|slice:":200" }}...</div>
+            </div>
+            <div>
 
-    Список бажань (Улюблені товари) {{ profile_user.username }}
+                <a href="{% url 'product_detail' product.id %}">Детальніше</a>
 
+                {% if perms.myapp.change_product %}
+                <a href="{% url 'product_update' product.id %}">Редагувати</a>
+                {% endif %}
 
-
+                {% if perms.myapp.delete_product %}
+                <a href="{% url 'product_delete' product.id %}">Видалити</a>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+            <p>Немає жодного товару у списку бажань.</p>
+        {% endfor %}
+    </div>
+    <a class="global-button" href="javascript:history.back()">Назад</a>
 {% endblock %}

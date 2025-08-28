@@ -1,13 +1,55 @@
 {% extends 'myapp/template.html' %}
 {% load static %}
 
-{% block title %} Профіль {% endblock %}
+{% block title %} Профіль користувача {% endblock %}
 
 {% block content %}
-    <div class="profile-container">
-        <h2>Вітаємо, {{ request.user.username }}!</h2>
-        <p>Email: {{ request.user.email }}</p>
+    <h1>Профіль користувача</h1>
+    <div>
+        <ul>
+            <li>Логін: {{ profile_user.username }}</li>
+            <li>Ім’я: {{ profile_user.first_name }}</li>
+            <li>Прізвище: {{ profile_user.last_name }}</li>
+            <li>Email: {{ profile_user.email }}</li>
+            <li>Дата реєстрації: {{ profile_user.date_joined|date:"d.m.Y, H:i" }}</li>
+            {% if user.groups.all|length > 0 %}
+                {% for group in user.groups.all %}
+                    {% if group.name == "Manager" %}
+                        <li>Група: {% for group in profile_user.groups.all %}{{ group.name }} {% endfor %}</li>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </ul>
+        <div>
+            {% if request.user.id == profile_user.id %}
+                <a href="{% url 'update_user' request.user.id %}">
+                    Редагувати профіль
+                </a>
+            {% endif %}
+            {% if request.user.id == profile_user.id %}
+                <a href="{% url 'update_user_password' request.user.id %}">
+                    Редагувати логін/пароль
+                </a>
+            {% endif %}
+        </div>
+    </div>
 
-        <a href="{% url 'confirm_logout' %}" class="btn btn-danger">Вийти</a>
+    <div>
+        {% if user.groups.all|length > 0 %}
+            {% for group in user.groups.all %}
+                {% if group.name == "Client" %}
+<!--                    <a href="{% url 'user_comments' profile_user.id %}">-->
+<!--                        Всі відгуки-->
+<!--                    </a>-->
+<!--                    <a href="{% url 'user_favorites' profile_user.id %}">-->
+<!--                        Всі улюблені товари-->
+<!--                    </a>-->
+<!--                    <a href="{% url 'user_orders' profile_user.id %}">-->
+<!--                        Всі замовлення-->
+<!--                    </a>-->
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <a href="javascript:history.back()">Назад</a>
     </div>
 {% endblock %}

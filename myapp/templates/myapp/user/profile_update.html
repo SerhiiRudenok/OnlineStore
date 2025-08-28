@@ -3,9 +3,23 @@
 {% block title %} Редагування профілю {% endblock %}
 
 {% block content %}
-
-    Редагувати профіль користувача...
-
-
-
+    <div>
+        <form method="post">
+            <h2>Редагувати профіль користувача</h2>
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                  <div class="error-text">{{ field.errors }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+            <div>
+              <button>Зберегти</button>
+              <a href="javascript:history.back()">Назад</a>
+            </div>
+        </form>
+    </div>
 {% endblock %}

@@ -3,9 +3,36 @@
 {% block title %} Відгуки користувача {% endblock %}
 
 {% block content %}
+    <h1>Всі відгуки {{ profile_user.username }}</h1>
+        {% for comment in comments %}
+            <div>
+                <div>
+                    <a href="{% url 'detail' comment.product.id %}" class="user_profile">
+                        <strong>{{ comment.product.name }}</strong>
+                    </a><br>
+                    {{ comment.date|date:"d.m.Y, H:i" }}<br>
+                    <em>Оцінка: {{ comment.rating }}</em>
+                    <span>
+                        {% for _ in ""|ljust:comment.rating %}⭐{% endfor %}
+                    </span>
+                    <br>
+                    {{ comment.text }}
+                </div>
+                <div>
+                    {% if comment.user == request.user and perms.myapp.change_comment %}
+                        <a href="{% url 'update_comment' comment.id %}">Редагувати</a>
+                    {% endif %}
 
-    Всі відгуки {{ profile_user.username }}
+                    {% if perms.myapp.delete_comment %}
+                        {% if comment.user == request.user or is_manager %}
+                            <a href="{% url 'comment_delete' comment.id %}">Видалити</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            Ви ще не залишили жодного відгуку.
+        {% endfor %}
 
-
-
+    <a href="javascript:history.back()">Назад</a>
 {% endblock %}

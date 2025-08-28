@@ -3,9 +3,25 @@
 {% block title %} Підтвердження виходу {% endblock %}
 
 {% block content %}
-
-
-    Ви справді хочете вийти з власного профілю користувача?...
-
-
+    <div>
+        <div>
+            <h2>
+                {% if user.first_name %}
+                    {{ user.first_name }} {{ user.last_name }}
+                {% else %}
+                    {{ user.username }}
+                {% endif %}
+            </h2>
+        </div>
+        <h2>Ви справді хочете вийти з власного профілю користувача?</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="one-line">
+                <button type="submit">
+                    Вийти
+                </button>
+                <a href="javascript:history.back()">Назад</a>
+            </div>
+        </form>
+    </div>
 {% endblock %}
