@@ -22,12 +22,12 @@
         </ul>
         <div>
             {% if request.user.id == profile_user.id %}
-                <a href="{% url 'update_user' request.user.id %}">
+                <a href="{% url 'profile_update' %}">
                     Редагувати профіль
                 </a>
             {% endif %}
             {% if request.user.id == profile_user.id %}
-                <a href="{% url 'update_user_password' request.user.id %}">
+                <a href="{% url 'password_update' %}">
                     Редагувати логін/пароль
                 </a>
             {% endif %}
