@@ -25,11 +25,17 @@
             </div>
         </div>
         <div class="navbar-right">
-            <a href="{% url 'login' %}" class="icon-btn">
-                 <i class="fas fa-user"></i>
-            </a>
-            <button class="icon-btn"><i class="fas fa-heart"></i></button>
-
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile_user' %}" class="icon-btn">
+                     <i class="fas fa-user"></i>
+                </a>
+                <button class="icon-btn"><i class="fas fa-heart"></i></button>
+            {% else %}
+                <a href="{% url 'login' %}" class="icon-btn">
+                     <i class="fas fa-user"></i>
+                </a>
+                <button class="icon-btn"><i class="fas fa-heart"></i></button>
+            {% endif %}
             <a href="{% url 'booking_detail' %}" class="icon-btn">
                 <i class="fas fa-shopping-cart"></i>
             </a>

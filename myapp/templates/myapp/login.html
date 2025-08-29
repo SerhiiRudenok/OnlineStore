@@ -1,22 +1,43 @@
 {% extends 'myapp/template.html' %}
-{% load static %}
 
 {% block title %} Авторизація {% endblock %}
 
 {% block content %}
-    <div class="auth-container">
-        <div class="auth-box">
-            <h2 class="auth-title">Ласкаво просимо!</h2>
-            <p class="auth-description">Будь ласка, увійдіть або зареєструйтеся, щоб продовжити.</p>
-
-            <div class="auth-buttons-group">
-                <a href="{% url 'login_account' %}" class="auth-btn auth-btn-login">
+    <div >
+        <form method="post">
+            <h2>Вхід до акаунту</h2>
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div>{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <div>
+                <button type="submit">
                     Увійти
-                </a>
-                <a href="{% url 'register' %}" class="auth-btn auth-btn-register">
-                    Зареєструватися
-                </a>
+                </button>
+                <a href="javascript:history.back()">Назад</a>
             </div>
-        </div>
+            <div>
+                Продовжуючи, ви підтверджуєте, що згодні увійти до облікового запису та надаєте згоду на обробку персональних даних
+            </div>
+            <div>
+                <span>або</span>
+            </div>
+            <div>
+                <h2>Немає акаунту?</h2>
+            <a class="global-button" href="{% url 'register' %}">
+                Створити акаунт
+            </a>
+            </div>
+        </form>
     </div>
+
 {% endblock %}
+
+
+

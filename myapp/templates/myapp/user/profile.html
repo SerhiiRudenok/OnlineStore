@@ -38,18 +38,28 @@
         {% if user.groups.all|length > 0 %}
             {% for group in user.groups.all %}
                 {% if group.name == "Client" %}
-<!--                    <a href="{% url 'user_comments' profile_user.id %}">-->
+
+<!--Над этими кнопками я пока работаю, на них нет View:        -->
 <!--                        Всі відгуки-->
-<!--                    </a>-->
-<!--                    <a href="{% url 'user_favorites' profile_user.id %}">-->
+
 <!--                        Всі улюблені товари-->
-<!--                    </a>-->
-<!--                    <a href="{% url 'user_orders' profile_user.id %}">-->
+
+
 <!--                        Всі замовлення-->
-<!--                    </a>-->
+
                 {% endif %}
             {% endfor %}
         {% endif %}
         <a href="javascript:history.back()">Назад</a>
+
+				{% if user.is_authenticated %}
+					<form method="post" action="{% url 'logout' %}">
+        				{% csrf_token %}
+						<a href="{% url 'confirm_logout' %}">
+							Вийти
+						</a>
+    				</form>
+				{% endif %}
+
     </div>
 {% endblock %}
