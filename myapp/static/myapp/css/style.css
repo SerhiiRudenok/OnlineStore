@@ -914,6 +914,16 @@ body {
     padding-bottom: 8px;
 }
 
+.category-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.category-link:hover {
+    text-decoration: none;
+    color: #6a6e73;
+}
+
 .product-list-simple {
     list-style: none;
     padding: 0px;

@@ -47,7 +47,6 @@
             <i class="fas fa-arrow-left"></i> Назад
         </button>
         <a href="#about-good" class="tab-link active">Усе про товар</a>
-        <a href="#characteristics" class="tab-link">Характеристики</a>
         <a href="#rewievs" class="tab-link">Відгуки</a>
     </div>
 
@@ -98,7 +97,11 @@
             <div class="product-specs-container">
                 <h2 id="characteristics">Характеристики</h2>
                 <ul class="product-specs">
-                    <li><strong>Категорія:</strong> {{ product.category.name }}</li>
+                    <li><strong>Категорія:</strong>
+                        <a href="{% url 'product_list' %}?category={{ product.category.id }}" class="category-link">
+                            {{ product.category.name }}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
