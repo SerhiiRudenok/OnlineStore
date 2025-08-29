@@ -1,27 +1,30 @@
 {% extends 'myapp/template.html' %}
+{% load static %}
 
 {% block title %} Підтвердження виходу {% endblock %}
 
 {% block content %}
-    <div>
-        <div>
-            <h2>
+    <div class="page-container">
+        <div class="content-box text-center">
+            <h2 class="sub-heading">
                 {% if user.first_name %}
                     {{ user.first_name }} {{ user.last_name }}
                 {% else %}
                     {{ user.username }}
                 {% endif %}
             </h2>
+            <h2 class="sub-heading">Ви справді хочете вийти з власного профілю користувача?</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="button-group one-line-buttons">
+                    <button type="submit" class="universal-btn orange-filled-btn">
+                        Вийти
+                    </button>
+                    <a href="javascript:history.back()" class="universal-btn back-btn">
+                        Назад
+                    </a>
+                </div>
+            </form>
         </div>
-        <h2>Ви справді хочете вийти з власного профілю користувача?</h2>
-        <form method="post">
-            {% csrf_token %}
-            <div class="one-line">
-                <button type="submit">
-                    Вийти
-                </button>
-                <a href="javascript:history.back()">Назад</a>
-            </div>
-        </form>
     </div>
 {% endblock %}

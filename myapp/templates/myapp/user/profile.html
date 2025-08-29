@@ -4,62 +4,46 @@
 {% block title %} Профіль користувача {% endblock %}
 
 {% block content %}
-    <h1>Профіль користувача</h1>
-    <div>
-        <ul>
-            <li>Логін: {{ profile_user.username }}</li>
-            <li>Ім’я: {{ profile_user.first_name }}</li>
-            <li>Прізвище: {{ profile_user.last_name }}</li>
-            <li>Email: {{ profile_user.email }}</li>
-            <li>Дата реєстрації: {{ profile_user.date_joined|date:"d.m.Y, H:i" }}</li>
-            {% if user.groups.all|length > 0 %}
-                {% for group in user.groups.all %}
-                    {% if group.name == "Manager" %}
-                        <li>Група: {% for group in profile_user.groups.all %}{{ group.name }} {% endfor %}</li>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-        </ul>
-        <div>
-            {% if request.user.id == profile_user.id %}
-                <a href="{% url 'profile_update' %}">
-                    Редагувати профіль
-                </a>
-            {% endif %}
-            {% if request.user.id == profile_user.id %}
-                <a href="{% url 'password_update' %}">
-                    Редагувати логін/пароль
-                </a>
-            {% endif %}
-        </div>
-    </div>
-
-    <div>
-        {% if user.groups.all|length > 0 %}
-            {% for group in user.groups.all %}
-                {% if group.name == "Client" %}
-
-<!--Над этими кнопками я пока работаю, на них нет View:        -->
-<!--                        Всі відгуки-->
-
-<!--                        Всі улюблені товари-->
-
-
-<!--                        Всі замовлення-->
-
+    <div class="page-container">
+        <div class="content-box">
+            <h1 class="main-heading">Профіль користувача</h1>
+            <ul class="info-list">
+                <li><span class="info-label">Логін:</span> {{ profile_user.username }}</li>
+                <li><span class="info-label">Ім’я:</span> {{ profile_user.first_name }}</li>
+                <li><span class="info-label">Прізвище:</span> {{ profile_user.last_name }}</li>
+                <li><span class="info-label">Email:</span> {{ profile_user.email }}</li>
+                <li><span class="info-label">Дата реєстрації:</span> {{ profile_user.date_joined|date:"d.m.Y, H:i" }}</li>
+                {% if user.groups.all|length > 0 %}
+                    {% for group in user.groups.all %}
+                        {% if group.name == "Manager" %}
+                            <li><span class="info-label">Група:</span> {% for group in profile_user.groups.all %}{{ group.name }} {% endfor %}</li>
+                        {% endif %}
+                    {% endfor %}
                 {% endif %}
-            {% endfor %}
-        {% endif %}
-        <a href="javascript:history.back()">Назад</a>
+            </ul>
+            <div class="button-group">
+                {% if request.user.id == profile_user.id %}
+                    <a href="{% url 'profile_update' %}" class="universal-btn orange-outline-btn">
+                        Редагувати профіль
+                    </a>
+                    <a href="{% url 'password_update' %}" class="universal-btn orange-outline-btn">
+                        Редагувати логін/пароль
+                    </a>
+                {% endif %}
+            </div>
+        </div>
 
-				{% if user.is_authenticated %}
-					<form method="post" action="{% url 'logout' %}">
-        				{% csrf_token %}
-						<a href="{% url 'confirm_logout' %}">
-							Вийти
-						</a>
-    				</form>
-				{% endif %}
-
+        <div class="content-box">
+            <div class="button-group">
+                <a href="javascript:history.back()" class="universal-btn back-btn">
+                    Назад
+                </a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'confirm_logout' %}" class="universal-btn orange-filled-btn">
+                        Вийти
+                    </a>
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock %}

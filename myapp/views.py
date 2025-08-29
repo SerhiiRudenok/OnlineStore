@@ -199,25 +199,18 @@ class LoginView(View):
     def get(self, request):
         if request.user.is_authenticated:
             return redirect(reverse('profile_user'))
-        return render(request, 'myapp/login.html')
 
-
-class LoginAccountView(View):
-    def get(self, request):
-        if request.user.is_authenticated:
-            return redirect(reverse('profile_user'))
-
-        login_form = AuthenticationForm()
-        return render(request, 'myapp/login_account.html', {'login_form': login_form})
+        form = AuthenticationForm()
+        return render(request, 'myapp/login.html', {'form': form})
 
     def post(self, request):
-        login_form = AuthenticationForm(data=request.POST)
-        if login_form.is_valid():
-            user = login_form.get_user()
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
             login(request, user)
             return redirect(reverse('profile_user'))
         else:
-            return render(request, 'myapp/login_account.html', {'login_form': login_form})
+            return render(request, 'myapp/login.html', {'form': form})
 
 
 

@@ -26,11 +26,24 @@ body {
 }
 
 .navbar-logo {
-    margin-right: 80px;
-    font-size: 24px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* стили для логотипа */
+.navbar-logo img {
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
+}
+
+/* стили для имени сайта */
+.site-name {
+    font-size: 30px;
     font-weight: bold;
     color: #f0f0f0;
-    text-decoration: none;
+    margin-right: 20px;
 }
 
 /*поле поиска*/
@@ -423,103 +436,465 @@ body {
 
 
 /* Общие стили для контейнера и блока формы */
-/* myapp/static/css/style.css */
-
-.auth-container {
+.auth-container-login {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f8f9fa; /* Light gray background */
+    background-color: #f8f9fa;
 }
 
-.auth-box {
+.auth-form-login {
     background-color: #ffffff;
     padding: 3rem;
-    border-radius: 15px; /* More rounded corners */
+    border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 400px;
     width: 100%;
+    margin: 20px;
 }
 
-.auth-title {
+.auth-title-login {
     font-size: 2rem;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 1.5rem;
+}
+
+.form-group-login {
+    margin-bottom: 1rem;
+}
+
+.form-group-login label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+.form-group-login input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+}
+
+.error-message-login {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+    text-align: left;
+}
+
+.button-group-login {
+    margin-top: 2rem;
+}
+
+.auth-btn-login {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.orange-btn-login {
+    background-color: #ff8c00;
+}
+
+.orange-btn-login:hover {
+    background-color: #e67e00;
+}
+
+.back-link-login {
+    display: block;
+    margin-top: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.legal-text-login {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-top: 1.5rem;
+}
+
+.separator-login {
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.no-account-login {
+    margin-top: 1rem;
+}
+
+.no-account-title-login {
+    font-size: 1.25rem;
     font-weight: bold;
     color: #343a40;
 }
 
-.auth-description {
-    color: #6c757d;
-    margin-bottom: 2rem;
-}
-
-.form-label {
-    font-weight: 500;
-    color: #495057;
-    margin-bottom: 0.5rem;
-}
-
-/* Styling for the input fields */
-.auth-box input[type="text"],
-.auth-box input[type="password"] {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid #ced4da;
-    border-radius: 25px; /* Rounded input fields */
-    transition: all 0.3s ease-in-out;
-}
-
-.auth-box input[type="text"]:focus,
-.auth-box input[type="password"]:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
-    outline: none;
-}
-
-.auth-btn {
-    padding: 10px 20px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
+.global-button-login {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #28a745;
+    color: #fff;
     text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
     transition: background-color 0.3s ease;
 }
 
-.auth-btn-login {
-    background-color: #007bff;
-    color: #fff;
+.global-button-login:hover {
+    background-color: #218838;
 }
 
-.auth-btn-login:hover {
-    background-color: #0056b3;
+/* --- стили для страницы Регистрации (register.html) --- */
+.auth-container-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.auth-form-register {
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    margin: 20px;
+}
+
+.auth-title-register {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 1.5rem;
+}
+
+.form-group-register {
+    margin-bottom: 1rem;
+}
+
+.form-group-register label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+.form-group-register input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+}
+
+.help-text-register {
+    display: block;
+    text-align: left;
+    font-size: 0.875em;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+.error-message-register {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+    text-align: left;
+}
+
+.button-group-register {
+    margin-top: 2rem;
 }
 
 .auth-btn-register {
-    background-color: #28a745;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
     color: #fff;
+    background-color: #28a745;
+    transition: background-color 0.3s ease;
 }
 
 .auth-btn-register:hover {
     background-color: #218838;
 }
 
-.auth-small-text {
+.global-button-register {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.create-account-btn-login {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #ff8c00;
+    background-color: transparent;
+    color: #ff8c00;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.create-account-btn-login:hover {
+    background-color: #ff8c00;
+    color: #fff;
+}
+
+/* универсальные стили для страниц */
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f8f9fa; /* светло серый фон */
+    padding: 2rem;
+}
+
+.content-box {
+    background-color: #ffffff;
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.main-heading {
+    font-size: 2.5rem;
+    color: #343a40;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.sub-heading {
+    font-size: 1.5rem;
+    color: #495057;
+    margin-bottom: 1rem;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.info-list li {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 0.75rem;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+/* универсальные стили для кнопок */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     margin-top: 1.5rem;
+}
+
+.one-line-buttons {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.universal-btn {
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.orange-outline-btn {
+    border: 2px solid #ff8c00;
+    background-color: transparent;
+    color: #ff8c00;
+}
+
+.orange-outline-btn:hover {
+    background-color: #ff8c00;
+    color: #fff;
+}
+
+.orange-filled-btn {
+    border: 2px solid #ff8c00;
+    background-color: #ff8c00;
+    color: #fff;
+}
+
+.orange-filled-btn:hover {
+    background-color: #e67e00;
+    border-color: #e67e00;
+}
+
+.back-btn {
+    border: 2px solid #6c757d;
+    background-color: transparent;
     color: #6c757d;
 }
 
-.auth-small-text a {
-    color: #007bff;
-    text-decoration: none;
+.back-btn:hover {
+    background-color: #6c757d;
+    color: #fff;
 }
 
-.auth-small-text a:hover {
-    text-decoration: underline;
+/* универсальные стили для полей формы */
+.form-group {
+    margin-bottom: 15px;
 }
 
-.auth-small-text a:hover {
-    text-decoration: underline;
+.form-group input.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 25px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.form-group input.form-control:focus {
+    border-color: #ff8c00;
+    box-shadow: 0 0 0 0.25rem rgba(255, 140, 0, 0.25);
+    outline: none;
+}
+
+/* стили для меток (label) */
+.form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+/* --- Стили для страницы товаров (product_list.html) --- */
+
+.filter-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 2rem;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 25px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-select:hover {
+    border-color: #ff8c00;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #ff8c00;
+    box-shadow: 0 0 0 0.25rem rgba(255, 140, 0, 0.25);
+}
+
+.product-list-container {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.product-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-name {
+    font-size: 1.2rem;
+    color: #343a40;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ff8c00;
+    margin-left: 10px;
+}
+
+.product-category {
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+.empty-message {
+    font-size: 1.1rem;
+    color: #6c757d;
+    padding: 20px;
+    border: 1px dashed #ced4da;
+    border-radius: 10px;
+    margin-top: 2rem;
 }

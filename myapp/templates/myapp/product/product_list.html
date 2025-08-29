@@ -1,36 +1,49 @@
 {% extends 'myapp/template.html' %}
+{% load static %}
 
 {% block title %} Усі товари {% endblock %}
 
 {% block content %}
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="main-heading text-center">Усі товари</h2>
 
-  <form method="get" class="filter-form" style="margin-bottom: 20px;">
-    <label for="category">Категорія:</label>
-    <select name="category" id="category" onchange="this.form.submit()">
-      <option value="">Всі категорії</option>
-      {% for cat in categories %}
-        <option value="{{ cat.id }}" {% if cat.id == selected_category %}selected{% endif %}>
-          {{ cat.name }}
-        </option>
-      {% endfor %}
-    </select>
+            <form method="get" class="filter-form">
+                <div class="filter-group">
+                    <label for="category" class="filter-label">Категорія:</label>
+                    <select name="category" id="category" class="filter-select" onchange="this.form.submit()">
+                        <option value="">Всі категорії</option>
+                        {% for cat in categories %}
+                            <option value="{{ cat.id }}" {% if cat.id == selected_category %}selected{% endif %}>
+                                {{ cat.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
 
-    <label for="sort">Сортування:</label>
-    <select name="sort" id="sort" onchange="this.form.submit()">
-      <option value="">Без сортування</option>
-      <option value="price_asc" {% if selected_sort == 'price_asc' %}selected{% endif %}>Від дешевих до дорогих</option>
-      <option value="price_desc" {% if selected_sort == 'price_desc' %}selected{% endif %}>Від дорогих до дешевих</option>
-    </select>
-  </form>
+                <div class="filter-group">
+                    <label for="sort" class="filter-label">Сортування:</label>
+                    <select name="sort" id="sort" class="filter-select" onchange="this.form.submit()">
+                        <option value="">Без сортування</option>
+                        <option value="price_asc" {% if selected_sort == 'price_asc' %}selected{% endif %}>Від дешевих до дорогих</option>
+                        <option value="price_desc" {% if selected_sort == 'price_desc' %}selected{% endif %}>Від дорогих до дешевих</option>
+                    </select>
+                </div>
+            </form>
 
-  <ul class="product-list">
-    {% for product in products %}
-      <li>
-        <strong>{{ product.name }}</strong> — {{ product.price }} грн
-        {% if product.category %}<br><small>Категорія: {{ product.category.name }}</small>{% endif %}
-      </li>
-    {% empty %}
-      <li>Немає товарів за обраними параметрами.</li>
-    {% endfor %}
-  </ul>
+            <ul class="product-list-container">
+                {% for product in products %}
+                    <li class="product-item">
+                        <strong class="product-name">{{ product.name }}</strong><br>
+                        <span class="product-price">{{ product.price }} грн</span>
+                        {% if product.category %}
+                            <p class="product-category"><small>Категорія: {{ product.category.name }}</small></p>
+                        {% endif %}
+                    </li>
+                {% empty %}
+                    <p class="empty-message text-center">Немає товарів за обраними параметрами.</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}

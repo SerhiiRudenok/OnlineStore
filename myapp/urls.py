@@ -18,8 +18,8 @@ urlpatterns = [
     path('user/favorites/', views.UserFavoritesListView.as_view(), name='user_favorites'),
 
     path('login/', views.LoginView.as_view(), name='login'),
-    path('login/account/', views.LoginAccountView.as_view(), name='login_account'),
     path('register/', views.RegisterView.as_view(), name='register'),
+    path('logout/confirm/', views.ConfirmLogoutView.as_view(), name='confirm_logout'),
 
     # Category
     path('category/create/', views.CategoryCreateView.as_view(), name='category_create'),

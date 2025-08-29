@@ -12,22 +12,30 @@
     <div class="navbar">
         <div class="navbar-left">
             <a href="/" class="navbar-logo">
-                <img src="{% static 'myapp/images/logo.png' %}" alt="Логотип">
+                <img src="{% static 'myapp/img/logo2.png' %}" alt="Логотип" class="navbar-logo">
+                <span class="site-name">Home Shop</span>
             </a>
-            <button class="btn btn-dark" id="catalog-trigger">
-                <i class="fas fa-bars"></i>
-                <span>Каталог</span>
-            </button>
+            <a href="{% url 'product_list' %}" class="btn btn-dark" id="catalog-trigger">
+              <i class="fas fa-bars"></i>
+              <span>Каталог</span>
+            </a>
             <div class="search-box">
                 <input type="text" placeholder="Пошук">
                 <button class="btn btn-light"><i class="fas fa-search"></i></button>
             </div>
         </div>
         <div class="navbar-right">
-            <a href="{% url 'login' %}" class="icon-btn">
-                 <i class="fas fa-user"></i>
-            </a>
-            <button class="icon-btn"><i class="fas fa-heart"></i></button>
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile_user' %}" class="icon-btn">
+                     <i class="fas fa-user"></i>
+                </a>
+                <button class="icon-btn"><i class="fas fa-heart"></i></button>
+            {% else %}
+                <a href="{% url 'login' %}" class="icon-btn">
+                     <i class="fas fa-user"></i>
+                </a>
+                <button class="icon-btn"><i class="fas fa-heart"></i></button>
+            {% endif %}
             <a href="{% url 'booking_detail' %}" class="icon-btn">
                 <i class="fas fa-shopping-cart"></i>
             </a>

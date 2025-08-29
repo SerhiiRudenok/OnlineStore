@@ -1,43 +1,40 @@
 {% extends 'myapp/template.html' %}
+{% load static %}
 
 {% block title %} Авторизація {% endblock %}
 
 {% block content %}
-    <div >
-        <form method="post">
-            <h2>Вхід до акаунту</h2>
+    <div class="auth-container-login">
+        <form method="post" class="auth-form-login" action="{% url 'login' %}">
+            <h2 class="auth-title-login">Вхід до акаунту</h2>
             {% csrf_token %}
             {% for field in form %}
-                <div>
+                <div class="form-group-login">
                     {{ field.label_tag }}
                     {{ field }}
                     {% if field.errors %}
-                        <div>{{ field.errors }}</div>
+                        <div class="error-message-login">{{ field.errors }}</div>
                     {% endif %}
                 </div>
             {% endfor %}
-            <div>
-                <button type="submit">
+            <div class="button-group-login">
+                <button type="submit" class="auth-btn-login orange-btn-login">
                     Увійти
                 </button>
-                <a href="javascript:history.back()">Назад</a>
             </div>
-            <div>
+            <div class="legal-text-login">
                 Продовжуючи, ви підтверджуєте, що згодні увійти до облікового запису та надаєте згоду на обробку персональних даних
             </div>
-            <div>
+            <div class="separator-login">
                 <span>або</span>
             </div>
-            <div>
-                <h2>Немає акаунту?</h2>
-            <a class="global-button" href="{% url 'register' %}">
-                Створити акаунт
-            </a>
+            <div class="no-account-login">
+                <h2 class="no-account-title-login">Немає акаунту?</h2>
+                <a class="create-account-btn-login" href="{% url 'register' %}">
+                    Створити акаунт
+                </a>
             </div>
+            <a href="javascript:history.back()" class="back-link-login">Назад</a>
         </form>
     </div>
-
 {% endblock %}
-
-
-

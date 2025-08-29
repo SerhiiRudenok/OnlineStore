@@ -1,27 +1,28 @@
 {% extends 'myapp/template.html' %}
+{% load static %}
 
 {% block title %} Реєстрація {% endblock %}
 
 {% block content %}
-    <div>
-        <form method="post">
-            <h2>Реєстрація користувача</h2>
+    <div class="auth-container-register">
+        <form method="post" class="auth-form-register">
+            <h2 class="auth-title-register">Реєстрація користувача</h2>
             {% csrf_token %}
             {% for field in form %}
-            <div>
-                {{ field.label_tag }}
-                {{ field }}
-                {% if field.help_text %}
-                    <small>{{ field.help_text }}</small>
-                {% endif %}
-                {% if field.errors %}
-                    <div>{{ field.errors }}</div>
-                {% endif %}
-            </div>
+                <div class="form-group-register">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small class="help-text-register">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% if field.errors %}
+                        <div class="error-message-register">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
             {% endfor %}
-            <div>
-                <button type="submit"> Зареєструватися </button>
-                <a class="global-button" href="javascript:history.back()">Назад</a>
+            <div class="button-group-register">
+                <button type="submit" class="auth-btn-register"> Зареєструватися </button>
+                <a class="global-button-register" href="javascript:history.back()">Назад</a>
             </div>
         </form>
     </div>
