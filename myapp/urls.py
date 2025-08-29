@@ -17,6 +17,10 @@ urlpatterns = [
     path('user/comments/', views.UserCommentsListView.as_view(), name='user_comments'),
     path('user/favorites/', views.UserFavoritesListView.as_view(), name='user_favorites'),
 
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('login/account/', views.LoginAccountView.as_view(), name='login_account'),
+    path('register/', views.RegisterView.as_view(), name='register'),
+
     # Category
     path('category/create/', views.CategoryCreateView.as_view(), name='category_create'),
     path('category/<int:pk>/update/', views.CategoryUpdateView.as_view(), name='category_update'),
