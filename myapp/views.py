@@ -18,11 +18,12 @@ from myapp.forms import CategoryForm
 
 # --- index
 def index_page(req):
-    products = Product.objects.filter(is_active=True).all()
+    products = Product.objects.filter(is_active=True).order_by('?')[:10]
     context = {
         'products': products
     }
     return render(req, 'myapp/index.html', context)
+
 
 
 
@@ -198,7 +199,7 @@ class BookingDeleteView(View):
 class LoginView(View):
     def get(self, request):
         if request.user.is_authenticated:
-            return redirect(reverse('profile_user'))
+            return redirect(reverse('index'))
 
         form = AuthenticationForm()
         return render(request, 'myapp/login.html', {'form': form})
@@ -208,7 +209,7 @@ class LoginView(View):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect(reverse('profile_user'))
+            return redirect(reverse('index'))
         else:
             return render(request, 'myapp/login.html', {'form': form})
 
@@ -273,7 +274,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'myapp/user/profile_update.html'
 
     def get_success_url(self):
-        return reverse_lazy('profile_user', kwargs={'user_id': self.request.user.id})
+        return reverse_lazy('profile_user')
 
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -289,7 +290,7 @@ class UserPasswordUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'myapp/user/password_update.html'
 
     def get_success_url(self):
-        return reverse_lazy('profile_user', kwargs={'user_id': self.request.user.id})
+        return reverse_lazy('profile_user')
 
     def get_object(self, queryset=None):
         return self.request.user

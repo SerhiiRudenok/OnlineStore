@@ -4,10 +4,7 @@
 {% block title %} Усі товари {% endblock %}
 
 {% block content %}
-    <div class="page-container">
-        <div class="content-box">
-            <h2 class="main-heading text-center">Усі товари</h2>
-
+        <div class="products-grid container-fluid one-line">
             <form method="get" class="filter-form">
                 <div class="filter-group">
                     <label for="category" class="filter-label">Категорія:</label>
@@ -30,20 +27,25 @@
                     </select>
                 </div>
             </form>
-
-            <ul class="product-list-container">
-                {% for product in products %}
-                    <li class="product-item">
-                        <strong class="product-name">{{ product.name }}</strong><br>
-                        <span class="product-price">{{ product.price }} грн</span>
-                        {% if product.category %}
-                            <p class="product-category"><small>Категорія: {{ product.category.name }}</small></p>
-                        {% endif %}
-                    </li>
-                {% empty %}
-                    <p class="empty-message text-center">Немає товарів за обраними параметрами.</p>
-                {% endfor %}
-            </ul>
         </div>
+    <div class="products-grid container-fluid">
+        {% for product in products %}
+        <div class="product-card">
+            <a href="{% url 'product_detail' pk=product.id %}" class="product-link">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                {% else %}
+                <img src="{% static 'images/no-image.jpg' %}" alt="Фото товару" class="product-image">
+                {% endif %}
+                <div class="product-info">
+                    <div class="product-name">{{ product.name }}</div>
+                    <div class="product-price">{{ product.price }} грн</div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
     </div>
+
+
+
 {% endblock %}

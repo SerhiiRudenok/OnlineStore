@@ -35,8 +35,8 @@
 
         <div class="content-box">
             <div class="button-group">
-                <a href="javascript:history.back()" class="universal-btn back-btn">
-                    Назад
+                <a href="{% url 'index' %}" class="universal-btn back-btn">
+                    На головну
                 </a>
                 {% if user.is_authenticated %}
                     <a href="{% url 'confirm_logout' %}" class="universal-btn orange-filled-btn">
