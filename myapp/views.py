@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import Group, User
 from django.contrib.auth import login, logout
@@ -334,11 +334,21 @@ class UserCommentsListView(LoginRequiredMixin, ListView):
 
 
 
+class ProductFavoriteView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        if product.favorites.filter(id=request.user.id).exists():
+            product.favorites.remove(request.user)
+        else:
+            product.favorites.add(request.user)
+        return redirect('product_detail', pk=pk)
+
+
 # список всіх улюблених товарів
 class UserFavoritesListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'myapp/user/user_favorites.html'
-    context_object_name = 'favorite_products'
+    context_object_name = 'favorite_product'
     paginate_by = 10
 
     def get_queryset(self):

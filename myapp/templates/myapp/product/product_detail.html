@@ -85,8 +85,16 @@
                     <a href="{% url 'booking_detail' %}" class="btn btn-secondary added-to-cart-link d-none">Товар в кошику</a>
                 {% endif %}
 
-
-                <button class="add-to-wishlist-btn"><i class="far fa-heart"></i></button>
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'favorite_product' product.pk %}">
+                    {% csrf_token %}
+                        <button type="submit" class="add-to-wishlist-btn">
+                            <i class="{% if user in product.favorites.all %}fas{% else %}far{% endif %} fa-heart"></i>
+                        </button>
+                    </form>
+                {% else %}
+                    <button class="add-to-wishlist-btn"><i class="far fa-heart"></i></button>
+                {% endif %}
             </div>
             <div class="product-description-container">
                 <h2>Опис</h2>
