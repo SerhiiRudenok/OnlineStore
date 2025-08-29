@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 
-
+# --- Категорія товара
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
@@ -11,7 +11,7 @@ class Category(models.Model):
         return self.name
 
 
-
+# --- Товар
 class Product(models.Model):
     name = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -38,6 +38,27 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Відгук {self.user.username} до "{self.product.name}"'
+
+
+# --- Кошик
+class Booking(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookings')
+
+    def __str__(self):
+        return f'Кошик {self.user.username}'
+
+    def get_total_price(self):
+        return sum(item.product.price * item.quantity for item in self.items.all() if item.product)
+
+
+# --- Товар у кошику
+class BookingItem(models.Model):
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f'{self.quantity} × {self.product.name}'
 
 
 # --- Замовлення

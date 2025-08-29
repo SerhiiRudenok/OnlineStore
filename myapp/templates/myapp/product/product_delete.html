@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'myapp/template.html' %}
+
+{% block title %} Видалити товар {% endblock %}
+
+{% block content %}
+
+    <h2>Ви впевнені, що хочете видалити товар "{{ object.name }}"?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Підтвердити видалення</button>
+        <a href="javascript:history.back()" class="universal-btn back-btn">Назад</a>
+    </form>
+
+
+{% endblock %}

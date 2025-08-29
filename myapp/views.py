@@ -12,7 +12,7 @@ from django.urls import reverse
 
 from myapp.models import Product, Category, Comment
 from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm, UserUpdateForm
-from myapp.forms import CategoryForm
+from myapp.forms import CategoryForm, ProductForm
 
 
 
@@ -60,14 +60,27 @@ class CategoryListView(ListView):
 
 
 
-
 # --- Product
 class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Product
-    # form_class = ProductForm
-    fields = ['name', 'category', 'description', 'price', 'image']
+    form_class = ProductForm
     template_name = 'myapp/product/product_create.html'
     permission_required = 'myapp.add_product'
+
+    def get_success_url(self):
+        return reverse_lazy('product_detail', kwargs={'pk': self.object.pk})
+
+
+class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'myapp/product/product_update.html'
+    context_object_name = 'product'
+    permission_required = 'myapp.change_product'
+
+    def get_success_url(self):
+        return reverse_lazy('product_detail', kwargs={'pk': self.object.pk})
+
 
 class ProductDetailView(DetailView):
     model = Product
@@ -84,7 +97,12 @@ class ProductDetailView(DetailView):
         return context
 
 
-
+class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = Product
+    template_name = 'myapp/product/product_delete.html'
+    context_object_name = 'product'
+    permission_required = 'myapp.delete_product'
+    success_url = reverse_lazy('product_list')
 
 
 
