@@ -87,11 +87,9 @@ class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView)
         return reverse_lazy('product_detail', kwargs={'pk': self.object.pk})
 
 
-
+#  Возвращает правильную форму слова "відгук" в зависимости от количества
 def pluralize_reviews(count):
-    """
-    Возвращает правильную форму слова "відгук" в зависимости от количества.
-    """
+
     if count % 10 == 1 and count % 100 != 11:
         return f"{count} відгук"
     elif 2 <= count % 10 <= 4 and (count % 100 < 10 or count % 100 >= 20):
