@@ -284,11 +284,11 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     def get_object(self, queryset=None):
         return self.request.user
 
-    # кількість коментарів кожного користувача 'comments_count'
+    # кількість коментарів кожного користувача 'user_comments_count'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.get_object()
-        context['comments_count'] = Comment.objects.filter(user=user).count()
+        context['user_comments_count'] = Comment.objects.filter(user=user).count()
         return context
 
 
@@ -375,7 +375,7 @@ class UserFavoritesListView(LoginRequiredMixin, ListView):
 def get_review_stats(comments_queryset):
     stats = comments_queryset.aggregate(avg_rating=Avg('rating'))
     average_rating = stats['avg_rating'] or 0.0     # average_rating — обчислює середню оцінку (від 1 до 5) серед усіх коментарів.
-    review_count = comments_queryset.count()        # review_count — рахує загальну кількість коментарів.
+    review_count = comments_queryset.count()        # review_count — рахує загальну кількість коментарів по товару.
     return round(average_rating, 1), review_count
 
 
