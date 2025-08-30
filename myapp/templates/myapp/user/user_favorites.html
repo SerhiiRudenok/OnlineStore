@@ -1,28 +1,30 @@
 {% extends 'myapp/template.html' %}
 
-{% block title %} Список бажань {{ profile_user.username }} {% endblock %}
+{% block title %}Список бажань{% endblock %}
 
 {% block content %}
-    <h1>Список бажань {{ profile_user.username }}</h1>
+    <h1>Список бажань
+        {% if profile_user.first_name %}
+            {{ profile_user.first_name }} {{ profile_user.last_name }}
+        {% endif %}
+    </h1>
     <div>
-        {% for product in favorite_products %}
+        {% for product in favorite_product %}
         <div>
-            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <a href="{% url 'product_detail' product.id %}">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            </a>
             <div>
-                <h2>{{product.name}}</h2>
-                <div> {{ product.description|slice:":200" }}...</div>
+                <h2><a href="{% url 'product_detail' product.id %}">{{product.name}}</a></h2>
+                <div> {{ product.description }} </div>
             </div>
             <div>
-
-                <a href="{% url 'product_detail' product.id %}">Детальніше</a>
-
-                {% if perms.myapp.change_product %}
-                <a href="{% url 'product_update' product.id %}">Редагувати</a>
-                {% endif %}
-
-                {% if perms.myapp.delete_product %}
-                <a href="{% url 'product_delete' product.id %}">Видалити</a>
-                {% endif %}
+                <form method="post" action="{% url 'favorite_product' product.pk %}">
+                {% csrf_token %}
+                    <button type="submit" class="add-to-wishlist-btn">
+                        <i class="{% fas fa-heart"></i>
+                    </button>
+                </form>
             </div>
         </div>
         {% empty %}

@@ -16,7 +16,7 @@
                 <div class="comment-card">
                     <div class="comment-header">
                         {% if user.is_authenticated %}
-                            <a href="{% url 'profile_user' comment.user.id %}">
+                            <a href="{% url 'profile_user' %}">
                                 {{ comment.user.first_name|default:comment.user.username }} {{ comment.user.last_name }}
                             </a>
                         {% else %}
@@ -34,10 +34,10 @@
 
                     <div class="comment-actions">
                         {% if comment.user == request.user and perms.myapp.change_comment %}
-                            <a href="{% url 'update_comment' comment.id %}">Редагувати</a>
+                            <a href="{% url 'comment_update' comment.id %}">Редагувати</a>
                         {% endif %}
                         {% if perms.myapp.delete_comment and comment.user == request.user or is_manager %}
-                            <a href="{% url 'delete_comment' comment.id %}">Видалити</a>
+                            <a href="{% url 'comment_delete' comment.id %}">Видалити</a>
                         {% endif %}
                     </div>
                 </div>

@@ -92,8 +92,14 @@ class ProductDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         cart = self.request.session.get('cart', [])
 
-        # Проверяем, есть ли текущий товар в корзине
+        # Перевірка: чи є товар у кошику
         context['is_in_cart'] = str(self.object.id) in cart
+
+        # Перевірка: чи є товар у списку бажань поточного користувача
+        if self.request.user.is_authenticated:
+            context['is_favorite'] = self.request.user in self.object.favorites.all()
+        else:
+            context['is_favorite'] = False
 
         return context
 
@@ -334,15 +340,18 @@ class UserCommentsListView(LoginRequiredMixin, ListView):
         return Comment.objects.filter(user=self.request.user).select_related('product')
 
 
-
+# кнопка "Улюблений товар (favorites)"
 class ProductFavoriteView(LoginRequiredMixin, View):
     def post(self, request, pk):
         product = get_object_or_404(Product, pk=pk)
+
         if product.favorites.filter(id=request.user.id).exists():
             product.favorites.remove(request.user)
         else:
             product.favorites.add(request.user)
-        return redirect('product_detail', pk=pk)
+
+        fallback_url = reverse('product_detail', kwargs={'pk': pk})
+        return redirect(request.META.get('HTTP_REFERER', fallback_url))
 
 
 # список всіх улюблених товарів

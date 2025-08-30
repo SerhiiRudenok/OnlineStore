@@ -30,7 +30,9 @@
                 <a href="{% url 'profile_user' %}" class="icon-btn">
                      <i class="fas fa-user"></i>
                 </a>
-                <button class="icon-btn"><i class="fas fa-heart"></i></button>
+                <a href="{% url 'user_favorites' %}" class="icon-btn">
+                  <i class="fas fa-heart"></i>
+                </a>
             {% else %}
                 <a href="{% url 'login' %}" class="icon-btn">
                      <i class="fas fa-user"></i>
