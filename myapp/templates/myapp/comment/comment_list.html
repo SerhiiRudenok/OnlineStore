@@ -27,21 +27,6 @@
                 <span class="review-count">на основі {{ review_count }} відгуків</span>
             </div>
 
-        <div class="comment-actions-bottom footer-class">
-            {% if perms.myapp.add_comment %}
-                {% if not has_commented %}
-                    <a class="btn btn-primary custom-orange-btn" href="{% url 'comment_create' product.id %}">
-                        Залишити відгук
-                    </a>
-                {% elif user_comment and perms.myapp.change_comment %}
-                    <a class="btn btn-warning but-edit" href="{% url 'comment_update' user_comment.id %}">
-                        Редагувати коментар
-                    </a>
-                {% endif %}
-            {% endif %}
-            <a class="btn btn-secondary back-to-product-btn" href="{% url 'product_detail' product.id %}">Назад</a>
-        </div>
-
             <div class="comment-grid">
                 {% for comment in comments %}
                     <div class="comment-card">
@@ -77,6 +62,21 @@
         {% else %}
             <p>Наразі немає відгуків для цього товару.</p>
         {% endif %}
+
+        <div class="comment-actions-bottom footer-class">
+            {% if perms.myapp.add_comment %}
+                {% if not has_commented %}
+                    <a class="btn btn-primary custom-orange-btn" href="{% url 'comment_create' product.id %}">
+                        Залишити відгук
+                    </a>
+                {% elif user_comment and perms.myapp.change_comment %}
+                    <a class="btn btn-warning but-edit" href="{% url 'comment_update' user_comment.id %}">
+                        Редагувати коментар
+                    </a>
+                {% endif %}
+            {% endif %}
+            <a class="btn btn-secondary back-to-product-btn" href="{% url 'product_detail' product.id %}">Назад</a>
+        </div>
 
 
     </div>

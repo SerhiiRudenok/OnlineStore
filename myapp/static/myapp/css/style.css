@@ -994,6 +994,7 @@ body {
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 30px;
 }
 
 .comment-card .comment-header {
@@ -1080,9 +1081,16 @@ body {
 }
 
 .footer-class {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 25px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    color: #495057;
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
 
 }
 
@@ -1118,7 +1126,6 @@ body {
     background-color: #5a6268 !important;
 }
 
-/* Container for the delete confirmation page */
 .delete-container {
     max-width: 600px;
     margin: 60px auto;
@@ -1129,14 +1136,12 @@ body {
     text-align: center;
 }
 
-/* Page heading */
 .delete-container h1 {
     font-size: 2.2rem;
-    color: #dc3545; /* Red color for emphasis on deletion */
+    color: #dc3545;
     margin-bottom: 20px;
 }
 
-/* Style for the "DELETE" and "Назад" buttons */
 .one-line {
     display: flex;
     justify-content: center;
@@ -1183,7 +1188,6 @@ body {
     padding-bottom: 10px;
 }
 
-/* Стили для каждой группы полей (label + input) */
 .form-group {
     margin-bottom: 20px;
 }
@@ -1196,7 +1200,6 @@ body {
     font-size: 1rem;
 }
 
-/* Стили для полей ввода (input, textarea, select) */
 .form-group input,
 .form-group textarea,
 .form-group select {
@@ -1212,19 +1215,17 @@ body {
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
-    border-color: #ff8c00; /* Оранжевая рамка при фокусе */
+    border-color: #ff8c00;
     outline: none;
     box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
 }
 
-/* Стили для текста ошибки */
 .error-text {
     color: #dc3545;
     font-size: 0.875rem;
     margin-top: 5px;
 }
 
-/* Контейнер для кнопок в одну линию */
 .one-line {
     display: flex;
     justify-content: flex-end;
@@ -1232,7 +1233,6 @@ body {
     margin-top: 25px;
 }
 
-/* Общие стили для кнопок */
 .one-line button,
 .one-line a {
     border-radius: 8px;
