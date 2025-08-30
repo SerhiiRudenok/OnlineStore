@@ -5,7 +5,7 @@
 
 {% block content %}
     <div class="page-container">
-        <div class="content-box">
+        <div class="content-box h">
             <h1 class="main-heading">Профіль користувача</h1>
             <ul class="info-list">
                 <li><span class="info-label">Логін:</span> {{ profile_user.username }}</li>
@@ -21,6 +21,20 @@
                     {% endfor %}
                 {% endif %}
             </ul>
+
+             <div class="card-container more-info">
+                <a href="#" class="universal-btn review-btn">
+                    <i class="fas fa-comment-dots"></i> Відгуки
+                </a>
+                <a href="#" class="universal-btn wishlist-btn">
+                    <i class="fas fa-heart"></i> Список бажань
+                </a>
+                <a href="#" class="universal-btn orders-btn">
+                    <i class="fas fa-box-open"></i> Замовлення
+                </a>
+            </div>
+
+
             <div class="button-group">
                 {% if request.user.id == profile_user.id %}
                     <a href="{% url 'profile_update' %}" class="universal-btn orange-outline-btn">
