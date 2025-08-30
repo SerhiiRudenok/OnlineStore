@@ -3,9 +3,12 @@
 {% block title %} Написати відгук {% endblock %}
 
 {% block content %}
-    <div>
+    <div class="form-container">
         <form method="post">
-            <h2>Відгук для товару "{{ product.name }}"</h2>
+            <div class="form-header">
+                <h2>Відгук для товару</h2>
+                <h3>"{{ product.name }}"</h3>
+            </div>
             {% csrf_token %}
             {% for field in form %}
                 <div class="form-group">
@@ -16,12 +19,10 @@
                     {% endif %}
                 </div>
             {% endfor %}
-            <div class="one-line">
-                <button type="submit">Зберегти</button>
-                <a href="{% url 'product_detail' product.id %}">Назад</a>
+            <div class="one-line form-buttons">
+                <button type="submit" class="btn btn-primary custom-orange-btn">Зберегти</button>
+                <a href="{% url 'product_detail' product.id %}" class="btn btn-secondary back-to-product-btn">Назад</a>
             </div>
         </form>
     </div>
-
-
 {% endblock %}

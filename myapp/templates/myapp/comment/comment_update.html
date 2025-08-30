@@ -3,10 +3,12 @@
 {% block title %} Змінити відгук {% endblock %}
 
 {% block content %}
-    <div class="create-movie">
+    <div class="form-container">
       <form method="post">
-          <h2>Змінити відгук для товару</h2>
-          <h2>"{{comment.product.name}}"</h2>
+          <div class="reviews-page-header">
+            <h2 class="sub-heading">Змінити відгук для товару</h2>
+            <h2 class="sub-heading">"{{comment.product.name}}"</h2>
+          </div>
           {% csrf_token %}
             {% for field in form %}
               <div class="form-group">
@@ -17,9 +19,9 @@
                 {% endif %}
               </div>
             {% endfor %}
-            <div class="one-line">
-                <button type="submit" > Зберегти </button>
-                <a href="javascript:history.back()">Назад</a>
+            <div class="one-line comment-actions-bottom">
+                <button type="submit" class="but-edit"> Зберегти </button>
+                <a href="javascript:history.back()" class="back-to-product-btn">Назад</a>
             </div>
       </form>
     </div>

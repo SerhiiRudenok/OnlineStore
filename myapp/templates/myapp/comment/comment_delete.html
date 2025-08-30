@@ -1,26 +1,35 @@
 {% extends 'myapp/template.html' %}
 
-{% block title %} Видалити відгук {{ comment.user.username }} {% endblock %}
+{% block title %} Видалити відгук {% endblock %}
 
 {% block content %}
-    <h1 >Видалити відгук?</h1>
-    <div>
-        <div>
-           <strong>{{ comment.user.username }}</strong><br>
-            {{ comment.date|date:"d.m.Y H:i" }}<br>
-            <em>Оцінка: {{ comment.rating }}</em>
-            <span>
-                {% for _ in ""|ljust:comment.rating %}⭐{% endfor %}
-            </span>
-            <br>
-            "{% if comment.text|length > 100 %}{{ comment.text|slice:":100" }}...{% else %}{{ comment.text }}{% endif %}"
+    <div class="delete-container">
+        <h1>Видалити відгук?</h1>
+
+        <div class="comment-card">
+            <div class="comment-header">
+                <strong>{{ comment.user.username }}</strong>
+                <span class="comment-date">{{ comment.date|date:"d.m.Y H:i" }}</span>
+            </div>
+
+            <div class="comment-rating comm">
+                <em>Оцінка: {{ comment.rating }}</em>
+                <span>
+                    {% for _ in ""|ljust:comment.rating %}⭐{% endfor %}
+                </span>
+            </div>
+
+            <div class="comment-text comm">
+                {% if comment.text|length > 100 %}{{ comment.text|slice:":100" }}...{% else %}{{ comment.text }}{% endif %}
+            </div>
         </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="one-line">
+                <button type="submit" class="btn btn-danger delete-comment-btn">ВИДАЛИТИ</button>
+                <a class="btn btn-secondary back-to-product-btn" href="javascript:history.back()">Назад</a>
+            </div>
+        </form>
     </div>
-    <form method="post">
-        {% csrf_token %}
-        <div class="one-line">
-            <button type="submit" >ВИДАЛИТИ</button>
-            <a class="global-button" href="javascript:history.back()">Назад</a>
-        </div>
-    </form>
 {% endblock %}
