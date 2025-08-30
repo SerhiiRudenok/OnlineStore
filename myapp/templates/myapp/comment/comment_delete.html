@@ -1,0 +1,26 @@
+{% extends 'myapp/template.html' %}
+
+{% block title %} Видалити відгук {{ comment.user.username }} {% endblock %}
+
+{% block content %}
+    <h1 >Видалити відгук?</h1>
+    <div>
+        <div>
+           <strong>{{ comment.user.username }}</strong><br>
+            {{ comment.date|date:"d.m.Y H:i" }}<br>
+            <em>Оцінка: {{ comment.rating }}</em>
+            <span>
+                {% for _ in ""|ljust:comment.rating %}⭐{% endfor %}
+            </span>
+            <br>
+            "{% if comment.text|length > 100 %}{{ comment.text|slice:":100" }}...{% else %}{{ comment.text }}{% endif %}"
+        </div>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="one-line">
+            <button type="submit" >ВИДАЛИТИ</button>
+            <a class="global-button" href="javascript:history.back()">Назад</a>
+        </div>
+    </form>
+{% endblock %}

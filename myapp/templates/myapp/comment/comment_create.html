@@ -1,0 +1,27 @@
+{% extends 'myapp/template.html' %}
+
+{% block title %} Написати відгук {% endblock %}
+
+{% block content %}
+    <div>
+        <form method="post">
+            <h2>Відгук для товару "{{ product.name }}"</h2>
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="error-text">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <div class="one-line">
+                <button type="submit">Зберегти</button>
+                <a href="{% url 'product_detail' product.id %}">Назад</a>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}

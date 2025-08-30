@@ -2,17 +2,18 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import Group, User
 from django.contrib.auth import login, logout
+from django.db.models import Avg
 from django.views.generic import TemplateView, View, ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse
 
 from myapp.models import Product, Category, Comment
 from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm, UserUpdateForm
-from myapp.forms import CategoryForm, ProductForm
+from myapp.forms import CategoryForm, ProductForm, CommentForm
 
 
 
@@ -359,5 +360,109 @@ class UserFavoritesListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['profile_user'] = self.profile_user
         return context
+
+
+# --- Comment
+def get_review_stats(comments_queryset):
+    stats = comments_queryset.aggregate(avg_rating=Avg('rating'))
+    average_rating = stats['avg_rating'] or 0.0     # average_rating — обчислює середню оцінку (від 1 до 5) серед усіх коментарів.
+    review_count = comments_queryset.count()        # review_count — рахує загальну кількість коментарів.
+    return round(average_rating, 1), review_count
+
+
+class CommentCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'myapp/comment/comment_create.html'
+    permission_required = 'myapp.add_comment'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.product = get_object_or_404(Product, pk=kwargs['pk'])
+
+        if Comment.objects.filter(product=self.product, user=request.user).exists():
+            return HttpResponse(status=204)
+
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['product'] = self.product
+        return context
+
+    def form_valid(self, form):
+        form.instance.product = self.product
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('product_detail', kwargs={'pk': self.product.pk})
+
+
+class CommentUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'myapp/comment/comment_update.html'
+    context_object_name = 'comment'
+    permission_required = 'myapp.change_comment'
+
+    def get_success_url(self):
+        return reverse_lazy('product_detail', kwargs={'pk': self.object.product.pk})
+
+
+class CommentDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = Comment
+    template_name = 'myapp/comment/comment_delete.html'
+    context_object_name = 'comment'
+    permission_required = 'myapp.delete_comment'
+
+    def has_permission(self):
+        comment = self.get_object()
+        user = self.request.user
+        is_manager = user.groups.filter(name='Manager').exists()
+        return comment.user == user or is_manager
+
+    def get_success_url(self):
+        return reverse_lazy('product_detail', kwargs={'pk': self.object.product.pk})
+
+
+    # список всіх коментарів конкретного товару
+class CommentListView(ListView):
+    model = Comment
+    template_name = 'myapp/comment/comment_list.html'
+    context_object_name = 'comments'
+
+    def get_queryset(self):
+        self.product = get_object_or_404(Product, pk=self.kwargs.get('pk'))
+        return Comment.objects.filter(product=self.product).order_by('-id')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        comments = context['comments']
+
+        average_rating, review_count = get_review_stats(comments)
+
+        user = self.request.user
+        has_commented = False
+        user_comment = None
+        is_manager = False
+
+        if user.is_authenticated:
+            user_comment = comments.filter(user=user).first()
+            has_commented = user_comment is not None
+            is_manager = user.groups.filter(name='Manager').exists()
+
+        context.update({
+            'product': self.product,
+            'average_rating': average_rating,
+            'review_count': review_count,
+            'has_commented': has_commented,
+            'user_comment': user_comment,
+            'is_manager': is_manager,
+        })
+        return context
+
+
+
+
 
 

@@ -1,0 +1,65 @@
+{% extends 'myapp/template.html' %}
+
+{% block title %} Відгуки {{ product.name }} {% endblock %}
+
+{% block content %}
+    <h2>Відгуки для товару: "{{ product.name }}"</h2>
+
+    {% if comments %}
+        <div class="rating-summary">
+            <strong>{{ average_rating }}</strong> із 5 ⭐
+            <span class="review-count">на основі {{ review_count }} відгуків</span>
+        </div>
+
+        <div class="comment-list">
+            {% for comment in comments %}
+                <div class="comment-card">
+                    <div class="comment-header">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'profile_user' comment.user.id %}">
+                                {{ comment.user.first_name|default:comment.user.username }} {{ comment.user.last_name }}
+                            </a>
+                        {% else %}
+                            {{ comment.user.first_name|default:comment.user.username }} {{ comment.user.last_name }}
+                        {% endif %}
+                        <span class="comment-date">{{ comment.date|date:"d.m.Y, H:i" }}</span>
+                    </div>
+
+                    <div class="comment-rating">
+                        {% for _ in ""|ljust:comment.rating %}⭐{% endfor %}
+                        <em>({{ comment.rating }}/5)</em>
+                    </div>
+
+                    <div class="comment-text">{{ comment.text }}</div>
+
+                    <div class="comment-actions">
+                        {% if comment.user == request.user and perms.myapp.change_comment %}
+                            <a href="{% url 'update_comment' comment.id %}">Редагувати</a>
+                        {% endif %}
+                        {% if perms.myapp.delete_comment and comment.user == request.user or is_manager %}
+                            <a href="{% url 'delete_comment' comment.id %}">Видалити</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Наразі немає відгуків для цього товару.</p>
+    {% endif %}
+
+    <div class="comment-actions-bottom">
+        {% if perms.myapp.add_comment %}
+            {% if not has_commented %}
+                <a class="btn btn-primary" href="{% url 'comment_create' product.id %}">
+                    Залишити відгук
+                </a>
+            {% elif user_comment and perms.myapp.change_comment %}
+                <a class="btn btn-warning" href="{% url 'comment_update' user_comment.id %}">
+                    Редагувати коментар
+                </a>
+            {% endif %}
+        {% endif %}
+        <a class="btn btn-secondary" href="{% url 'product_detail' product.id %}">Назад</a>
+    </div>
+
+{% endblock %}

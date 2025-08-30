@@ -47,7 +47,7 @@
             <i class="fas fa-arrow-left"></i> Назад
         </button>
         <a href="#about-good" class="tab-link active">Усе про товар</a>
-        <a href="#rewievs" class="tab-link">Відгуки</a>
+        <a href="{% url 'comment_list' product.id %}" class="tab-link">Відгуки</a>
     </div>
 
     <div class="product-detail-container container-fluid">
