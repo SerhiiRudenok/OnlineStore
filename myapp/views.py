@@ -25,7 +25,11 @@ def index_page(req):
     }
     return render(req, 'myapp/index.html', context)
 
-
+def get_review_stats(comments_queryset):
+    stats = comments_queryset.aggregate(avg_rating=Avg('rating'))
+    average_rating = stats['avg_rating'] or 0.0     # average_rating — обчислює середню оцінку (від 1 до 5) серед усіх коментарів.
+    review_count = comments_queryset.count()        # review_count — рахує загальну кількість коментарів по товару.
+    return round(average_rating, 1), review_count
 
 
 
@@ -83,6 +87,18 @@ class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView)
         return reverse_lazy('product_detail', kwargs={'pk': self.object.pk})
 
 
+
+def pluralize_reviews(count):
+    """
+    Возвращает правильную форму слова "відгук" в зависимости от количества.
+    """
+    if count % 10 == 1 and count % 100 != 11:
+        return f"{count} відгук"
+    elif 2 <= count % 10 <= 4 and (count % 100 < 10 or count % 100 >= 20):
+        return f"{count} відгуки"
+    else:
+        return f"{count} відгуків"
+
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'myapp/product/product_detail.html'
@@ -100,6 +116,12 @@ class ProductDetailView(DetailView):
             context['is_favorite'] = self.request.user in self.object.favorites.all()
         else:
             context['is_favorite'] = False
+
+        comments_queryset = Comment.objects.filter(product=self.object)
+        average_rating, review_count = get_review_stats(comments_queryset)
+        context['average_rating'] = average_rating
+        context['review_count'] = review_count
+        context['review_count_text'] = pluralize_reviews(review_count)
 
         return context
 
@@ -372,11 +394,11 @@ class UserFavoritesListView(LoginRequiredMixin, ListView):
 
 
 # --- Comment
-def get_review_stats(comments_queryset):
-    stats = comments_queryset.aggregate(avg_rating=Avg('rating'))
-    average_rating = stats['avg_rating'] or 0.0     # average_rating — обчислює середню оцінку (від 1 до 5) серед усіх коментарів.
-    review_count = comments_queryset.count()        # review_count — рахує загальну кількість коментарів по товару.
-    return round(average_rating, 1), review_count
+# def get_review_stats(comments_queryset):
+#     stats = comments_queryset.aggregate(avg_rating=Avg('rating'))
+#     average_rating = stats['avg_rating'] or 0.0     # average_rating — обчислює середню оцінку (від 1 до 5) серед усіх коментарів.
+#     review_count = comments_queryset.count()        # review_count — рахує загальну кількість коментарів по товару.
+#     return round(average_rating, 1), review_count
 
 
 class CommentCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):

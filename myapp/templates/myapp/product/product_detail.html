@@ -27,13 +27,22 @@
             </div>
 
 
-            <div class="product-rating">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="far fa-star"></i>
-                <span class="rating-text"> (4.0)</span>
+             <div class="product-rating">
+                {% if review_count > 0 %}
+                    <span class="rating-text">Оцінка товару: <strong>{{ average_rating|floatformat:1 }}</strong>/5</span>
+
+                    <a href="{% url 'comment_list' product.id %}" class="review-count-link">
+                        {{ review_count_text }}
+                    </a>
+
+                    <div class="rating-stars">
+                        {% with rounded_rating=average_rating|floatformat:0|add:0 %}
+                            {% for _ in ""|ljust:rounded_rating %}⭐{% endfor %}
+                        {% endwith %}
+                    </div>
+                {% else %}
+                    <span class="no-reviews-text">Відгуків поки немає</span>
+                {% endif %}
             </div>
 
 
