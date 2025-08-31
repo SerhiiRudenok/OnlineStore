@@ -1,57 +1,15 @@
 {% extends 'myapp/template.html' %}
 
-{% block title %} Замовлення користувача {% endblock %}
-
 {% block content %}
-<div class="comment-container">
-    <h2 class="main-heading content-box-center">Ваше замовлення було успішно оформлено!</h2>
+    <div class="container py-5 text-center">
+        <h2>Ваше замовлення було успішно оформлено.!</h2>
+        <p>Номер замовлення: <strong>{{ order.id }}</strong></p>
+        <p>Дата: {{ order.date|date:"d.m.Y H:i" }}</p>
+        <p>Сума: <strong>{{ order.total_price }} грн</strong></p>
+        <p>Дякуємо за замовлення!</p>
 
-    <div class="content-box-center content-box text-center">
-        <ul class="info-list">
-            <li><span class="info-label">Номер замовлення:</span> {{ order.id }}</li>
-            <li><span class="info-label">Дата:</span> {{ order.date|date:"d.m.Y H:i" }}</li>
-            <li><span class="info-label">Сума:</span> {{ order.total_price }} грн</li>
-            <li><span class="info-label">Спосіб доставки:</span> {{ order.get_delivery_method_display }}</li>
-            <li><span class="info-label">Адреса доставки:</span> {{ order.delivery_address }}</li>
-            <li><span class="info-label">Спосіб оплати:</span> {{ order.get_payment_method_display }}</li>
-        </ul>
-    </div>
-
-    <h4 class="sub-heading text-center" style="margin-top: 15px;">Товари в замовленні</h4>
-    <div class="comment-grid">
-        {% for item in order_items %}
-        <div class="comment-card">
-            <div class="comment-header">
-                <div class="d-flex align-items-center">
-                    <div style="width: 80px; margin-right: 15px;">
-                        <a href="{% url 'product_detail' item.product.id %}">
-                            {% if item.product and item.product.image %}
-                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="width: 100%; height: auto; border-radius: 8px;">
-                            {% else %}
-                                <div class="text-muted small">Немає фото</div>
-                            {% endif %}
-                        </a>
-                    </div>
-                    <div>
-                        <a href="{% url 'product_detail' item.product.id %}">
-                            <span class="product-name">{{ item.product.name }}</span>
-                        </a>
-                        <div class="comment-date">{{ item.price|floatformat:2 }} грн x {{ item.quantity }} од.</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comment-text text-end">
-                <strong>{{ item.total|floatformat:2 }} грн</strong>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <div class="comment-actions-bottom">
-        <a href="{% url 'order_list' %}" class="universal-btn orders-btn">
+        <a href="{% url 'order_list' %}" class="btn btn-outline-secondary mt-3">
             <i class="fas fa-list"></i> Переглянути всі замовлення
         </a>
     </div>
-</div>
 {% endblock %}

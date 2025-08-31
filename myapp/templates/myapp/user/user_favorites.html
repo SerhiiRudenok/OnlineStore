@@ -11,11 +11,11 @@
                 {{ profile_user.first_name }} {{ profile_user.last_name }}
             {% endif %}
         </h1>
-        <a class="universal-btn back-btn" href="javascript:history.back()">Назад</a>
+
 
         <div class="products-grid">
             {% for product in favorite_product %}
-            <div class="product-card">
+            <div class="product-card" style="margin-bottom: 25px">
                 <a href="{% url 'product_detail' product.id %}">
                     <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
                 </a>
@@ -36,5 +36,9 @@
                 <p class="empty-message">Немає жодного товару у списку бажань.</p>
             {% endfor %}
         </div>
+    </div>
+
+    <div class="comment-actions-bottom footer-class">
+        <a class="universal-btn back-btn" href="javascript:history.back()">Назад</a>
     </div>
 {% endblock %}
