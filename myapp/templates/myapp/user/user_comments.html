@@ -7,7 +7,7 @@
         {% for comment in comments %}
             <div>
                 <div>
-                    <a href="{% url 'detail' comment.product.id %}" class="user_profile">
+                    <a href="{% url 'product_detail' comment.product.id %}" class="user_profile">
                         <strong>{{ comment.product.name }}</strong>
                     </a><br>
                     {{ comment.date|date:"d.m.Y, H:i" }}<br>
@@ -20,7 +20,7 @@
                 </div>
                 <div>
                     {% if comment.user == request.user and perms.myapp.change_comment %}
-                        <a href="{% url 'update_comment' comment.id %}">Редагувати</a>
+                        <a href="{% url 'comment_update' comment.id %}">Редагувати</a>
                     {% endif %}
 
                     {% if perms.myapp.delete_comment %}
