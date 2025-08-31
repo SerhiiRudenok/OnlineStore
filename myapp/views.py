@@ -104,18 +104,26 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        cart = self.request.session.get('cart', [])
+        product = self.object
+        user = self.request.user
 
-        # Перевірка: чи є товар у кошику
-        context['is_in_cart'] = str(self.object.id) in cart
-
-        # Перевірка: чи є товар у списку бажань поточного користувача
-        if self.request.user.is_authenticated:
-            context['is_favorite'] = self.request.user in self.object.favorites.all()
+        # --- Перевірка: чи є товар у кошику поточного користувача
+        if user.is_authenticated:
+            booking = Booking.objects.filter(user=user).first()
+            if booking:
+                context['is_in_cart'] = booking.items.filter(product=product).exists()
+            else:
+                context['is_in_cart'] = False
         else:
-            context['is_favorite'] = False
+            context['is_in_cart'] = False
 
-        comments_queryset = Comment.objects.filter(product=self.object)
+        # --- Перевірка: чи є товар у списку бажань поточного користувача
+        context['is_favorite'] = (
+            user.is_authenticated and user in product.favorites.all()
+        )
+
+        # --- Відгуки
+        comments_queryset = Comment.objects.filter(product=product)
         average_rating, review_count = get_review_stats(comments_queryset)
         context['average_rating'] = average_rating
         context['review_count'] = review_count

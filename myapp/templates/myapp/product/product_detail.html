@@ -49,9 +49,6 @@
             <div class="detail-product-price">{{ product.price }} грн</div>
             <div class="product-actions">
                 {% if is_in_cart %}
-                    <button class="add-to-cart-btn btn btn-success d-none" data-product-id="{{ product.id }}">
-                        Додати в кошик
-                    </button>
                     <a href="{% url 'booking_detail' %}" class="btn btn-secondary added-to-cart-link">Товар в кошику</a>
                 {% else %}
                     <button class="add-to-cart-btn btn btn-success" data-product-id="{{ product.id }}">

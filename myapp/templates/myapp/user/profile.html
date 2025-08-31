@@ -24,13 +24,13 @@
             </ul>
 
              <div class="card-container more-info">
-                <a href="#" class="universal-btn review-btn">
+                <a href="{% url 'user_comments' %}" class="universal-btn review-btn">
                     <i class="fas fa-comment-dots"></i> Відгуки
                 </a>
-                <a href="#" class="universal-btn wishlist-btn">
+                <a href="{% url 'user_favorites' %}" class="universal-btn wishlist-btn">
                     <i class="fas fa-heart"></i> Список бажань
                 </a>
-                <a href="#" class="universal-btn orders-btn">
+                <a href="{% url 'order_list' %}" class="universal-btn orders-btn">
                     <i class="fas fa-box-open"></i> Замовлення
                 </a>
             </div>
