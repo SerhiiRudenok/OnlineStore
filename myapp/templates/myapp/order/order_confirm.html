@@ -1,14 +1,17 @@
 {% extends 'myapp/template.html' %}
+{% load static %}
 
 {% block content %}
-    <div class="container py-5 text-center">
-        <h2>Ваше замовлення було успішно оформлено.!</h2>
-        <p>Номер замовлення: <strong>{{ order.id }}</strong></p>
-        <p>Дата: {{ order.date|date:"d.m.Y H:i" }}</p>
-        <p>Сума: <strong>{{ order.total_price }} грн</strong></p>
-        <p>Дякуємо за замовлення!</p>
+    <div class="page-container text-center">
+        <div class="content-box">
+            <h2 class="main-heading">Ваше замовлення було успішно оформлено!</h2>
+            <p>Номер замовлення: <strong class="info-label">{{ order.id }}</strong></p>
+            <p>Дата: {{ order.date|date:"d.m.Y H:i" }}</p>
+            <p>Сума: <strong class="info-label">{{ order.total_price }} грн</strong></p>
+            <p>Дякуємо за замовлення!</p>
+        </div>
 
-        <a href="{% url 'order_list' %}" class="btn btn-outline-secondary mt-3">
+        <a href="{% url 'order_list' %}" class="universal-btn back-btn mt-3">
             <i class="fas fa-list"></i> Переглянути всі замовлення
         </a>
     </div>

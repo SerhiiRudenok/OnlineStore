@@ -13,7 +13,6 @@
                 <li><span class="info-label">Прізвище:</span> {{ profile_user.last_name }}</li>
                 <li><span class="info-label">Телефон:</span> {{ profile_user.userprofile.phone }}</li>
                 <li><span class="info-label">Email:</span> {{ profile_user.email }}</li>
-                <li><span class="info-label">Дата реєстрації:</span> {{ profile_user.date_joined|date:"d.m.Y, H:i" }}</li>
                 {% if user.groups.all|length > 0 %}
                     {% for group in user.groups.all %}
                         {% if group.name == "Manager" %}
@@ -21,6 +20,7 @@
                         {% endif %}
                     {% endfor %}
                 {% endif %}
+                <li><span class="info-label">Дата реєстрації:</span> {{ profile_user.date_joined|date:"d.m.Y, H:i" }}</li>
             </ul>
 
              <div class="card-container more-info">

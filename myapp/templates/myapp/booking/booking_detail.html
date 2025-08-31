@@ -72,8 +72,8 @@
                 <div class="text-center mt-4 d-flex justify-content-center gap-3 flex-wrap">
                     <form method="post" action="{% url 'booking_clear' %}" id="clear-cart-form">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-outline-warning clear-cart-btn">
-                            <i class="fas fa-trash"></i> Очистити кошик
+                        <button type="submit" class="btn btn-outline-warning clear-cart-btn" style="color: red; border-color: red;">
+                            <i class="fas fa-trash-alt "></i> Очистити кошик
                         </button>
                     </form>
                     <a href="{% url 'order_create' %}" class="btn btn-success">
@@ -84,7 +84,7 @@
             {% else %}
             <div class="text-center mt-5">
                 <p>Ваш кошик порожній.</p>
-                <a href="{% url 'product_list' %}" class="btn btn-primary">Перейти до каталогу</a>
+                <a href="{% url 'product_list' %}" class="btn btn-primary custom-orange-btn">Перейти до каталогу</a>
             </div>
             {% endif %}
         </div>
