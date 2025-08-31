@@ -1,27 +1,30 @@
 {% extends 'myapp/template.html' %}
 
 {% block content %}
-    <div class="page-container">
-        <h2 class="sub-heading">Ваші замовлення</h2>
+    <div class="comment-container">
+        <h2 class="main-heading">Ваші замовлення</h2>
 
         {% if orders %}
-        <div class="orders-list-container">
+        <div class="comment-grid">
             {% for order in orders %}
-            <a href="{% url 'order_confirm' order.id %}" class="order-item">
-                <div>
-                    <strong>Замовлення #{{ order.id }}</strong><br>
-                    <small>{{ order.date|date:"d.m.Y H:i" }}</small>
+            <a href="{% url 'order_confirm' order.id %}" class="comment-card list-group-item">
+                <div class="comment-header" style="height: 10px;">
+                    <strong>Замовлення № {{ order.id }}</strong><br>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        {% for item in order.items.all %}
+                            {% if item.product and item.product.image %}
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" height="40" class="rounded border">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <small>{{ order.total_price }} грн</small>
                 </div>
-                <span>{{ order.total_price }} грн</span>
+                <span class="comment-rating">{{ order.date|date:"d.m.Y H:i" }}</span>
             </a>
             {% endfor %}
         </div>
         {% else %}
-        <p class="empty-message">У вас ще немає замовлень.</p>
+        <p>У вас ще немає замовлень.</p>
         {% endif %}
-    </div>
-
-    <div class="comment-actions-bottom footer-class">
-        <a class="universal-btn back-btn" href="javascript:history.back()">Назад</a>
     </div>
 {% endblock %}
