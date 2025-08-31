@@ -20,11 +20,26 @@ from myapp.forms import CategoryForm, ProductForm, CommentForm
 # --- index
 def index_page(req):
     products = Product.objects.filter(is_active=True).order_by('?')[:10]
+    enriched_products = []
+    for product in products:
+        comments = Comment.objects.filter(product=product)
+        avg_rating, review_count = get_review_stats(comments)
+        enriched_products.append({
+            'product': product,
+            'average_rating': avg_rating,
+            'review_count': review_count,
+            'review_count_text': pluralize_reviews(review_count)
+        })
+
     context = {
-        'products': products
+        'products': enriched_products
     }
+
     return render(req, 'myapp/index.html', context)
 
+
+
+# --- Статистика коментарів та оцінок
 def get_review_stats(comments_queryset):
     stats = comments_queryset.aggregate(avg_rating=Avg('rating'))
     average_rating = stats['avg_rating'] or 0.0     # average_rating — обчислює середню оцінку (від 1 до 5) серед усіх коментарів.
@@ -167,81 +182,6 @@ class ProductListView(ListView):
         context['selected_category'] = int(self.request.GET['category']) if self.request.GET.get('category', '').isdigit() else 0
         context['selected_sort'] = self.request.GET.get('sort', '')
         return context
-
-
-
-# Вспомогательная функция для расчета общей стоимости
-def get_cart_total_price(request):
-    cart = request.session.get('cart', [])  # Корзина - это список
-    total_price = 0
-    # Получаем все ID товаров из списка
-    product_ids = [int(product_id) for product_id in cart]
-    # За один запрос получаем все объекты Product
-    products = Product.objects.in_bulk(product_ids)
-    for product_id_str in cart:
-        product = products.get(int(product_id_str))
-        if product:
-            total_price += product.price
-    return total_price
-
-
-# --- Booking
-# class BookingDetailView(TemplateView):
-#     template_name = 'myapp/booking/booking_detail.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         cart = self.request.session.get('cart', [])
-#         cart_items = []
-#
-#         #все ID товаров из списка
-#         product_ids = [int(product_id) for product_id in cart]
-#         products = Product.objects.in_bulk(product_ids)
-#
-#         for product_id_str in cart:
-#             product = products.get(int(product_id_str))
-#             if product:
-#                 cart_items.append({
-#                     'product': product,
-#                 })
-#
-#         context['cart_items'] = cart_items
-#         context['total_price'] = get_cart_total_price(self.request)
-#         return context
-
-
-# class BookingCreateView(View):
-#     def post(self, request, *args, **kwargs):
-#         product_id = request.POST.get('product_id')
-#
-#         if product_id is None:
-#             return JsonResponse({'success': False, 'error': 'Product ID is missing.'}, status=400)
-#
-#         cart = request.session.get('cart', [])
-#         cart.append(str(product_id))
-#         request.session['cart'] = cart
-#         total_price = get_cart_total_price(request)
-#
-#         return JsonResponse({'success': True, 'total_price': total_price})
-
-#
-# class BookingDeleteView(View):
-#     def post(self, request, *args, **kwargs):
-#         product_id = request.POST.get('product_id')
-#
-#         if product_id is None:
-#             return JsonResponse({'success': False, 'error': 'Product ID is missing.'}, status=400)
-#
-#         cart = request.session.get('cart', [])
-#
-#         # Создаем новый список, исключая все вхождения удаляемого товара
-#         updated_cart = [item for item in cart if item != str(product_id)]
-#
-#         request.session['cart'] = updated_cart
-#         total_price = get_cart_total_price(request)
-#
-#         # Добавляем product_id в JSON-ответ
-#         return JsonResponse({'success': True, 'total_price': total_price, 'deleted_product_id': product_id})
 
 
 

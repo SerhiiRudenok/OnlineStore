@@ -5,17 +5,30 @@
 
 {% block content %}
 <div class="products-grid container-fluid">
-    {% for product in products %}
+    {% for item in products %}
     <div class="product-card">
-        <a href="{% url 'product_detail' pk=product.id %}" class="product-link">
-            {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+        <a href="{% url 'product_detail' pk=item.product.id %}" class="product-link">
+            {% if item.product.image %}
+            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="product-image">
             {% else %}
             <img src="{% static 'images/no-image.jpg' %}" alt="Фото товару" class="product-image">
             {% endif %}
             <div class="product-info">
-                <div class="product-name">{{ product.name }}</div>
-                <div class="product-price">{{ product.price }} грн</div>
+                <div class="product-name">{{ item.product.name }}</div>
+                <div class="product-rating">
+                    {% if item.review_count > 0 %}
+                        <span class="rating-stars">
+                            {% with rounded_rating=item.average_rating|floatformat:0|add:0 %}
+                                {% for _ in ""|ljust:rounded_rating %}⭐{% endfor %}
+                            {% endwith %}
+                        </span>
+                        <span class="rating-text"><strong>{{ item.average_rating|floatformat:1 }}</strong>/5</span>
+                        <span class="review-count-link">{{ item.review_count_text }}</span>
+                    {% else %}
+                        <span class="no-reviews-text">Відгуків поки немає</span>
+                    {% endif %}
+                </div>
+                <div class="product-price" style="padding-top: 20px;">{{ item.product.price }} грн</div>
             </div>
         </a>
     </div>
