@@ -1,9 +1,10 @@
 from django import forms
-from myapp.models import Category, Product, Comment
+from myapp.models import Category, Product, Comment, UserProfile
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 
 
 
@@ -58,7 +59,19 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(label="Пароль", widget=forms.PasswordInput)
 
 # --- UpdateUserForm
+phone_validator = RegexValidator(
+    regex=r'^\+380\d{9}$',
+    message="Номер телефону має бути у форматі +380XXXXXXXXX"
+)
+
 class UserUpdateForm(forms.ModelForm):
+    phone = forms.CharField(
+        max_length=13,
+        required=False,
+        label='Телефон',
+        validators=[phone_validator]
+    )
+
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
@@ -67,6 +80,21 @@ class UserUpdateForm(forms.ModelForm):
             'last_name': 'Прізвище',
             'email': 'Ел.пошта',
         }
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.get('instance')
+        super().__init__(*args, **kwargs)
+        if user and hasattr(user, 'userprofile'):
+            self.fields['phone'].initial = user.userprofile.phone
+
+    def save(self, commit=True):
+        user = super().save(commit)
+        phone = self.cleaned_data.get('phone')
+        profile, created = UserProfile.objects.get_or_create(user=user)
+        profile.phone = phone
+        if commit:
+            profile.save()
+        return user
 
 
 # --- UpdateUserPassword
