@@ -42,6 +42,21 @@
                             {% endif %}
                             <div class="product-info">
                                 <div class="product-name">{{ product.name }}</div>
+
+                                <div class="product-rating">
+                                    {% if product.review_count > 0 %}
+                                        <span class="rating-stars">
+                                            {% with rounded_rating=product.average_rating|floatformat:0|add:0 %}
+                                                {% for _ in ""|ljust:rounded_rating %}⭐{% endfor %}
+                                            {% endwith %}
+                                        </span>
+                                        <span class="rating-text"><strong>{{ product.average_rating|floatformat:1 }}</strong>/5</span>
+                                        <span class="review-count-link">{{ product.review_count_text }}</span>
+                                    {% else %}
+                                        <span class="no-reviews-text">Відгуків поки немає</span>
+                                    {% endif %}
+                                </div>
+
                                 <div class="product-price">{{ product.price }} грн</div>
                             </div>
                         </a>

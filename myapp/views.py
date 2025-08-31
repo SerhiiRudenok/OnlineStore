@@ -178,6 +178,19 @@ class ProductListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        products = context['products']
+
+        enriched_products = []
+        for product in products:
+            comments_queryset = Comment.objects.filter(product=product)
+            average_rating, review_count = get_review_stats(comments_queryset)
+            # --- Відгуки
+            product.average_rating = average_rating
+            product.review_count = review_count
+            product.review_count_text = pluralize_reviews(review_count)
+            enriched_products.append(product)
+        # --- Категорії
+        context['products'] = enriched_products
         context['categories'] = Category.objects.all()
         context['selected_category'] = int(self.request.GET['category']) if self.request.GET.get('category', '').isdigit() else 0
         context['selected_sort'] = self.request.GET.get('sort', '')
