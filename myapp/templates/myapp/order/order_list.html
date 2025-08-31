@@ -1,18 +1,25 @@
 {% extends 'myapp/template.html' %}
 
 {% block content %}
-    <div class="container py-5">
-        <h2 class="mb-4">Ваші замовлення</h2>
+    <div class="comment-container">
+        <h2 class="main-heading">Ваші замовлення</h2>
 
         {% if orders %}
-        <div class="list-group">
+        <div class="comment-grid">
             {% for order in orders %}
-            <a href="{% url 'order_confirm' order.id %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                <div>
-                    <strong>Замовлення #{{ order.id }}</strong><br>
-                    <small>{{ order.date|date:"d.m.Y H:i" }}</small>
+            <a href="{% url 'order_confirm' order.id %}" class="comment-card list-group-item">
+                <div class="comment-header">
+                    <strong>Замовлення № {{ order.id }}</strong><br>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        {% for item in order.items.all %}
+                            {% if item.product and item.product.image %}
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" height="40" class="rounded border">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <small>{{ order.total_price }} грн</small>
                 </div>
-                <span>{{ order.total_price }} грн</span>
+                <span class="comment-rating">{{ order.date|date:"d.m.Y H:i" }}</span>
             </a>
             {% endfor %}
         </div>

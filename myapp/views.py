@@ -341,12 +341,6 @@ class BookingClearView(View):
 
 
 # --- Order (Замовлення)
-from django.core.exceptions import ValidationError
-from django.utils import timezone
-from django.views import View
-from django.shortcuts import render, redirect
-from .models import Order, OrderItem, Booking
-
 class OrderCreateView(View):
     def get(self, request):
         booking = Booking.objects.filter(user=request.user).first()
@@ -472,10 +466,27 @@ class OrderCreateView(View):
         }
         return render(request, 'myapp/order/order_create.html', context)
 
+
 class OrderConfirmView(View):
     def get(self, request, order_id):
         order = get_object_or_404(Order, id=order_id, user=request.user)
-        return render(request, 'myapp/order/order_confirm.html', {'order': order})
+
+        # додаємо обчислену суму для кожного товару
+        items_with_total = []
+        for item in order.items.all():
+            total = item.price * item.quantity
+            items_with_total.append({
+                'product': item.product,
+                'quantity': item.quantity,
+                'price': item.price,
+                'total': total,
+            })
+
+        context = {
+            'order': order,
+            'order_items': items_with_total,
+        }
+        return render(request, 'myapp/order/order_confirm.html', context)
 
 
 class OrderListView(ListView):
