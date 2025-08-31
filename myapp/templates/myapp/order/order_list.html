@@ -1,0 +1,23 @@
+{% extends 'myapp/template.html' %}
+
+{% block content %}
+    <div class="container py-5">
+        <h2 class="mb-4">Ваші замовлення</h2>
+
+        {% if orders %}
+        <div class="list-group">
+            {% for order in orders %}
+            <a href="{% url 'order_confirm' order.id %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>Замовлення #{{ order.id }}</strong><br>
+                    <small>{{ order.date|date:"d.m.Y H:i" }}</small>
+                </div>
+                <span>{{ order.total_price }} грн</span>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>У вас ще немає замовлень.</p>
+        {% endif %}
+    </div>
+{% endblock %}

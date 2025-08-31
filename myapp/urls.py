@@ -9,6 +9,8 @@ urlpatterns = [
     path('booking/create/', views.BookingCreateView.as_view(), name='booking_create'),
     path('booking/detail/', views.BookingDetailView.as_view(), name='booking_detail'),
     path('booking/delete/', views.BookingDeleteView.as_view(), name='booking_delete'),
+    path('booking/update/', views.BookingUpdateQuantityView.as_view(), name='booking_update_quantity'),
+    path('booking/clear/', views.BookingClearView.as_view(), name='booking_clear'),
 
     # User
     path('profile/', views.UserDetailView.as_view(), name='profile_user'),
@@ -39,5 +41,10 @@ urlpatterns = [
     path('comment/<int:pk>/update/', views.CommentUpdateView.as_view(), name='comment_update'),
     path('comment/<int:pk>/delete/', views.CommentDeleteView.as_view(), name='comment_delete'),
     path('product/<int:pk>/comments/', views.CommentListView.as_view(), name='comment_list'),
+
+    # Order
+    path('order/create/', views.OrderCreateView.as_view(), name='order_create'),
+    path('order/confirm/<int:order_id>/', views.OrderConfirmView.as_view(), name='order_confirm'),
+    path('order/list/', views.OrderListView.as_view(), name='order_list'),
 
 ]

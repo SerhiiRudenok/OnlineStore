@@ -1,0 +1,15 @@
+{% extends 'myapp/template.html' %}
+
+{% block content %}
+    <div class="container py-5 text-center">
+        <h2>Ваше замовлення було успішно оформлено.!</h2>
+        <p>Номер замовлення: <strong>{{ order.id }}</strong></p>
+        <p>Дата: {{ order.date|date:"d.m.Y H:i" }}</p>
+        <p>Сума: <strong>{{ order.total_price }} грн</strong></p>
+        <p>Дякуємо за замовлення!</p>
+
+        <a href="{% url 'order_list' %}" class="btn btn-outline-secondary mt-3">
+            <i class="fas fa-list"></i> Переглянути всі замовлення
+        </a>
+    </div>
+{% endblock %}

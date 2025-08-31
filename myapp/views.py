@@ -2,16 +2,16 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import Group, User
 from django.contrib.auth import login, logout
-from django.db.models import Avg
-from django.views.generic import TemplateView, View, ListView
-from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
-from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
-from django.urls import reverse
+from django.db.models import Avg
+from django.views import View
+from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy, reverse
+from django.utils import timezone
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 
-from myapp.models import Product, Category, Comment
+from myapp.models import Product, Category, Comment, Booking, BookingItem, Order, OrderItem
 from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm, UserUpdateForm
 from myapp.forms import CategoryForm, ProductForm, CommentForm
 
@@ -178,64 +178,224 @@ def get_cart_total_price(request):
 
 
 # --- Booking
+# class BookingDetailView(TemplateView):
+#     template_name = 'myapp/booking/booking_detail.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         cart = self.request.session.get('cart', [])
+#         cart_items = []
+#
+#         #все ID товаров из списка
+#         product_ids = [int(product_id) for product_id in cart]
+#         products = Product.objects.in_bulk(product_ids)
+#
+#         for product_id_str in cart:
+#             product = products.get(int(product_id_str))
+#             if product:
+#                 cart_items.append({
+#                     'product': product,
+#                 })
+#
+#         context['cart_items'] = cart_items
+#         context['total_price'] = get_cart_total_price(self.request)
+#         return context
+
+
+# class BookingCreateView(View):
+#     def post(self, request, *args, **kwargs):
+#         product_id = request.POST.get('product_id')
+#
+#         if product_id is None:
+#             return JsonResponse({'success': False, 'error': 'Product ID is missing.'}, status=400)
+#
+#         cart = request.session.get('cart', [])
+#         cart.append(str(product_id))
+#         request.session['cart'] = cart
+#         total_price = get_cart_total_price(request)
+#
+#         return JsonResponse({'success': True, 'total_price': total_price})
+
+#
+# class BookingDeleteView(View):
+#     def post(self, request, *args, **kwargs):
+#         product_id = request.POST.get('product_id')
+#
+#         if product_id is None:
+#             return JsonResponse({'success': False, 'error': 'Product ID is missing.'}, status=400)
+#
+#         cart = request.session.get('cart', [])
+#
+#         # Создаем новый список, исключая все вхождения удаляемого товара
+#         updated_cart = [item for item in cart if item != str(product_id)]
+#
+#         request.session['cart'] = updated_cart
+#         total_price = get_cart_total_price(request)
+#
+#         # Добавляем product_id в JSON-ответ
+#         return JsonResponse({'success': True, 'total_price': total_price, 'deleted_product_id': product_id})
+
+
+
+# --- Booking (Кошик)
+class BookingCreateView(View):
+    def post(self, request, *args, **kwargs):
+        product_id = request.POST.get('product_id')
+        if not product_id:
+            return JsonResponse({'success': False, 'error': 'Product ID is missing.'}, status=400)
+
+        product = get_object_or_404(Product, pk=product_id)
+
+        booking, _ = Booking.objects.get_or_create(user=request.user)
+        item, created = BookingItem.objects.get_or_create(booking=booking, product=product)
+
+        if not created:
+            item.quantity += 1
+            item.save()
+
+        return JsonResponse({'success': True, 'total_price': booking.get_total_price()})
+
+
 class BookingDetailView(TemplateView):
     template_name = 'myapp/booking/booking_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        cart = self.request.session.get('cart', [])
-        cart_items = []
+        booking = Booking.objects.filter(user=self.request.user).first()
 
-        #все ID товаров из списка
-        product_ids = [int(product_id) for product_id in cart]
-        products = Product.objects.in_bulk(product_ids)
+        if booking:
+            context['cart_items'] = booking.items.select_related('product')
+            context['total_price'] = booking.get_total_price()
+        else:
+            context['cart_items'] = []
+            context['total_price'] = 0
 
-        for product_id_str in cart:
-            product = products.get(int(product_id_str))
-            if product:
-                cart_items.append({
-                    'product': product,
-                })
-
-        context['cart_items'] = cart_items
-        context['total_price'] = get_cart_total_price(self.request)
         return context
 
 
-class BookingCreateView(View):
-    def post(self, request, *args, **kwargs):
-        product_id = request.POST.get('product_id')
-
-        if product_id is None:
-            return JsonResponse({'success': False, 'error': 'Product ID is missing.'}, status=400)
-
-        cart = request.session.get('cart', [])
-        cart.append(str(product_id))
-        request.session['cart'] = cart
-        total_price = get_cart_total_price(request)
-
-        return JsonResponse({'success': True, 'total_price': total_price})
-
-
+      # відаляє один товар із кошика
 class BookingDeleteView(View):
     def post(self, request, *args, **kwargs):
         product_id = request.POST.get('product_id')
-
-        if product_id is None:
+        if not product_id:
             return JsonResponse({'success': False, 'error': 'Product ID is missing.'}, status=400)
 
-        cart = request.session.get('cart', [])
+        booking = Booking.objects.filter(user=request.user).first()
+        if not booking:
+            return JsonResponse({'success': False, 'error': 'No booking found.'}, status=404)
 
-        # Создаем новый список, исключая все вхождения удаляемого товара
-        updated_cart = [item for item in cart if item != str(product_id)]
+        item = booking.items.filter(product_id=product_id).first()
+        if item:
+            item.delete()
 
-        request.session['cart'] = updated_cart
-        total_price = get_cart_total_price(request)
+        return JsonResponse({
+            'success': True,
+            'total_price': booking.get_total_price(),
+            'deleted_product_id': product_id
+        })
 
-        # Добавляем product_id в JSON-ответ
-        return JsonResponse({'success': True, 'total_price': total_price, 'deleted_product_id': product_id})
+
+      # зміна кількості товару у кошику (+/-)
+class BookingUpdateQuantityView(View):
+    def post(self, request, *args, **kwargs):
+        product_id = request.POST.get('product_id')
+        quantity = request.POST.get('quantity')
+
+        if not product_id or quantity is None:
+            return HttpResponseRedirect(reverse('booking_detail'))
+
+        try:
+            quantity = max(1, int(quantity))  # Мінімум 1
+        except ValueError:
+            return HttpResponseRedirect(reverse('booking_detail'))
+
+        booking = Booking.objects.filter(user=request.user).first()
+        if not booking:
+            return HttpResponseRedirect(reverse('booking_detail'))
+
+        item = booking.items.filter(product_id=product_id).first()
+        if item:
+            item.quantity = quantity
+            item.save()
+
+        return HttpResponseRedirect(reverse('booking_detail'))
 
 
+      # повне очищення кошика
+class BookingClearView(View):
+    def post(self, request, *args, **kwargs):
+        booking = Booking.objects.filter(user=request.user).first()
+        if booking:
+            booking.items.all().delete()
+
+        return HttpResponseRedirect(reverse('booking_detail'))
+
+
+
+# --- Order (Замовлення)
+class OrderCreateView(View):
+    def get(self, request):
+        booking = Booking.objects.filter(user=request.user).first()
+        if not booking or not booking.items.exists():
+            return render(request, 'myapp/booking/booking_detail.html')
+
+        items = booking.items.select_related('product')
+        item_totals = [
+            {
+                'name': item.product.name,
+                'quantity': item.quantity,
+                'price': item.product.price,
+                'total': item.quantity * item.product.price
+            }
+            for item in items
+        ]
+
+        context = {
+            'booking': booking,
+            'items': item_totals,
+            'total_price': booking.get_total_price()
+        }
+
+        return render(request, 'myapp/order/order_create.html', context)
+
+    def post(self, request):
+        booking = Booking.objects.filter(user=request.user).first()
+        if not booking or not booking.items.exists():
+            return redirect('order_create')
+
+        total_price = booking.get_total_price()
+        order = Order.objects.create(
+            user=request.user,
+            date=timezone.now(),
+            total_price=total_price
+        )
+
+        for item in booking.items.select_related('product'):
+            OrderItem.objects.create(
+                order=order,
+                product=item.product,
+                quantity=item.quantity,
+                price=item.product.price
+            )
+
+        booking.items.all().delete()  # Очищення кошика
+
+        return redirect('order_confirm', order_id=order.id)
+
+
+class OrderConfirmView(View):
+    def get(self, request, order_id):
+        order = get_object_or_404(Order, id=order_id, user=request.user)
+        return render(request, 'myapp/order/order_confirm.html', {'order': order})
+
+
+class OrderListView(ListView):
+    model = Order
+    template_name = 'myapp/order/order_list.html'
+    context_object_name = 'orders'
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user).order_by('-date')
 
 
 
