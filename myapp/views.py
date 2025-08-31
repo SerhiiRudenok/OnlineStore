@@ -333,6 +333,12 @@ class BookingClearView(View):
 
 
 # --- Order (Замовлення)
+from django.core.exceptions import ValidationError
+from django.utils import timezone
+from django.views import View
+from django.shortcuts import render, redirect
+from .models import Order, OrderItem, Booking
+
 class OrderCreateView(View):
     def get(self, request):
         booking = Booking.objects.filter(user=request.user).first()
@@ -350,25 +356,76 @@ class OrderCreateView(View):
             for item in items
         ]
 
+        payment_method = request.GET.get('payment_method', 'cash_on_delivery')
+        delivery_method = request.GET.get('delivery_method', 'nova_poshta_branch')
+        delivery_address = request.GET.get('delivery_address', '')
+        show_card_fields = payment_method == 'card'
+
         context = {
             'booking': booking,
             'items': item_totals,
-            'total_price': booking.get_total_price()
+            'total_price': booking.get_total_price(),
+            'delivery_choices': Order.DELIVERY_CHOICES,
+            'payment_choices': Order.PAYMENT_CHOICES,
+            'selected_payment_method': payment_method,
+            'selected_delivery_method': delivery_method,
+            'delivery_address': delivery_address,
+            'show_card_fields': show_card_fields,
         }
 
         return render(request, 'myapp/order/order_create.html', context)
 
     def post(self, request):
+        if request.POST.get('action_type') != 'submit_order':
+            return redirect('order_create')
+
         booking = Booking.objects.filter(user=request.user).first()
         if not booking or not booking.items.exists():
             return redirect('order_create')
 
+        delivery_method = request.POST.get('delivery_method', 'nova_poshta_branch')
+        delivery_address = request.POST.get('delivery_address', '')
+        payment_method = request.POST.get('payment_method', 'cash_on_delivery')
+        show_card_fields = payment_method == 'card'
+
+        if show_card_fields:
+            card_number = request.POST.get('card_number', '')
+            card_month = request.POST.get('card_month', '')
+            card_year = request.POST.get('card_year', '')
+            card_cvv = request.POST.get('card_cvv', '')
+
+            if not (card_number.isdigit() and len(card_number) == 16):
+                return self._render_with_error(request, booking, "Некоректний номер картки", delivery_method, delivery_address, payment_method)
+            if not (card_month.isdigit() and len(card_month) == 2 and 1 <= int(card_month) <= 12):
+                return self._render_with_error(request, booking, "Некоректний місяць", delivery_method, delivery_address, payment_method)
+            if not (card_year.isdigit() and len(card_year) == 2):
+                return self._render_with_error(request, booking, "Некоректний рік", delivery_method, delivery_address, payment_method)
+            if not (card_cvv.isdigit() and len(card_cvv) == 3):
+                return self._render_with_error(request, booking, "Некоректний CVV", delivery_method, delivery_address, payment_method)
+
         total_price = booking.get_total_price()
-        order = Order.objects.create(
+        order = Order(
             user=request.user,
             date=timezone.now(),
-            total_price=total_price
+            total_price=total_price,
+            delivery_method=delivery_method,
+            delivery_address=delivery_address,
+            payment_method=payment_method
         )
+
+        try:
+            order.full_clean()
+        except ValidationError as e:
+            return self._render_with_error(
+                request,
+                booking,
+                error_message=e.messages[0],  # показує перше повідомлення
+                delivery_method=delivery_method,
+                delivery_address=delivery_address,
+                payment_method=payment_method
+            )
+
+        order.save()
 
         for item in booking.items.select_related('product'):
             OrderItem.objects.create(
@@ -378,10 +435,34 @@ class OrderCreateView(View):
                 price=item.product.price
             )
 
-        booking.items.all().delete()  # Очищення кошика
+        booking.items.all().delete()
 
         return redirect('order_confirm', order_id=order.id)
 
+    def _render_with_error(self, request, booking, error_message, delivery_method, delivery_address, payment_method):
+        items = booking.items.select_related('product')
+        item_totals = [
+            {
+                'name': item.product.name,
+                'quantity': item.quantity,
+                'price': item.product.price,
+                'total': item.quantity * item.product.price
+            }
+            for item in items
+        ]
+        context = {
+            'booking': booking,
+            'items': item_totals,
+            'total_price': booking.get_total_price(),
+            'delivery_choices': Order.DELIVERY_CHOICES,
+            'payment_choices': Order.PAYMENT_CHOICES,
+            'selected_payment_method': payment_method,
+            'selected_delivery_method': delivery_method,
+            'delivery_address': delivery_address,
+            'show_card_fields': payment_method == 'card',
+            'error_message': error_message,
+        }
+        return render(request, 'myapp/order/order_create.html', context)
 
 class OrderConfirmView(View):
     def get(self, request, order_id):

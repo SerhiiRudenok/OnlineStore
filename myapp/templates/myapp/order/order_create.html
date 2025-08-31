@@ -1,10 +1,25 @@
 {% extends 'myapp/template.html' %}
+{% load static %}
 
 {% block content %}
     <div class="container py-5">
         <h2 class="text-center mb-4">Оформлення замовлення</h2>
 
-        <div class="order-items">
+        <!-- Контактні дані -->
+        <div class="mb-4">
+            <h5>Ваші контактні дані:</h5>
+            <ul class="list-unstyled">
+                <li><strong>Ім’я:</strong> {{ request.user.first_name|default:"[Обов’язково заповнити]" }}</li>
+                <li><strong>Прізвище:</strong> {{ request.user.last_name|default:"[Обов’язково заповнити]" }}</li>
+                <li><strong>Телефон:</strong> {{ request.user.userprofile.phone|default:"[Обов’язково заповнити]" }}</li>
+            </ul>
+            {% if not request.user.first_name or not request.user.last_name or not request.user.userprofile.phone %}
+                <a href="{% url 'profile_update' %}" class="btn btn-warning mt-2">Редагувати профіль</a>
+            {% endif %}
+        </div>
+
+        <!-- Товари -->
+        <div class="order-items mb-4">
             {% for item in items %}
             <div class="d-flex justify-content-between align-items-center border-bottom py-2">
                 <div>
@@ -16,21 +31,85 @@
             {% endfor %}
         </div>
 
-        <div class="text-end mt-4">
+        <div class="text-end mb-4">
             <h4>Загальна сума: {{ total_price }} грн</h4>
         </div>
 
-        <div class="mt-4 text-center d-flex justify-content-center gap-3">
-            <form method="post" action="{% url 'order_create' %}">
-                {% csrf_token %}
+        <!-- Повідомлення про помилку -->
+        {% if error_message %}
+        <div class="alert alert-danger">{{ error_message }}</div>
+        {% endif %}
+
+        <!-- Форма оновлення способу оплати (GET) -->
+        <form method="get" action="{% url 'order_create' %}" class="mb-4">
+            <input type="hidden" name="delivery_method" value="{{ selected_delivery_method }}">
+            <input type="hidden" name="delivery_address" value="{{ delivery_address }}">
+            <label for="payment_method" class="form-label">Спосіб оплати:</label>
+            <select name="payment_method" id="payment_method" class="form-select" onchange="this.form.submit()">
+                {% for value, label in payment_choices %}
+                    <option value="{{ value }}" {% if value == selected_payment_method %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </form>
+
+        <!-- Основна форма замовлення (POST) -->
+        <form method="post" action="{% url 'order_create' %}" id="order-form">
+            {% csrf_token %}
+            <input type="hidden" name="action_type" value="submit_order">
+            <input type="hidden" name="payment_method" value="{{ selected_payment_method }}">
+
+            <!-- Доставка -->
+            <div class="mb-3">
+                <label for="delivery_method" class="form-label">Спосіб доставки:</label>
+                <select name="delivery_method" id="delivery_method" class="form-select" required>
+                    {% for value, label in delivery_choices %}
+                        <option value="{{ value }}" {% if value == selected_delivery_method %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="delivery_address" class="form-label">Адреса доставки:</label>
+                <input type="text" name="delivery_address" id="delivery_address" class="form-control" value="{{ delivery_address }}" required>
+            </div>
+
+            <!-- Дані картки -->
+            {% if selected_payment_method == 'card' %}
+            <div id="card-fields" class="border p-3 rounded bg-light">
+                <h5 class="mb-3">Дані картки</h5>
+                <div class="mb-2">
+                    <label for="card_number" class="form-label">Номер карти:</label>
+                    <input type="text" name="card_number" id="card_number" class="form-control" maxlength="16" pattern="\d{16}" required>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">Термін дії:</label>
+                </div>
+                <div class="mb-2 d-flex gap-2">
+                    <div>
+                        <input type="text" name="card_month" id="card_month" class="form-control" maxlength="2" pattern="\d{2}" required>
+                    </div>
+                    <div>/</div>
+                    <div>
+                        <input type="text" name="card_year" id="card_year" class="form-control" maxlength="2" pattern="\d{2}" required>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="card_cvv" class="form-label">CVV:</label>
+                    <input type="password" name="card_cvv" id="card_cvv" class="form-control" maxlength="3" pattern="\d{3}" required>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Кнопки -->
+            <div class="mt-4 text-center d-flex justify-content-center gap-3">
                 <button type="submit" class="btn btn-success">
                     <i class="fas fa-check"></i> Підтвердити замовлення
                 </button>
-            </form>
-
-            <a href="{% url 'booking_detail' %}" class="btn btn-outline-secondary">
-                <i class="fas fa-edit"></i> Змінити замовлення
-            </a>
-        </div>
+                <a href="{% url 'booking_detail' %}" class="btn btn-outline-secondary">
+                    <i class="fas fa-edit"></i> Змінити замовлення
+                </a>
+            </div>
+        </form>
     </div>
 {% endblock %}
