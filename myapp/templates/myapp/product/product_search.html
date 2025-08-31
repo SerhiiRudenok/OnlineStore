@@ -1,12 +1,18 @@
 {% extends 'myapp/template.html' %}
 {% load static %}
 
-{% block title %} Усі товари {% endblock %}
+{% block title %} Результат пошуку {% endblock %}
 
 {% block content %}
     <div class="page-container">
         <div class="content-b">
+            <h4 class="filter-form">
+                <span class="search-label">Результати пошуку:</span>
+                <span class="search-query" style="color: green;">{{ search_query }}</span>
+            </h4>
             <form method="get" class="filter-form">
+                <input type="hidden" name="q" value="{{ search_query }}">
+                <input type="hidden" name="category" value="{{ selected_category }}">
                 <div class="filter-group">
                     <label for="category" class="filter-label">Категорія:</label>
                     <select name="category" id="category" class="filter-select" onchange="this.form.submit()">
@@ -29,8 +35,8 @@
                 </div>
             </form>
             <br>
-            {% if selected_category %}
-                <!-- Вивід для конкретної категорії -->
+            {% if products %}
+                <!-- Вивід товарів після пошуку -->
                 <div class="products-grid container-fluid">
                     {% for product in products %}
                     <div class="product-card">
@@ -64,30 +70,6 @@
                     {% endfor %}
                 </div>
             {% else %}
-                <!-- Вивід для всіх категорій -->
-                <div class="category-grid">
-                    {% for category in categories %}
-                    <div class="category-block" data-category-id="{{ category.id }}">
-                        <h3 class="category-title">
-                            <a href="?category={{ category.id }}" class="category-link">{{ category.name }}</a>
-                        </h3>
-                        <ul class="product-list-simple">
-                            {% for product in products %}
-                                {% if product.category.id == category.id %}
-                                    <li class="product-item-simple">
-                                        <a href="{% url 'product_detail' pk=product.id %}" class="product-link-simple">
-                                            {{ product.name }}
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
-            {% if not products %}
                 <p class="empty-message text-center">Немає товарів за обраними параметрами.</p>
             {% endif %}
         </div>

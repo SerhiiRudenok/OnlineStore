@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib.auth.models import Group, User
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
-from django.db.models import Avg
+from django.db.models import Avg, Q
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -155,7 +155,6 @@ class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView)
     success_url = reverse_lazy('product_list')
 
 
-
 class ProductListView(ListView):
     model = Product
     template_name = 'myapp/product/product_list.html'
@@ -194,6 +193,27 @@ class ProductListView(ListView):
         context['categories'] = Category.objects.all()
         context['selected_category'] = int(self.request.GET['category']) if self.request.GET.get('category', '').isdigit() else 0
         context['selected_sort'] = self.request.GET.get('sort', '')
+        return context
+
+
+class ProductSearchView(ListView):
+    model = Product
+    template_name = 'myapp/product/product_search.html'
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q', '').strip()
+        if query:
+            return Product.objects.filter(
+                Q(name__icontains=query) |
+                Q(description__icontains=query),
+                is_active=True
+            )
+        return Product.objects.none()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_query'] = self.request.GET.get('q', '')
         return context
 
 
@@ -605,13 +625,6 @@ class UserFavoritesListView(LoginRequiredMixin, ListView):
 
 
 # --- Comment
-# def get_review_stats(comments_queryset):
-#     stats = comments_queryset.aggregate(avg_rating=Avg('rating'))
-#     average_rating = stats['avg_rating'] or 0.0     # average_rating — обчислює середню оцінку (від 1 до 5) серед усіх коментарів.
-#     review_count = comments_queryset.count()        # review_count — рахує загальну кількість коментарів по товару.
-#     return round(average_rating, 1), review_count
-
-
 class CommentCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Comment
     form_class = CommentForm
