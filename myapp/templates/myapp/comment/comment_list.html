@@ -48,18 +48,18 @@
         {% endif %}
 
         <div class="comment-actions-bottom footer-class">
-            {% if perms.myapp.add_comment %}
+            {% if user.is_authenticated %}
                 {% if not has_commented %}
-                    <a class="btn btn-primary custom-orange-btn" href="{% url 'comment_create' product.id %}">
+                    <a class="universal-btn orange-filled-btn" href="{% url 'comment_create' product.id %}">
                         Залишити відгук
                     </a>
-                {% elif user_comment and perms.myapp.change_comment %}
-                    <a class="btn btn-warning but-edit" href="{% url 'comment_update' user_comment.id %}">
+                {% elif user_comment %}
+                    <a class="universal-btn orange-outline-btn" href="{% url 'comment_update' user_comment.id %}">
                         Редагувати коментар
                     </a>
                 {% endif %}
             {% endif %}
-            <a class="btn btn-secondary back-to-product-btn" href="{% url 'product_detail' product.id %}">Назад</a>
+            <a class="universal-btn back-btn" href="{% url 'product_detail' product.id %}">Назад</a>
         </div>
     </div>
 {% endblock %}

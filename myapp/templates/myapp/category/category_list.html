@@ -3,25 +3,32 @@
 {% block title %} Список категорій {% endblock %}
 
 {% block content %}
+    <div class="page-container">
+        <h2 class="main-heading">Список категорій</h2>
 
-    <h2>Список категорій</h2>
+        <div class="one-line-buttons">
+            <a href="{% url 'category_create' %}" class="universal-btn orange-filled-btn">
+                <i class="fas fa-plus"></i> Створити нову категорію
+            </a>
+            <a href="javascript:history.back()" class="universal-btn back-btn" style="margin-top: 10px; margin-bottom: 20px;">Назад</a>
+        </div>
 
-    <a href="{% url 'category_create' %}">Створити нову категорію</a>
-
-    <ul>
-        {% for category in categories %}
-            <li>
-                <a href="{% url 'product_list' %}?category={{ category.id }}">
-                    {{ category.name }}
-                    — <a href="{% url 'category_update' category.pk %}">Редагувати</a>
-                    | <a href="{% url 'category_delete' category.pk %}">Видалити</a>
-                </a>
-            </li>
-        {% empty %}
-            <li>Категорій поки немає.</li>
-        {% endfor %}
-    </ul>
-
-
-
+        <ul class="info-list">
+            {% for category in categories %}
+                <li class="category-item-list">
+                    <div class="category-info">
+                        <a href="{% url 'product_list' %}?category={{ category.id }}">
+                            {{ category.name }}
+                        </a>
+                    </div>
+                    <div class="category-actions">
+                        <a href="{% url 'category_update' category.pk %}" class="universal-btn orange-outline-btn" style="margin-left: 15px;">Редагувати</a>
+                        <a href="{% url 'category_delete' category.pk %}" class="universal-btn danger-filled-btn">Видалити</a>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="empty-message">Категорій поки немає.</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

@@ -14,7 +14,7 @@
                     <li><strong class="info-label">Телефон:</strong> {{ request.user.userprofile.phone|default:"[Обов’язково заповнити]" }}</li>
                 </ul>
                 {% if not request.user.first_name or not request.user.last_name or not request.user.userprofile.phone %}
-                    <a href="{% url 'profile_update' %}" class="universal-btn orange-outline-btn">Редагувати профіль</a>
+                    <a href="{% url 'profile_update' %}" class="universal-btn orange-outline-btn cusl1">Редагувати профіль</a>
                 {% endif %}
             </div>
 
@@ -101,10 +101,10 @@
                 {% endif %}
 
                 <div class="one-line-buttons">
-                    <button type="submit" class="universal-btn orange-filled-btn">
+                    <button type="submit" class="universal-btn orange-filled-btn cusl2">
                         <i class="fas fa-check"></i> Підтвердити замовлення
                     </button>
-                    <a href="{% url 'booking_detail' %}" class="universal-btn back-btn">
+                    <a href="{% url 'booking_detail' %}" class="universal-btn back-btn cusl2">
                         <i class="fas fa-edit"></i> Змінити замовлення
                     </a>
                 </div>

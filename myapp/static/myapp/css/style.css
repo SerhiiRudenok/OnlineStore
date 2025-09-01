@@ -334,6 +334,26 @@ body {
     gap: 8px;
 }
 
+.cusl {
+    max-width: 120px;
+    margin-top: 10px;
+}
+
+.cusl1 {
+    max-width: 220px;
+    margin-top: 10px;
+}
+
+.cusl2 {
+    max-width: 280px;
+    margin-top: 10px;
+}
+
+.cusl3 {
+    max-width: 135px;
+    margin-top: 10px;
+}
+
 .back-button:hover {
     color: #333;
 }
@@ -958,13 +978,6 @@ body {
     color: #ff8c00;
 }
 
-
-
-
-
-
-
-/* Container for the entire reviews page */
 .comment-container {
     margin: 0 auto;
     padding: 30px;
@@ -1051,12 +1064,12 @@ body {
     gap: 10px;
     justify-content: flex-end;
     margin-top: auto;
-    padding-top: 15px; /* Adds space above the buttons */
-    border-top: 1px solid #e9ecef; /* Creates a subtle separator line */
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
 }
 
 .comment-card .comment-actions a {
-    text-decoration: none; /* Removes underline from links */
+    text-decoration: none;
     font-weight: bold;
     font-size: 15px;
     padding: 8px 15px;
@@ -1389,4 +1402,45 @@ body {
     flex-direction: column;
     margin: 0 auto;
     max-width: 1000px;
+}
+
+/* --- Стили для списка категорий --- */
+.category-item-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-item-list:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-info a {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #343a40;
+    text-decoration: none;
+}
+
+.category-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.danger-filled-btn {
+    border: 2px solid #dc3545;
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.danger-filled-btn:hover {
+    background-color: #c82333;
+    border-color: #c82333;
 }

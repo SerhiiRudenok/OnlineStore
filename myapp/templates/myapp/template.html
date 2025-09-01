@@ -32,12 +32,24 @@
                 <a href="{% url 'profile_user' %}" class="icon-btn">
                      <i class="fas fa-user"></i>
                 </a>
-                <a href="{% url 'order_list' %}" class="icon-btn">
-                  <i class="fas fa-list"></i>
-                </a>
-                <a href="{% url 'user_favorites' %}" class="icon-btn">
-                  <i class="fas fa-heart"></i>
-                </a>
+
+                {% if user.groups.all|length > 0 %}
+                    {% for group in user.groups.all %}
+                        {% if group.name == "Client" %}
+                            <a href="{% url 'order_list' %}" class="icon-btn">
+                              <i class="fas fa-list"></i>
+                            </a>
+                            <a href="{% url 'user_favorites' %}" class="icon-btn">
+                              <i class="fas fa-heart"></i>
+                            </a>
+                        {% elif group.name == "Manager" %}
+                            <a href="{% url 'category_list' %}" class="icon-btn">
+                              <i class="fas fa-list"></i>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
             {% else %}
                 <a href="{% url 'login' %}" class="icon-btn">
                      <i class="fas fa-user"></i>

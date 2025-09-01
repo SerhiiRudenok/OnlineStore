@@ -23,17 +23,48 @@
                 <li><span class="info-label">Дата реєстрації:</span> {{ profile_user.date_joined|date:"d.m.Y, H:i" }}</li>
             </ul>
 
-             <div class="card-container more-info">
-                <a href="{% url 'user_comments' %}" class="universal-btn review-btn">
-                    <i class="fas fa-comment-dots"></i> Відгуки
-                </a>
-                <a href="{% url 'user_favorites' %}" class="universal-btn wishlist-btn">
-                    <i class="fas fa-heart"></i> Список бажань
-                </a>
-                <a href="{% url 'order_list' %}" class="universal-btn orders-btn">
-                    <i class="fas fa-box-open"></i> Замовлення
-                </a>
-            </div>
+
+            {% if user.groups.all|length > 0 %}
+                {% for group in user.groups.all %}
+                    {% if group.name == "Client" %}
+                        <div class="card-container more-info">
+                            <a href="{% url 'user_comments' %}" class="universal-btn review-btn">
+                                <i class="fas fa-comment-dots"></i> Відгуки
+                            </a>
+                            <a href="{% url 'user_favorites' %}" class="universal-btn wishlist-btn">
+                                <i class="fas fa-heart"></i> Список бажань
+                            </a>
+                            <a href="{% url 'order_list' %}" class="universal-btn orders-btn">
+                                <i class="fas fa-box-open"></i> Замовлення
+                            </a>
+                        </div>
+                    {% elif group.name == "Manager" %}
+                        <div class="card-container more-info">
+                            <a href="{% url 'product_create' %}" class="universal-btn review-btn">
+                                <i class="fas fa-plus"></i> Додати товар
+                            </a>
+                            <a href="{% url 'category_create' %}" class="universal-btn wishlist-btn">
+                                <i class="fas fa-plus"></i> Додати категорію
+                            </a>
+                            <a href="{% url 'category_list' %}" class="universal-btn orders-btn">
+                                <i class="fas fa-list"></i> Список категорій
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+<!--             <div class="card-container more-info">-->
+<!--                <a href="{% url 'user_comments' %}" class="universal-btn review-btn">-->
+<!--                    <i class="fas fa-comment-dots"></i> Відгуки-->
+<!--                </a>-->
+<!--                <a href="{% url 'user_favorites' %}" class="universal-btn wishlist-btn">-->
+<!--                    <i class="fas fa-heart"></i> Список бажань-->
+<!--                </a>-->
+<!--                <a href="{% url 'order_list' %}" class="universal-btn orders-btn">-->
+<!--                    <i class="fas fa-box-open"></i> Замовлення-->
+<!--                </a>-->
+<!--            </div>-->
 
 
             <div class="button-group">

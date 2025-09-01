@@ -3,14 +3,25 @@
 {% block title %} Створити нову категорію {% endblock %}
 
 {% block content %}
-
-    <h2>Створити нову категорію</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Зберегти</button>
-    </form>
-
-
-
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="main-heading">Створити нову категорію</h2>
+            <form method="post" class="form-container">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="error-message">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <div class="one-line-buttons">
+                    <button type="submit" class="universal-btn orange-filled-btn">Зберегти</button>
+                    <a href="javascript:history.back()" class="universal-btn back-btn cusl">Назад</a>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}

@@ -3,13 +3,16 @@
 {% block title %} Видалити категорію {% endblock %}
 
 {% block content %}
-
-    <h2>Ви впевнені, що хочете видалити категорію "{{ object.name }}"?</h2>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Підтвердити видалення</button>
-        <a href="{% url 'category_list' %}">Скасувати</a>
-    </form>
-
-
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="main-heading">Ви впевнені, що хочете видалити категорію "{{ object.name }}"?</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="one-line-buttons">
+                    <button type="submit" class="universal-btn danger-filled-btn">Підтвердити видалення</button>
+                    <a href="{% url 'category_list' %}" class="universal-btn back-btn cusl3">Скасувати</a>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
