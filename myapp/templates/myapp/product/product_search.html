@@ -37,9 +37,26 @@
             <br>
             {% if products %}
                 <!-- Вивід товарів після пошуку -->
+                <div class="products-grid one-line" style="display: flex; justify-content: flex-start; flex-wrap: wrap;">
+                    <div>Категорії у результатах пошуку:</div>
+                    <div>
+                        {% for category, count in result_categories %}
+                            <span>
+                                <a href="?q={{ search_query }}&category={{ category.id }}" class="category-link">
+                                    {{ category.name }} ({{ count }})
+                                </a>
+                            </span>
+                        {% endfor %}
+                    </div>
+                </div>
                 <div class="products-grid container-fluid">
                     {% for product in products %}
                     <div class="product-card">
+                        <a href="?q={{ search_query }}&category={{ product.category.id }}" class="category-link">
+                            <h3 class="category-title">
+                                {{ product.category.name|slice:":16" }}{% if product.category.name|length > 16 %}...{% endif %}
+                            </h3>
+                        </a>
                         <a href="{% url 'product_detail' pk=product.id %}" class="product-link">
                             {% if product.image %}
                             <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
@@ -47,7 +64,9 @@
                             <img src="{% static 'images/no-image.jpg' %}" alt="Фото товару" class="product-image">
                             {% endif %}
                             <div class="product-info">
-                                <div class="product-name">{{ product.name }}</div>
+                                <div class="product-name">
+                                    {{ product.name|slice:":30" }}{% if product.name|length > 30 %}...{% endif %}
+                                </div>
 
                                 <div class="product-rating">
                                     {% if product.review_count > 0 %}

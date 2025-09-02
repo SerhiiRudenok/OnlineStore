@@ -10,6 +10,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from django.utils import timezone
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
+from collections import defaultdict
 
 from myapp.models import Product, Category, Comment, Booking, BookingItem, Order, OrderItem
 from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm, UserUpdateForm
@@ -203,17 +204,44 @@ class ProductSearchView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q', '').strip()
+        category_id = self.request.GET.get('category')
+        sort_option = self.request.GET.get('sort')
+
+        queryset = Product.objects.filter(is_active=True)
+
         if query:
-            return Product.objects.filter(
-                Q(name__icontains=query) |
-                Q(description__icontains=query),
-                is_active=True
+            queryset = queryset.filter(
+                Q(name__icontains=query) | Q(description__icontains=query)
             )
-        return Product.objects.none()
+
+        if category_id:
+            queryset = queryset.filter(category_id=category_id)
+
+        if sort_option == 'price_asc':
+            queryset = queryset.order_by('price')
+        elif sort_option == 'price_desc':
+            queryset = queryset.order_by('-price')
+
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['search_query'] = self.request.GET.get('q', '')
+        category_id = self.request.GET.get('category', '')
+        try:
+            context['selected_category'] = int(category_id)
+        except (ValueError, TypeError):
+            context['selected_category'] = ''
+        context['selected_sort'] = self.request.GET.get('sort', '')
+        context['categories'] = Category.objects.all()
+
+        # Підрахунок кількості товарів у кожній категорії
+        category_counts = defaultdict(int)
+        for product in context['products']:
+            category_counts[product.category] += 1
+
+        # Сортуємо за назвою категорії
+        context['result_categories'] = sorted(category_counts.items(), key=lambda x: x[0].name)
         return context
 
 

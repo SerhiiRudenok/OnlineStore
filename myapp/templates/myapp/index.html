@@ -14,7 +14,9 @@
             <img src="{% static 'images/no-image.jpg' %}" alt="Фото товару" class="product-image">
             {% endif %}
             <div class="product-info">
-                <div class="product-name">{{ item.product.name }}</div>
+                <div class="product-name">
+                    {{ item.product.name|slice:":40" }}{% if item.product.name|length > 40 %}...{% endif %}
+                </div>
                 <div class="product-rating">
                     {% if item.review_count > 0 %}
                         <span class="rating-stars">
