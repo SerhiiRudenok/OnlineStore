@@ -61,10 +61,14 @@
                             {% if is_in_cart %}
                                 <a href="{% url 'booking_detail' %}" class="universal-btn back-btn">Товар в кошику</a>
                             {% else %}
-                                <button class="add-to-cart-btn universal-btn orange-filled-btn" data-product-id="{{ product.id }}">
-                                    Додати в кошик
-                                </button>
-                                <a href="{% url 'booking_detail' %}" class="universal-btn back-btn d-none">Товар в кошику</a>
+                                <div class="product-actions">
+                                    <button class="add-to-cart-btn universal-btn orange-filled-btn" data-product-id="{{ product.id }}">
+                                        Додати в кошик
+                                    </button>
+                                    <a href="{% url 'booking_detail' %}" class="universal-btn back-btn added-to-cart-link d-none">
+                                        Товар в кошику
+                                    </a>
+                                </div>
                             {% endif %}
                         {% endif %}
                     {% endfor %}
