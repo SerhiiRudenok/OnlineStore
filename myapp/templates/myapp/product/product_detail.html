@@ -53,22 +53,18 @@
                         {% if group.name == "Manager" %}
                             <div class="product-actions">
                                 <a href="{% url 'product_update' product.pk %}" class="universal-btn orange-outline-btn">Редагувати товар</a>
-                                <a href="{% url 'product_delete' product.pk %}" class="universal-btn danger-filled-btn">Видалити товар</a>
+                                {% if user.is_superuser %}
+                                    <a href="{% url 'product_delete' product.pk %}" class="universal-btn danger-filled-btn">Видалити товар</a>
+                                 {% endif %}
                             </div>
                         {% elif group.name == "Client" %}
                             {% if is_in_cart %}
                                 <a href="{% url 'booking_detail' %}" class="universal-btn back-btn">Товар в кошику</a>
                             {% else %}
-                                <div class="product-actions">
-                                    <button class="add-to-cart-btn universal-btn orange-filled-btn" data-product-id="{{ product.id }}">
-                                        Додати в кошик
-                                    </button>
-                                    <a href="{% url 'booking_detail' %}" class="universal-btn back-btn d-none">Товар в кошику</a>
-
-                                    <button class="add-to-wishlist-btn" data-product-id="{{ product.id }}">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                </div>
+                                <button class="add-to-cart-btn universal-btn orange-filled-btn" data-product-id="{{ product.id }}">
+                                    Додати в кошик
+                                </button>
+                                <a href="{% url 'booking_detail' %}" class="universal-btn back-btn d-none">Товар в кошику</a>
                             {% endif %}
                         {% endif %}
                     {% endfor %}

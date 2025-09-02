@@ -23,7 +23,9 @@
                     </div>
                     <div class="category-actions">
                         <a href="{% url 'category_update' category.pk %}" class="universal-btn orange-outline-btn" style="margin-left: 15px;">Редагувати</a>
-                        <a href="{% url 'category_delete' category.pk %}" class="universal-btn danger-filled-btn">Видалити</a>
+                        {% if user.is_superuser %}
+                            <a href="{% url 'category_delete' category.pk %}" class="universal-btn danger-filled-btn">Видалити</a>
+                        {% endif %}
                     </div>
                 </li>
             {% empty %}
