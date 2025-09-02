@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib.auth.models import Group, User
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.core.exceptions import ValidationError
 from django.db.models import Avg, Q
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
@@ -440,7 +441,7 @@ class OrderCreateView(View):
 
         booking.items.all().delete()
 
-        return redirect('order_confirm', order_id=order.id)
+        return redirect(f"{reverse('order_confirm', args=[order.id])}?success=1")
 
     def _render_with_error(self, request, booking, error_message, delivery_method, delivery_address, payment_method):
         items = booking.items.select_related('product')
@@ -483,9 +484,12 @@ class OrderConfirmView(View):
                 'total': total,
             })
 
+        show_success_message = request.GET.get('success') == '1'
+
         context = {
             'order': order,
             'order_items': items_with_total,
+            'show_success_message': show_success_message,
         }
         return render(request, 'myapp/order/order_confirm.html', context)
 
