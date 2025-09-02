@@ -354,6 +354,10 @@ body {
     margin-left: 10px;
 }
 
+.custom-hover:hover {
+    transform: translateY(-5px);
+}
+
 .price-r {
     font-weight: bold;
     padding-top: 28px;

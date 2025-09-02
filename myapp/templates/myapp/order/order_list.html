@@ -7,7 +7,7 @@
         {% if orders %}
         <div class="comment-grid">
             {% for order in orders %}
-            <a href="{% url 'order_confirm' order.id %}" class="comment-card list-group-item">
+            <a href="{% url 'order_confirm' order.id %}" class="comment-card list-group-item custom-hover">
                 <div class="comment-header" style="height: 10px;">
                     <strong>Замовлення № {{ order.id }}</strong><br>
                     <div class="d-flex align-items-center gap-2 flex-wrap">
