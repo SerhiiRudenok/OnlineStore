@@ -61,7 +61,7 @@
                             {% if is_in_cart %}
                                 <a href="{% url 'booking_detail' %}" class="universal-btn back-btn">Товар в кошику</a>
                             {% else %}
-                                <div class="product-actions">
+                                <div class="product-actions" style="margin-bottom: 10px;">
                                     <button class="add-to-cart-btn universal-btn orange-filled-btn" data-product-id="{{ product.id }}">
                                         Додати в кошик
                                     </button>
