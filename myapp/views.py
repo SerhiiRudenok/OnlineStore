@@ -248,7 +248,7 @@ class ProductSearchView(ListView):
 
 
 # --- Booking (Кошик)
-class BookingCreateView(View):
+class BookingCreateView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         product_id = request.POST.get('product_id')
         if not product_id:
@@ -266,7 +266,8 @@ class BookingCreateView(View):
         return JsonResponse({'success': True, 'total_price': booking.get_total_price()})
 
 
-class BookingDetailView(TemplateView):
+class BookingDetailView(LoginRequiredMixin, TemplateView):
+    model = Booking
     template_name = 'myapp/booking/booking_detail.html'
 
     def get_context_data(self, **kwargs):
@@ -284,7 +285,7 @@ class BookingDetailView(TemplateView):
 
 
       # відаляє один товар із кошика
-class BookingDeleteView(View):
+class BookingDeleteView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         product_id = request.POST.get('product_id')
         if not product_id:
@@ -306,7 +307,7 @@ class BookingDeleteView(View):
 
 
       # зміна кількості товару у кошику (+/-)
-class BookingUpdateQuantityView(View):
+class BookingUpdateQuantityView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         product_id = request.POST.get('product_id')
         quantity = request.POST.get('quantity')
@@ -332,7 +333,7 @@ class BookingUpdateQuantityView(View):
 
 
       # повне очищення кошика
-class BookingClearView(View):
+class BookingClearView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         booking = Booking.objects.filter(user=request.user).first()
         if booking:
@@ -343,7 +344,7 @@ class BookingClearView(View):
 
 
 # --- Order (Замовлення)
-class OrderCreateView(View):
+class OrderCreateView(LoginRequiredMixin, View):
     def get(self, request):
         booking = Booking.objects.filter(user=request.user).first()
         if not booking or not booking.items.exists():
@@ -469,7 +470,7 @@ class OrderCreateView(View):
         return render(request, 'myapp/order/order_create.html', context)
 
 
-class OrderConfirmView(View):
+class OrderConfirmView(LoginRequiredMixin, View):
     def get(self, request, order_id):
         order = get_object_or_404(Order, id=order_id, user=request.user)
 
@@ -494,7 +495,7 @@ class OrderConfirmView(View):
         return render(request, 'myapp/order/order_confirm.html', context)
 
 
-class OrderListView(ListView):
+class OrderListView(LoginRequiredMixin, ListView):
     model = Order
     template_name = 'myapp/order/order_list.html'
     context_object_name = 'orders'
