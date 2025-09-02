@@ -20,12 +20,12 @@
 
             <div class="product-list-container">
                 {% for item in items %}
-                <div class="order-item">
-                    <div>
+                <div class="order-item card-date">
+                    <div class="card-item">
                         <strong>{{ item.name }}</strong><br>
                         <small>{{ item.quantity }} x {{ item.price }} грн</small>
                     </div>
-                    <div>{{ item.total }} грн</div>
+                    <div class="price-r">{{ item.total }} грн</div>
                 </div>
                 {% endfor %}
             </div><br>
@@ -82,11 +82,11 @@
 
                     <div class="form-group">
                         <label>Термін дії:</label>
-                        <div class="one-line-form">
+                        <div class="one-line-form card-date cusl5">
                             <div>
                                 <input type="text" name="card_month" id="card_month" maxlength="2" pattern="\d{2}" required>
                             </div>
-                            <div>/</div>
+                            <div style="font-size: 20px;">/</div>
                             <div>
                                 <input type="text" name="card_year" id="card_year" maxlength="2" pattern="\d{2}" required>
                             </div>

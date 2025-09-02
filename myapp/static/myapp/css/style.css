@@ -354,6 +354,23 @@ body {
     margin-top: 10px;
 }
 
+.price-r {
+    font-weight: bold;
+    padding-top: 28px;
+    text-align: right;
+}
+
+.card-date {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-date input {
+    width: 10px;
+    text-align: center;
+}
+
 .back-button:hover {
     color: #333;
 }
@@ -1444,3 +1461,11 @@ body {
     background-color: #c82333;
     border-color: #c82333;
 }
+
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
