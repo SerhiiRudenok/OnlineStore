@@ -275,7 +275,15 @@ class BookingDetailView(LoginRequiredMixin, TemplateView):
         booking = Booking.objects.filter(user=self.request.user).first()
 
         if booking:
-            context['cart_items'] = booking.items.select_related('product')
+            items = booking.items.select_related('product')
+            cart_items = []
+            for item in items:
+                cart_items.append({
+                    'product': item.product,
+                    'quantity': item.quantity,
+                    'total': item.quantity * item.product.price,
+                })
+            context['cart_items'] = cart_items
             context['total_price'] = booking.get_total_price()
         else:
             context['cart_items'] = []

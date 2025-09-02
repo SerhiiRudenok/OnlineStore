@@ -18,44 +18,54 @@
                     <a href="{% url 'product_detail' item.product.id %}">
                         <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="cart-item-image">
                     </a>
+
                     <div class="cart-item-details">
-                            <a href="{% url 'product_detail' item.product.id %}" class="cart-item-name">
-                                {{ item.product.name }}
-                            </a>
-
-                            <div class="cart-item-price">{{ item.product.price }} грн</div>
-
-
-                            <div class="cart-item-quantity d-flex align-items-center gap-2">
-                                <!-- кнопка "-" зменшує кількість товару на -1 -->
-                                <form method="post" action="{% url 'booking_update_quantity' %}" class="d-inline">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="product_id" value="{{ item.product.id }}">
-                                    <input type="hidden" name="quantity" value="{{ item.quantity|add:"-1" }}">
-                                    <button type="submit" class="btn btn-sm btn-outline-secondary">−</button>
-                                </form>
-
-                                <!-- форма виводить кількість товару -->
-                                <form method="post" action="{% url 'booking_update_quantity' %}" class="d-inline">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="product_id" value="{{ item.product.id }}">
-
-                                    <input type="number" min="1" name="quantity" value="{{ item.quantity }}"
-                                           class="form-control d-inline-block quantity-input"
-                                           id="quantity-{{ item.product.id }}"
-                                           onchange="this.form.submit()" style="width: 80px;">
-                                </form>
-
-                                <!-- кнопка "+" збільшує кількість товару на +1 -->
-                                <form method="post" action="{% url 'booking_update_quantity' %}" class="d-inline">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="product_id" value="{{ item.product.id }}">
-                                    <input type="hidden" name="quantity" value="{{ item.quantity|add:"1" }}">
-                                    <button type="submit" class="btn btn-sm btn-outline-secondary">+</button>
-                                </form>
-                            </div>
-
+                        <a href="{% url 'product_detail' item.product.id %}" class="cart-item-name">
+                            {{ item.product.name }}
+                        </a>
+                        <strong>{{ item.product.price }} грн</strong>
                     </div>
+
+                    <div class="button-group one-line-buttons order-item" style="width: 30%;">
+                        <div class="cart-item-quantity d-flex align-items-center gap-2">
+                            <!-- кнопка "-" зменшує кількість товару на -1 -->
+                            <form method="post" action="{% url 'booking_update_quantity' %}" class="d-inline">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                <input type="hidden" name="quantity" value="{{ item.quantity|add:"-1" }}">
+                                <button type="submit" class="btn btn-sm btn-outline-secondary" style="width: 30px;">
+                                    −
+                                </button>
+                            </form>
+
+                            <!-- форма виводить кількість товару -->
+                            <form method="post" action="{% url 'booking_update_quantity' %}" class="d-inline">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ item.product.id }}">
+
+                                <input type="number" min="1" name="quantity" value="{{ item.quantity }}"
+                                       class="form-control d-inline-block quantity-input"
+                                       id="quantity-{{ item.product.id }}"
+                                       onchange="this.form.submit()" style="width: 80px;">
+                            </form>
+
+                            <!-- кнопка "+" збільшує кількість товару на +1 -->
+                            <form method="post" action="{% url 'booking_update_quantity' %}" class="d-inline">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                <input type="hidden" name="quantity" value="{{ item.quantity|add:"1" }}">
+                                <button type="submit" class="btn btn-sm btn-outline-secondary" style="width: 30px;">
+                                    +
+                                </button>
+                            </form>
+                        </div>
+
+
+                        <div class="cart-item-price">
+                            {{ item.total|floatformat:2 }} грн
+                        </div>
+                    </div>
+
                     <div class="cart-item-actions">
                         <button class="btn btn-sm btn-outline-danger remove-item-btn" data-product-id="{{ item.product.id }}">
                             <i class="fas fa-trash-alt"></i> Видалити
