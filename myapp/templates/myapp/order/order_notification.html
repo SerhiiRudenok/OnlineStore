@@ -20,7 +20,7 @@
                     <div class="comment-card list-group-item custom-hover {% if not notification.is_read %}border border-warning{% endif %}">
                         <div class="comment-header">
                             <strong>
-                                <a href="{% url 'order_confirm' order_id=notification.order.id %}">
+                                <a href="{% url 'order_confirm' order_id=notification.order.id %}?from_notification=1">
                                     Замовлення №{{ notification.order.id }}
                                 </a>
                             </strong>

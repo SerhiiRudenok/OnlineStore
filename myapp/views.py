@@ -481,7 +481,8 @@ class OrderCreateView(LoginRequiredMixin, View):
 class OrderConfirmView(LoginRequiredMixin, View):
     def get(self, request, order_id):
         order = get_object_or_404(Order, id=order_id)
-
+        # для взаємодії двох сторінок: order_notification та order_confirm
+        came_from_order_notification = request.GET.get('from_notification') == '1'
         # доступ дозволено власнику або менеджеру
         is_manager = request.user.groups.filter(name='Manager').exists()
         if order.user != request.user and not is_manager:
@@ -503,6 +504,7 @@ class OrderConfirmView(LoginRequiredMixin, View):
             'order': order,
             'order_items': items_with_total,
             'show_success_message': show_success_message,
+            'came_from_order_notification': came_from_order_notification,
         }
         return render(request, 'myapp/order/order_confirm.html', context)
 
@@ -515,6 +517,46 @@ class OrderListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user).order_by('-date')
 
+
+      # --- Сигнал Менеджеру про нове Замовлення
+class OrderNotificationView(LoginRequiredMixin, View):
+    def get(self, request):
+        filter_value = request.GET.get('filter')
+
+        # всі сповіщення
+        notifications_all = request.user.user_notifications.all()
+        unread_count = notifications_all.filter(is_read=False).count()
+        read_count = notifications_all.filter(is_read=True).count()
+        total_count = notifications_all.count()
+
+        # фільтр для відображення
+        if filter_value == 'read':
+            notifications = notifications_all.filter(is_read=True)
+        elif filter_value == 'all':
+            notifications = notifications_all
+        else:
+            filter_value = 'unread'
+            notifications = notifications_all.filter(is_read=False)
+
+        notifications = notifications.order_by('-created_at')
+
+        return render(request, 'myapp/order/order_notification.html', {
+            'notifications': notifications,
+            'notifications_all': notifications_all,
+            'filter_value': filter_value,
+            'unread_count': unread_count,
+            'read_count': read_count,
+            'total_count': total_count
+        })
+
+    def post(self, request):
+        notification_id = request.POST.get('notification_id')
+        if notification_id:
+            notification = request.user.user_notifications.filter(pk=notification_id).first()
+            if notification and not notification.is_read:
+                notification.is_read = True
+                notification.save()
+        return redirect(request.path)
 
 
 
@@ -760,48 +802,3 @@ class CommentListView(ListView):
             'is_manager': is_manager,
         })
         return context
-
-
-
-# --- Сигнал Менеджеру про нове Замовлення
-class OrderNotificationView(LoginRequiredMixin, View):
-    def get(self, request):
-        filter_value = request.GET.get('filter')
-
-        # всі сповіщення
-        notifications_all = request.user.user_notifications.all()
-        unread_count = notifications_all.filter(is_read=False).count()
-        read_count = notifications_all.filter(is_read=True).count()
-        total_count = notifications_all.count()
-
-        # фільтр для відображення
-        if filter_value == 'read':
-            notifications = notifications_all.filter(is_read=True)
-        elif filter_value == 'all':
-            notifications = notifications_all
-        else:
-            filter_value = 'unread'
-            notifications = notifications_all.filter(is_read=False)
-
-        notifications = notifications.order_by('-created_at')
-
-        return render(request, 'myapp/order/order_notification.html', {
-            'notifications': notifications,
-            'notifications_all': notifications_all,
-            'filter_value': filter_value,
-            'unread_count': unread_count,
-            'read_count': read_count,
-            'total_count': total_count
-        })
-
-    def post(self, request):
-        notification_id = request.POST.get('notification_id')
-        if notification_id:
-            notification = request.user.user_notifications.filter(pk=notification_id).first()
-            if notification and not notification.is_read:
-                notification.is_read = True
-                notification.save()
-        return redirect(request.path)
-
-
-

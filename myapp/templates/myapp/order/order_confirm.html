@@ -54,8 +54,14 @@
     </div>
 
 
-        <a href="{% url 'order_list' %}" class="universal-btn back-btn mt-3">
-            <i class="fas fa-list"></i> Переглянути всі замовлення
-        </a>
+        {% if came_from_order_notification %}
+            <a href="{% url 'order_notification' %}" class="universal-btn back-btn mt-3">
+                <i class="fas fa-arrow-left"></i> Назад до повідомлень
+            </a>
+        {% else %}
+            <a href="{% url 'order_list' %}" class="universal-btn back-btn mt-3">
+                <i class="fas fa-list"></i> Переглянути всі замовлення
+            </a>
+        {% endif %}
     </div>
 {% endblock %}
