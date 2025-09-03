@@ -47,5 +47,6 @@ urlpatterns = [
     path('order/create/', views.OrderCreateView.as_view(), name='order_create'),
     path('order/confirm/<int:order_id>/', views.OrderConfirmView.as_view(), name='order_confirm'),
     path('order/list/', views.OrderListView.as_view(), name='order_list'),
+    path('order/notifications/', views.OrderNotificationView.as_view(), name='order_notification'),
 
 ]

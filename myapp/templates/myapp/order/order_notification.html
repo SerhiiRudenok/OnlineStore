@@ -1,10 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'myapp/template.html' %}
+
+{% block title %} Повідомлення про замовлення {% endblock %}
+
+{% block content %}
+    <div class="comment-container">
+        <h2 class="main-heading">Повідомлення про замовлення</h2>
+
+        {% if notifications_all %}
+            <div class="d-flex gap-2 flex-wrap mb-3">
+                <a href="?filter=unread" class="universal-btn orders-btn {% if filter_value == 'unread' %}active{% endif %}">Не перевірені: {{ unread_count }}</a>
+                <a href="?filter=read" class="universal-btn orders-btn {% if filter_value == 'read' %}active{% endif %}">Перевірені: {{ read_count }}</a>
+                <a href="?filter=all" class="universal-btn orders-btn {% if filter_value == 'all' %}active{% endif %}">Всі: {{ total_count }}</a>
+            </div>
+
+
+
+            <div class="comment-grid">
+                {% for notification in notifications %}
+                    <div class="comment-card list-group-item custom-hover {% if not notification.is_read %}border border-warning{% endif %}">
+                        <div class="comment-header">
+                            <strong>
+                                <a href="{% url 'order_confirm' order_id=notification.order.id %}">
+                                    Замовлення №{{ notification.order.id }}
+                                </a>
+                            </strong>
+                            <br>
+                            <small>{{ notification.created_at|date:"d.m.Y, H:i" }}</small>
+                        </div>
+                        <div class="comment-body">
+                            <p>{{ notification.message }}</p>
+                        </div>
+
+                        <div class="comment-actions-bottom d-flex gap-2 flex-wrap">
+                            {% if not notification.is_read %}
+                                <form method="post" class="mark-read-form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="notification_id" value="{{ notification.pk }}">
+                                    <button type="submit" class="universal-btn orders-btn">Перевити</button>
+                                </form>
+                            {% else %}
+
+                               <span class="read-label text-success" ><h4>✅ Перевірено</h4></span>
+                            {% endif %}
+                        </div>
+                  </div>
+              {% endfor %}
+            </div>
+        {% else %}
+          <p>Наразі немає сповіщень.</p>
+        {% endif %}
+
+        <div class="comment-actions-bottom footer-class">
+          <a class="universal-btn back-btn" href="{% url 'profile_user' %}">Назад</a>
+        </div>
+    </div>
+{% endblock %}

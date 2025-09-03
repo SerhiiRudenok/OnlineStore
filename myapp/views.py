@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib.auth.models import Group, User
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, PermissionDenied
 from django.db.models import Avg, Q
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
@@ -13,7 +13,7 @@ from django.utils import timezone
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from collections import defaultdict
 
-from myapp.models import Product, Category, Comment, Booking, BookingItem, Order, OrderItem
+from myapp.models import Product, Category, Comment, Booking, BookingItem, Order, OrderItem, OrderNotification
 from myapp.forms import MyUserRegistrationForm, UserPasswordUpdateForm, UserUpdateForm
 from myapp.forms import CategoryForm, ProductForm, CommentForm
 
@@ -480,9 +480,13 @@ class OrderCreateView(LoginRequiredMixin, View):
 
 class OrderConfirmView(LoginRequiredMixin, View):
     def get(self, request, order_id):
-        order = get_object_or_404(Order, id=order_id, user=request.user)
+        order = get_object_or_404(Order, id=order_id)
 
-        # додаємо обчислену суму для кожного товару
+        # доступ дозволено власнику або менеджеру
+        is_manager = request.user.groups.filter(name='Manager').exists()
+        if order.user != request.user and not is_manager:
+            raise PermissionDenied("У вас немає доступу до цього замовлення.")
+
         items_with_total = []
         for item in order.items.all():
             total = item.price * item.quantity
@@ -759,6 +763,45 @@ class CommentListView(ListView):
 
 
 
+# --- Сигнал Менеджеру про нове Замовлення
+class OrderNotificationView(LoginRequiredMixin, View):
+    def get(self, request):
+        filter_value = request.GET.get('filter')
+
+        # всі сповіщення
+        notifications_all = request.user.user_notifications.all()
+        unread_count = notifications_all.filter(is_read=False).count()
+        read_count = notifications_all.filter(is_read=True).count()
+        total_count = notifications_all.count()
+
+        # фільтр для відображення
+        if filter_value == 'read':
+            notifications = notifications_all.filter(is_read=True)
+        elif filter_value == 'all':
+            notifications = notifications_all
+        else:
+            filter_value = 'unread'
+            notifications = notifications_all.filter(is_read=False)
+
+        notifications = notifications.order_by('-created_at')
+
+        return render(request, 'myapp/order/order_notification.html', {
+            'notifications': notifications,
+            'notifications_all': notifications_all,
+            'filter_value': filter_value,
+            'unread_count': unread_count,
+            'read_count': read_count,
+            'total_count': total_count
+        })
+
+    def post(self, request):
+        notification_id = request.POST.get('notification_id')
+        if notification_id:
+            notification = request.user.user_notifications.filter(pk=notification_id).first()
+            if notification and not notification.is_read:
+                notification.is_read = True
+                notification.save()
+        return redirect(request.path)
 
 
 

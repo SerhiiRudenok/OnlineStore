@@ -33,13 +33,12 @@
             <div class="text-center">
                 <h4 class="cart-total-price">Загальна сума: {{ total_price }} грн</h4>
             </div>
-
-            {% if error_message %}
-            <div class="error-message">{{ error_message }}</div>
-            {% endif %}
         </div>
 
         <div class="content-box">
+            {% if error_message %}
+            <strong class="error-message-login">{{ error_message }}</strong>
+            {% endif %}
             <form method="get" action="{% url 'order_create' %}" class="form-group">
                 <input type="hidden" name="delivery_method" value="{{ selected_delivery_method }}">
                 <input type="hidden" name="delivery_address" value="{{ delivery_address }}">
@@ -73,37 +72,41 @@
                 </div>
 
                 {% if selected_payment_method == 'card' %}
-                <div class="form-container">
-                    <h5 class="sub-heading">Дані картки</h5>
-                    <div class="form-group">
-                        <label for="card_number">Номер карти:</label>
-                        <input type="text" name="card_number" id="card_number" maxlength="16" pattern="\d{16}" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Термін дії:</label>
-                        <div class="one-line-form card-date cusl5">
-                            <div>
-                                <input type="text" name="card_month" id="card_month" maxlength="2" pattern="\d{2}" required>
+                    <div class="form-container">
+                        <h5 class="sub-heading">Дані картки</h5>
+                        <div class="form-group">
+                            <label for="card_number">Номер карти:</label>
+                            <input type="text" name="card_number" id="card_number" maxlength="16" pattern="\d{16}" required>
+                        </div>
+                        <div class="button-group one-line-buttons">
+                            <div class="form-group">
+                                <label>Термін дії:</label>
+                                <div class="one-line-form card-date cusl5">
+                                    <div>
+                                        <input type="text" name="card_month" id="card_month" maxlength="2" pattern="\d{2}" required>
+                                    </div>
+                                    <div style="font-size: 20px;">/</div>
+                                    <div>
+                                        <input type="text" name="card_year" id="card_year" maxlength="2" pattern="\d{2}" required>
+                                    </div>
+                                </div>
                             </div>
-                            <div style="font-size: 20px;">/</div>
-                            <div>
-                                <input type="text" name="card_year" id="card_year" maxlength="2" pattern="\d{2}" required>
+
+                            <div class="form-group">
+                                <label for="card_cvv">CVV:</label>
+                                <input type="password" name="card_cvv" id="card_cvv" maxlength="3" pattern="\d{3}" required>
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="card_cvv">CVV:</label>
-                        <input type="password" name="card_cvv" id="card_cvv" maxlength="3" pattern="\d{3}" required>
-                    </div>
-                </div>
                 {% endif %}
 
                 <div class="one-line-buttons">
-                    <button type="submit" class="universal-btn orange-filled-btn cusl2">
-                        <i class="fas fa-check"></i> Підтвердити замовлення
-                    </button>
+                    {% if request.user.first_name and request.user.last_name and request.user.userprofile.phone %}
+                        <button type="submit" class="universal-btn orange-filled-btn cusl2">
+                            <i class="fas fa-check"></i> Підтвердити замовлення
+                        </button>
+                    {% endif %}
                     <a href="{% url 'booking_detail' %}" class="universal-btn back-btn cusl2">
                         <i class="fas fa-edit"></i> Змінити замовлення
                     </a>

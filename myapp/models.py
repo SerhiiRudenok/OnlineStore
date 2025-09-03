@@ -126,4 +126,18 @@ class UserProfile(models.Model):
         return f"Профіль {self.user.username}"
 
 
+# --- Сигнал Менеджеру про нове Замовлення
+class OrderNotification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_notifications')
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_notifications')
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Сповіщення для {self.user.username} про замовлення № {self.order.id}"
+
+    def mark_as_read(self):
+        self.is_read = True
+        self.save()
 
