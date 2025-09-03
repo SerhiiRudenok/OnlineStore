@@ -48,7 +48,7 @@
         {% endif %}
 
         <div class="comment-actions-bottom footer-class">
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and not is_manager %}
                 {% if not has_commented %}
                     <a class="universal-btn orange-filled-btn" href="{% url 'comment_create' product.id %}">
                         Залишити відгук

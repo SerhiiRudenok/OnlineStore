@@ -6,7 +6,16 @@
 {% block content %}
     <div class="page-container">
         <div class="content-box h">
-            <h1 class="main-heading">Профіль користувача</h1>
+            {% if user.groups.all|length > 0 %}
+                {% for group in user.groups.all %}
+                    {% if group.name == "Manager" %}
+                        <h1 class="main-heading">Профіль менеджера</h1>
+                    {% else %}
+                        <h1 class="main-heading">Профіль користувача</h1>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
             <ul class="info-list">
                 <li><span class="info-label">Логін:</span> {{ profile_user.username }}</li>
                 <li><span class="info-label">Ім’я:</span> {{ profile_user.first_name }}</li>

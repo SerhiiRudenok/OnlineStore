@@ -42,6 +42,9 @@
                             <a href="{% url 'user_favorites' %}" class="icon-btn">
                               <i class="fas fa-heart"></i>
                             </a>
+                            <a href="{% url 'booking_detail' %}" class="icon-btn">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
                         {% elif group.name == "Manager" %}
                             <a href="{% url 'category_list' %}" class="icon-btn">
                               <i class="fas fa-list"></i>
@@ -54,11 +57,10 @@
                 <a href="{% url 'login' %}" class="icon-btn">
                      <i class="fas fa-user"></i>
                 </a>
-                <button class="icon-btn"><i class="fas fa-heart"></i></button>
+                <a href="{% url 'booking_detail' %}" class="icon-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
             {% endif %}
-            <a href="{% url 'booking_detail' %}" class="icon-btn">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
         </div>
     </div>
 

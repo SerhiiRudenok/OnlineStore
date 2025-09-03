@@ -70,19 +70,15 @@
                                     </a>
                                 </div>
                             {% endif %}
+                            <!-- Тільки у "Клієнта" є кнопка Favorite  -->
+                            <form method="post" action="{% url 'favorite_product' product.pk %}">
+                                {% csrf_token %}
+                                    <button type="submit" class="add-to-wishlist-btn">
+                                        <i class="{% if is_favorite %}fas{% else %}far{% endif %} fa-heart"></i>
+                                    </button>
+                            </form>
                         {% endif %}
                     {% endfor %}
-                {% endif %}
-
-                {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'favorite_product' product.pk %}">
-                    {% csrf_token %}
-                        <button type="submit" class="add-to-wishlist-btn">
-                            <i class="{% if is_favorite %}fas{% else %}far{% endif %} fa-heart"></i>
-                        </button>
-                    </form>
-                {% else %}
-                    <button class="add-to-wishlist-btn"><i class="far fa-heart"></i></button>
                 {% endif %}
             </div>
             <div class="product-description-container">
