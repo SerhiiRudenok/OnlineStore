@@ -4,7 +4,6 @@ db.sqlite3
 /static/
 .env
 *.log
-/media/
 *.sqlite3
 *.DS_Store
 .idea/
