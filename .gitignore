@@ -1,6 +1,6 @@
 *.pyc
 __pycache__/
 /static/
-.venv
+.venv/
 *.log
 .idea/
