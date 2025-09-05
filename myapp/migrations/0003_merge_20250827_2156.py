@@ -7,7 +7,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('myapp', '0002_alter_product_description_alter_product_image'),
-        ('myapp', '0002_product_slug'),
     ]
 
     operations = [

@@ -11,13 +11,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='product',
-            name='favorites',
-            field=models.ManyToManyField(
-                to=settings.AUTH_USER_MODEL,
-                related_name='favorite_product',
-                blank=True
-            ),
-        ),
+
     ]
