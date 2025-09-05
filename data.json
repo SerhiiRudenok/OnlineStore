@@ -1,0 +1,3099 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2025-09-02T23:25:41.644Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "8",
+        "object_repr": "saler",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2025-09-02T23:19:07.800Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "8",
+        "object_repr": "saler",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2025-09-02T23:18:47.176Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "8",
+        "object_repr": "saler",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2025-09-02T23:07:50.164Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "Manager",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2025-09-02T23:05:22.607Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "Manager",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2025-09-02T18:23:30.702Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "1",
+        "object_repr": "admin",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2025-08-30T15:05:14.545Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "Manager",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2025-08-30T15:03:28.820Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "Client",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2025-08-26T14:57:37.832Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "3",
+        "object_repr": "sales",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"User permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2025-08-26T14:56:19.736Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "2",
+        "object_repr": "user",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2025-08-26T14:55:27.982Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "3",
+        "object_repr": "sales",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2025-08-26T14:55:20.140Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "3",
+        "object_repr": "sales",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2025-08-26T14:35:39.907Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "2",
+        "object_repr": "user",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Groups\", \"User permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2025-08-26T14:34:04.707Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "2",
+        "object_repr": "user",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2025-08-26T14:33:30.661Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "Manager",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2025-08-26T14:33:18.672Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "Client",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": 1,
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 3,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 3,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 3,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": 3,
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": 2,
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 4,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 4,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 4,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view user",
+        "content_type": 4,
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 5,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 5,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 5,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": 5,
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+        "name": "Can add booking",
+        "content_type": 13,
+        "codename": "add_booking"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+        "name": "Can change booking",
+        "content_type": 13,
+        "codename": "change_booking"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+        "name": "Can delete booking",
+        "content_type": 13,
+        "codename": "delete_booking"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+        "name": "Can view booking",
+        "content_type": 13,
+        "codename": "view_booking"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+        "name": "Can add booking item",
+        "content_type": 12,
+        "codename": "add_bookingitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+        "name": "Can change booking item",
+        "content_type": 12,
+        "codename": "change_bookingitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+        "name": "Can delete booking item",
+        "content_type": 12,
+        "codename": "delete_bookingitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+        "name": "Can view booking item",
+        "content_type": 12,
+        "codename": "view_bookingitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add category",
+        "content_type": 8,
+        "codename": "add_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change category",
+        "content_type": 8,
+        "codename": "change_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete category",
+        "content_type": 8,
+        "codename": "delete_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view category",
+        "content_type": 8,
+        "codename": "view_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can add comment",
+        "content_type": 11,
+        "codename": "add_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can change comment",
+        "content_type": 11,
+        "codename": "change_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can delete comment",
+        "content_type": 11,
+        "codename": "delete_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can view comment",
+        "content_type": 11,
+        "codename": "view_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can add order",
+        "content_type": 9,
+        "codename": "add_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can change order",
+        "content_type": 9,
+        "codename": "change_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can delete order",
+        "content_type": 9,
+        "codename": "delete_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can view order",
+        "content_type": 9,
+        "codename": "view_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add order item",
+        "content_type": 10,
+        "codename": "add_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change order item",
+        "content_type": 10,
+        "codename": "change_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete order item",
+        "content_type": 10,
+        "codename": "delete_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can view order item",
+        "content_type": 10,
+        "codename": "view_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+        "name": "Can add order notification",
+        "content_type": 15,
+        "codename": "add_ordernotification"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+        "name": "Can change order notification",
+        "content_type": 15,
+        "codename": "change_ordernotification"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+        "name": "Can delete order notification",
+        "content_type": 15,
+        "codename": "delete_ordernotification"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+        "name": "Can view order notification",
+        "content_type": 15,
+        "codename": "view_ordernotification"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add product",
+        "content_type": 7,
+        "codename": "add_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change product",
+        "content_type": 7,
+        "codename": "change_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete product",
+        "content_type": 7,
+        "codename": "delete_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view product",
+        "content_type": 7,
+        "codename": "view_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+        "name": "Can add user profile",
+        "content_type": 14,
+        "codename": "add_userprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+        "name": "Can change user profile",
+        "content_type": 14,
+        "codename": "change_userprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+        "name": "Can delete user profile",
+        "content_type": 14,
+        "codename": "delete_userprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+        "name": "Can view user profile",
+        "content_type": 14,
+        "codename": "view_userprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 6,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 6,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 6,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view session",
+        "content_type": 6,
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+        "name": "Client",
+        "permissions": [
+            49,
+            50,
+            51,
+            52,
+            45,
+            46,
+            47,
+            48,
+            32,
+            41,
+            42,
+            43,
+            44,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            28
+        ]
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+        "name": "Manager",
+        "permissions": [
+            29,
+            30,
+            32,
+            43,
+            44,
+            36,
+            40,
+            57,
+            60,
+            25,
+            26,
+            28
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$3pxChHGP0t4gChyUhL25iS$TSpauKOfmh1EP1R0UNJJviTtVET8EbTPpBA/wcBstnM=",
+        "last_login": "2025-09-02T23:25:25.825Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-08-25T16:26:28Z",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Lo5UMKZDPEytkV2zbTdyOP$431NrPreJLJ0/DjlNt5tlheNNDXPeLmxfboEb2W+9OM=",
+        "last_login": "2025-09-03T14:55:24.622Z",
+        "is_superuser": false,
+        "username": "user",
+        "first_name": "Роман",
+        "last_name": "Шевчук",
+        "email": "roman1289@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-26T14:34:03Z",
+        "groups": [
+            1
+        ],
+        "user_permissions": [
+            32,
+            28
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$ZFWPTdA4q0Z5Fq4FYbL47I$6H2KHH04HnlqJGly728dt9VmliaR2U73ryJHwXcWKEc=",
+        "last_login": "2025-09-02T23:28:48.396Z",
+        "is_superuser": false,
+        "username": "sales",
+        "first_name": "Супер",
+        "last_name": "Менеджер",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-26T14:55:19Z",
+        "groups": [
+            2
+        ],
+        "user_permissions": [
+            29,
+            30,
+            31,
+            32,
+            25,
+            26,
+            27,
+            28
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$KgyVsaFGYtFq2uixd7PLFA$8HkriPbN1aANW5Lop0izB5bI1bWm6D34WWY1F5x2Z1Q=",
+        "last_login": "2025-09-03T18:34:24.109Z",
+        "is_superuser": false,
+        "username": "user2",
+        "first_name": "Олексій",
+        "last_name": "Миронов",
+        "email": "alex@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-29T05:18:55.983Z",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$cX99EiO9pTuFVoSb2gi397$+42kZbjs0++nK7BTXfsy6t74EMUFZecghXGU4DM9AHg=",
+        "last_login": "2025-08-29T15:17:04.028Z",
+        "is_superuser": false,
+        "username": "user3",
+        "first_name": "Bob",
+        "last_name": "Dilan",
+        "email": "bob@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-29T15:17:02.645Z",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$YsyRgaQiaQIkP3SdsDJwUB$f+kY3Hts3cRHfqauWon1Vk2VKGiRnALaZTbMQnDCPH8=",
+        "last_login": "2025-08-29T15:34:29.053Z",
+        "is_superuser": false,
+        "username": "user5",
+        "first_name": "Bob",
+        "last_name": "Dilan",
+        "email": "bob@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-29T15:34:27.653Z",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$16g6joMY84L4KLv825C53y$ThtumbmbSJywf5qDx++WDO0UTyXh7sV6vZobSkSiQag=",
+        "last_login": "2025-08-31T14:20:44.553Z",
+        "is_superuser": false,
+        "username": "user6",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-31T14:20:43.310Z",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Mh7fSlHAQTEEoQNO1zxKZC$an1pzmpA6zXZQHhXkcG0o8z7lQNWmu6WejfMZxZ9KHI=",
+        "last_login": "2025-09-03T18:52:02.993Z",
+        "is_superuser": false,
+        "username": "saler",
+        "first_name": "Роман",
+        "last_name": "Менеджер",
+        "email": "roman_manager@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-09-02T23:18:46Z",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$fLo9mZYumM394IGMpqzB1Z$9YRhfINfoJwwJ6FkworA0JLeEytlmIx7g37fqeO1G7c=",
+        "last_login": "2025-09-03T18:13:43.694Z",
+        "is_superuser": false,
+        "username": "user7",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-09-03T18:13:42.856Z",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$2P9vukRKWttF2jCkbcoXHE$uZLHZIeHbSpDcvxUwPBGXYOHZe7Rtve/gUQ0FUlyyVA=",
+        "last_login": "2025-09-04T18:02:59.327Z",
+        "is_superuser": false,
+        "username": "AlenaAlena8888@",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-09-04T18:02:58.181Z",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 11,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$PNZbECkHJcNs1Gej0qI1lp$dV+e0zyfLBVsg/ihBeuGHgbxU5NufppgPHf0/0yCBjA=",
+        "last_login": "2025-09-04T18:37:17.749Z",
+        "is_superuser": false,
+        "username": "Марина12345",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-09-04T18:37:17.037Z",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "myapp",
+        "model": "product"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "myapp",
+        "model": "category"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "myapp",
+        "model": "order"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "myapp",
+        "model": "orderitem"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "myapp",
+        "model": "comment"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "myapp",
+        "model": "bookingitem"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+        "app_label": "myapp",
+        "model": "booking"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+        "app_label": "myapp",
+        "model": "userprofile"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+        "app_label": "myapp",
+        "model": "ordernotification"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "za3lrei5odicwa9k8oe4d2sreyll87d2",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAUBe_iGlm2sb9iSnrOEP3NOIAcKUsVcXeIlALaNzNvMz2uS-3XWad-EHMxwZx-N0J-atuBPLDdR8tjW6aB7K7Yg872Noq-rof7d1Bxrt8aOBChi64geoqECoExq0jkcnaePXSpaISStaTMSbsEAhglki8OzPsDGrg5Fg:1usj4q:ismN4sjZvyPbmS_7BFcJvKqS29LQpYvMMmbrn2cwAgk",
+        "expire_date": "2025-09-14T14:30:40.973Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "b31cau4ccnio3ht3bz8nbrwoacyc64nt",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAUBe_iGlm2sb9iSnrOEP3NOIAcKUsVcXeIlALaNzNvMz2uS-3XWad-EHMxwZx-N0J-atuBPLDdR8tjW6aB7K7Yg872Noq-rof7d1Bxrt8aOBChi64geoqECoExq0jkcnaePXSpaISStaTMSbsEAhglki8OzPsDGrg5Fg:1usj4s:QIeHWtiqBDlMZ9O3d1KrQNvSQuLZNSQ-i_ltkCnHHjI",
+        "expire_date": "2025-09-14T14:30:42.235Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ohv8c621d0sp4uts8ndhilsqrajqoiok",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAUBe_iGlm2sb9iSnrOEP3NOIAcKUsVcXeIlALaNzNvMz2uS-3XWad-EHMxwZx-N0J-atuBPLDdR8tjW6aB7K7Yg872Noq-rof7d1Bxrt8aOBChi64geoqECoExq0jkcnaePXSpaISStaTMSbsEAhglki8OzPsDGrg5Fg:1utotQ:dOOSoXi3-hjYquXTZI3RJTAhxJm1LTcN6CtIXMh0Uws",
+        "expire_date": "2025-09-17T14:55:24.713Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6dc7lp9ff2aazfpwaqlsckc8rt7ld5u4",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSE8hoG6dN9vIAyMUjU0Ke3K-O_apAvd3nPOfYmYtrXGrfMSpyLOQmtx-h0p5Qe3nZR7ardZ5rmty0RyV-RBuxznws_L4f4d1NTrtzbEaSBUFLIqWgG7gMBARExYrPcIRlur4IqetDPKQRg4WPRJaQQv3h8CMzcK:1uuEph:iUbh5rIKMdRHKXGgzIIeEsR3dfx2P-P29yBOSZvOJnA",
+        "expire_date": "2025-09-18T18:37:17.760Z"
+    }
+},
+{
+    "model": "myapp.category",
+    "pk": 1,
+    "fields": {
+        "name": "Побутова техніка"
+    }
+},
+{
+    "model": "myapp.category",
+    "pk": 2,
+    "fields": {
+        "name": "Електроніка"
+    }
+},
+{
+    "model": "myapp.category",
+    "pk": 3,
+    "fields": {
+        "name": "Краса та догляд"
+    }
+},
+{
+    "model": "myapp.category",
+    "pk": 4,
+    "fields": {
+        "name": "Товари для дому"
+    }
+},
+{
+    "model": "myapp.category",
+    "pk": 5,
+    "fields": {
+        "name": "Спорт та відпочинок"
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 1,
+    "fields": {
+        "name": "Пилосос Xiaomi Mi Vacuum Cleaner",
+        "category": 1,
+        "description": "Легкий та потужний бездротовий пилосос для щоденного прибирання. Оснащений HEPA-фільтром, що затримує навіть дрібний пил і алергени. Має кілька режимів роботи для різних поверхонь.",
+        "price": "6499.00",
+        "image": "myapp/images/Picture1.jpg",
+        "is_active": true,
+        "favorites": [
+            2,
+            4
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 2,
+    "fields": {
+        "name": "Холодильник Samsung RB30J3000WW",
+        "category": 1,
+        "description": "Двокамерний холодильник з технологією No Frost. Має просторе внутрішнє відділення, полички зі скла та економний клас енергоспоживання А+. Зручний дизайн дозволяє ефективно організувати простір.",
+        "price": "17999.00",
+        "image": "myapp/images/Picture2.jpg",
+        "is_active": true,
+        "favorites": [
+            2
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 3,
+    "fields": {
+        "name": "Мікрохвильова піч LG NeoChef",
+        "category": 1,
+        "description": "Опис: Компактна мікрохвильова піч з інверторною технологією рівномірного нагріву. Оснащена інтелектуальними програмами розморожування та приготування. Має стильний дизайн і сенсорне керування.",
+        "price": "4899.00",
+        "image": "myapp/images/Picture3.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 4,
+    "fields": {
+        "name": "Пральна машина Bosch Serie 4",
+        "category": 1,
+        "description": "Автоматична пральна машина з місткістю 7 кг білизни. Оснащена функцією EcoSilence Drive для тихої та економної роботи. Має програми для делікатного прання та швидкий режим на 15 хв.",
+        "price": "15499.00",
+        "image": "myapp/images/Picture4.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 5,
+    "fields": {
+        "name": "Праска Philips Azur",
+        "category": 1,
+        "description": "Потужна праска з паровим ударом для легкого розгладжування складок. Керамічна підошва забезпечує плавне ковзання по тканині. Є функція автоматичного вимкнення для безпеки.",
+        "price": "2199.00",
+        "image": "myapp/images/Picture5.jpg",
+        "is_active": true,
+        "favorites": [
+            2
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 6,
+    "fields": {
+        "name": "Електрочайник Tefal Express",
+        "category": 1,
+        "description": "Стильний електрочайник з об’ємом 1,7 л та потужністю 2200 Вт. Швидко закипає і має знімний фільтр для чистої води. Оснащений захистом від перегріву та автоматичним вимкненням.",
+        "price": "1299.00",
+        "image": "myapp/images/Picture6.png",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 7,
+    "fields": {
+        "name": "Смартфон Apple iPhone 14",
+        "category": 2,
+        "description": "Стильний смартфон з 6,1-дюймовим OLED-дисплеєм Super Retina XDR. Має потужний процесор A15 Bionic для швидкої роботи та якісні фото з новою системою камер. Підтримує 5G і працює на iOS 16.",
+        "price": "35999.00",
+        "image": "myapp/images/Picture7.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 8,
+    "fields": {
+        "name": "Ноутбук Lenovo IdeaPad 5",
+        "category": 2,
+        "description": "Легкий і продуктивний ноутбук з процесором AMD Ryzen 5 та 16 ГБ оперативної пам’яті. Оснащений 15,6-дюймовим Full HD дисплеєм для зручної роботи й навчання. Має швидкий SSD-накопичувач і тривалий час автономної роботи.",
+        "price": "22499.00",
+        "image": "myapp/images/Picture8.jpg",
+        "is_active": true,
+        "favorites": [
+            4
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 9,
+    "fields": {
+        "name": "Телевізор Samsung QLED 55’’",
+        "category": 2,
+        "description": "55-дюймовий телевізор з роздільною здатністю 4K UHD та технологією Quantum Dot. Відтворює яскраві та реалістичні кольори, підтримує HDR10+. Smart TV функції дозволяють дивитися улюблені серіали онлайн.",
+        "price": "28999.00",
+        "image": "myapp/images/Picture9.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 10,
+    "fields": {
+        "name": "Планшет Apple iPad Air",
+        "category": 2,
+        "description": "Потужний планшет з 10,9-дюймовим Liquid Retina дисплеєм. Працює на процесорі Apple M1, ідеально підходить для навчання, роботи та творчості. Підтримує Apple Pencil 2-го покоління та Magic Keyboard.",
+        "price": "24499.00",
+        "image": "myapp/images/Picture10.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 11,
+    "fields": {
+        "name": "Навушники Sony WH-1000XM5",
+        "category": 2,
+        "description": "Бездротові навушники преміум-класу з найкращим у світі шумозаглушенням. До 30 годин автономної роботи та швидка зарядка. Легкі, комфортні та з чудовою якістю звучання.",
+        "price": "13999.00",
+        "image": "myapp/images/Picture11.jpg",
+        "is_active": true,
+        "favorites": [
+            7
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 12,
+    "fields": {
+        "name": "Смарт-годинник Garmin Venu 2",
+        "category": 2,
+        "description": "Стильний спортивний смарт-годинник з AMOLED-дисплеєм. Має понад 25 режимів тренувань, відстеження пульсу, стресу та сну. Акумулятор тримає до 11 днів у режимі смарт-годинника.",
+        "price": "11499.00",
+        "image": "myapp/images/Picture12.jpg",
+        "is_active": true,
+        "favorites": [
+            1
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 13,
+    "fields": {
+        "name": "Фен Philips Essential Care 8Е",
+        "category": 3,
+        "description": "Легкий та зручний фен для щоденного використання. Має дві швидкості і три температурні режими для дбайливого сушіння волосся. Оснащений концентратором для рівномірної укладки. Будете найкращі!",
+        "price": "1298.00",
+        "image": "myapp/images/Picture13.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 14,
+    "fields": {
+        "name": "Машинка для стрижки Braun HC5090",
+        "category": 3,
+        "description": "Професійна машинка для стрижки волосся вдома. Має регульовані насадки для різної довжини стрижки та потужний мотор для швидкої роботи. Легка у догляді та митті.",
+        "price": "2499.00",
+        "image": "myapp/images/Picture14.jpg",
+        "is_active": true,
+        "favorites": [
+            2,
+            4
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 15,
+    "fields": {
+        "name": "Електрична зубна щітка Oral-B Pro 3",
+        "category": 3,
+        "description": "Щітка з тривимірним очищенням та таймером на 2 хвилини. Ефективно видаляє наліт та доглядає за яснами. Підтримує декілька режимів чистки для індивідуальних потреб.",
+        "price": "1899.00",
+        "image": "myapp/images/Picture15.jpg",
+        "is_active": true,
+        "favorites": [
+            2,
+            7
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 16,
+    "fields": {
+        "name": "Епілятор Braun Silk-épil 9",
+        "category": 3,
+        "description": "Епілятор для максимально гладкої шкіри до 4 тижнів. Має технологію MicroGrip для точного видалення волосся, водонепроникний та з насадками для обробки різних зон.",
+        "price": "3499.00",
+        "image": "myapp/images/Picture16.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 17,
+    "fields": {
+        "name": "Масажер для тіла Beurer MG 151",
+        "category": 3,
+        "description": "Потужний масажер для всього тіла з 3 змінними насадками. Допомагає знімати напругу та покращує кровообіг. Легкий та зручний для домашнього використання.",
+        "price": "1799.00",
+        "image": "myapp/images/Picture17.jpg",
+        "is_active": true,
+        "favorites": [
+            2
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 18,
+    "fields": {
+        "name": "Стайлер Dyson Airwrap",
+        "category": 3,
+        "description": "Інноваційний стайлер для волосся з технологією Airflow, що дозволяє створювати об’єм, хвилі та завивки без перегріву. Підходить для всіх типів волосся, комплект з декількома насадками.",
+        "price": "21999.00",
+        "image": "myapp/images/Picture18.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 19,
+    "fields": {
+        "name": "Посудомийка Bosch Serie 6",
+        "category": 4,
+        "description": "Ефективна посудомийка на 13 комплектів з інтелектуальним сенсором завантаження. Має різноманітні програми миття та енергозберігаючий режим. Тиха робота та сучасний дизайн роблять її ідеальною для кухні.",
+        "price": "24999.00",
+        "image": "myapp/images/Picture19.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 20,
+    "fields": {
+        "name": "Настільна лампа Xiaomi Mi LED Desk Lamp 2",
+        "category": 4,
+        "description": "Стильна та енергозберігаюча LED-лампа з регульованою яскравістю та кутом освітлення. Має сенсорне керування та режим нічного світла для комфортної роботи та читання.",
+        "price": "1299.00",
+        "image": "myapp/images/Picture20.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 21,
+    "fields": {
+        "name": "Обігрівач Rowenta Comfort Compact",
+        "category": 4,
+        "description": "Компактний і потужний обігрівач для дому або офісу. Має три режими потужності, систему безпечного відключення при перегріванні. Легкий і зручний у використанні.",
+        "price": "1899.00",
+        "image": "myapp/images/Picture21.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 22,
+    "fields": {
+        "name": "Зволожувач повітря Philips 2000 Series",
+        "category": 4,
+        "description": "Зволожувач повітря з ультразвуковою технологією для здорового мікроклімату. Має три рівні інтенсивності та автоматичне відключення при низькому рівні води. Підходить для кімнат",
+        "price": "2499.00",
+        "image": "myapp/images/Picture22.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 23,
+    "fields": {
+        "name": "Мультиварка Redmond RMC-M90",
+        "category": 4,
+        "description": "Багатофункціональна мультиварка з 16 автоматичними програмами приготування. Має функцію відкладеного старту та підтримки тепла. Ідеальна для швидкого приготування здорової їжі.",
+        "price": "2999.00",
+        "image": "myapp/images/Picture23.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 24,
+    "fields": {
+        "name": "Кавоварка De’Longhi Magnifica",
+        "category": 4,
+        "description": "Автоматична кавоварка для приготування еспресо та капучино. Має вбудовану кавомолку, регульовану міцність напою та функцію підігріву чашок. Компактна та зручна для щоденного використання.",
+        "price": "12499.00",
+        "image": "myapp/images/Picture24.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 25,
+    "fields": {
+        "name": "Велотренажер Sportop B700",
+        "category": 5,
+        "description": "Сучасний велотренажер з регульованим навантаженням та LCD-дисплеєм для відстеження часу, швидкості та калорій. Має зручне сидіння та тихий ремінний привід. Ідеальний для домашніх тренувань.",
+        "price": "12499.00",
+        "image": "myapp/images/Picture25.jpg",
+        "is_active": true,
+        "favorites": [
+            4
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 26,
+    "fields": {
+        "name": "Гантелі 2×10 кг PowerPlay",
+        "category": 5,
+        "description": "Комплект гантелей по 10 кг для силових тренувань вдома. Міцний металевий корпус з прогумованими рукоятками для безпечного хвата. Підходять для різних видів вправ: від біцепсу до присідань.",
+        "price": "1599.00",
+        "image": "myapp/images/Picture26.jpg",
+        "is_active": true,
+        "favorites": [
+            2
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 27,
+    "fields": {
+        "name": "Скакалка зі лічильником Xiaomi Yunmai",
+        "category": 5,
+        "description": "Інноваційна скакалка з електронним лічильником кроків та калорій. Легка, регульована по довжині, підходить для тренувань вдома та на вулиці.",
+        "price": "799.00",
+        "image": "myapp/images/Picture27.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 28,
+    "fields": {
+        "name": "Туристичний намет Coleman Darwin 3",
+        "category": 5,
+        "description": "Просторий тримісний намет з водонепроникним покриттям та вентиляційними отворами. Легко монтується та має міцну конструкцію для  кемпінгу та походів.",
+        "price": "5499.00",
+        "image": "myapp/images/Picture28.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 29,
+    "fields": {
+        "name": "Каремат туристичний Terra Incognita",
+        "category": 5,
+        "description": "Легкий та компактний каремат для кемпінгу. Забезпечує теплоізоляцію від холодної землі та комфортний сон на природі.",
+        "price": "599.00",
+        "image": "myapp/images/Picture29.jpg",
+        "is_active": true,
+        "favorites": []
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 30,
+    "fields": {
+        "name": "Рюкзак Deuter Futura 30",
+        "category": 5,
+        "description": "Ергономічний туристичний рюкзак на 30 літрів з системою вентиляції спини. Має безліч кишень для організації спорядження та зручні  лямки для тривалих походів.",
+        "price": "3999.00",
+        "image": "myapp/images/Picture30.jpg",
+        "is_active": true,
+        "favorites": [
+            2
+        ]
+    }
+},
+{
+    "model": "myapp.product",
+    "pk": 31,
+    "fields": {
+        "name": "Аерогриль ESPERANZA EKO003",
+        "category": 1,
+        "description": "Завдяки оригінальному галогенному нагрівачу аерогриль Esperanza EKO003 CONVECTION OVEN 18 L заощаджує час — приготування страв може бути на 40% швидшим порівняно зі стандартним способом приготування. Генеровані інфрачервоні промені швидко нагрівають інгредієнти, дозволяючи зберегти їхню поживну цінність, вітаміни та, перш за все, їхній природний аромат. Наша духовка — ідеальний пристрій для приготування низькокалорійних страв. Підходить для:\r\nсмаження;\r\nпідсмажування;\r\nзапікання;\r\nтушкування;\r\nпідігріву та розморожування їжі.\r\nВикористання спеціального кільця, що входить до комплекту, збільшує місткість до 6 літрів. Це дозволяє готувати більше їжі, заощаджуючи час і гроші — піч Esperanza EKO003 CONVECTION OVEN 18 L споживає до 45% менше енергії, ніж звичайна піч.",
+        "price": "1499.00",
+        "image": "myapp/images/Picture31.jpg",
+        "is_active": true,
+        "favorites": [
+            7
+        ]
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 4,
+    "fields": {
+        "product": 5,
+        "user": 2,
+        "date": "2025-08-30T19:17:07.154Z",
+        "text": "Гарна праска. Відсутня нормальна інструкція з описом індикації на прасці, що саме робить вибраний режим.",
+        "rating": 4
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 5,
+    "fields": {
+        "product": 1,
+        "user": 2,
+        "date": "2025-08-30T19:42:14.409Z",
+        "text": "Пилисосом в цілому задоволений. Для однокімнатної квартири на щодень саме то.",
+        "rating": 3
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 6,
+    "fields": {
+        "product": 1,
+        "user": 4,
+        "date": "2025-08-30T19:42:58.908Z",
+        "text": "Гарно виконує свою роботу, працює тихенько, маневренний та зручний. Для невеликої квартири саме то. Дуже допомагає підсвітка на щітці, добре видно котячу шерсть і мілке сміття.",
+        "rating": 4
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 7,
+    "fields": {
+        "product": 11,
+        "user": 2,
+        "date": "2025-08-31T08:51:47.812Z",
+        "text": "Навушники купував на подарунок для підлітка аудіофіла, тому якість звуку та зручність були двома найголовнішими пунктами, але без жодних вагань ці навушники просто топ за свою ціну.\r\n\r\nЗвук неймовірний, легко налаштувати під себе.\r\nНа голові сидять чудово, не давлять, та взагалі, майже не відчуваються, на відміну від AirPods Max в яких це питання просто жах...\r\nШумодав чудово виконує свої обов'язки, за що окремий плюсик.",
+        "rating": 4
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 8,
+    "fields": {
+        "product": 2,
+        "user": 7,
+        "date": "2025-08-31T14:22:29.674Z",
+        "text": "Неприятная история с доставкой. Доставка бесплатная, а вот занос и подъем-сами решайте. Думаю, необходимо клиентов предупреждать о таких поворотах заранее! Упакован был хорошо, пришел без сколов и трещин. Компактный и вместительный, очень приятный внешний вид. Правда, банку 3-х литровую поставить не получится.. и это беда( Внутри приятная подсветка и качественный пластик ящиков, полочек. После включения был ооочень горячим в течении первых суток, но изготовитель заявляет, что это нормально для старта работы этого холодильника. Через сутки стенки стали чуть заметно теплыми. Морозят камеры хорошо, в соответствии с выставленной температурой. Шумит не сильно, но звук, конечно, слышно, он как будто электронный...тяжело описать) На данный момент пользуемся им около месяца, никаких нареканий нет.",
+        "rating": 4
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 9,
+    "fields": {
+        "product": 3,
+        "user": 7,
+        "date": "2025-08-31T14:24:06.503Z",
+        "text": "Печь покупал, в замен старенькой но прекрасно функционирующей микроволновки LG, которая также напичкана разными программами готовки, но которая к сожалению не вписалась в новый интерьер кухни, поэтому и решили приобрести данный девайс о котором пойдет речь дальше.\r\nОсновными критериями выбора печи были: внешний вид и гриль (иногда пользуемся), весь остальной набор функций в принципе не интересовал. Ниже мои впечатления после 2-х недель использования.\r\nПередняя панель черная, глянцевая и подразумевает, что на ней будут оставаться следы от пальцев, но ручка дверцы сделана таким образом, что если задаться целью, то можно открывать дверцу и не оставляя следов на темной ее части. С кнопками так не получится, потому что они реально сенсорные и реагируют только на прикосновение пальца. Поэтому будьте готовы к частому протиранию панели, так как следы остаются и на алюминии тоже. Что касается функциональности, греет печка не лучше не хуже старой (как мне показалось), может и равномерней, но я этого не заметил, посуда так-же нагревается. На 100% автоматическим режимам доверять не стоит, нужно их контролировать и приспособиться к их использованию, например растапливание плитки шоколада (100 гр) заняло меньше времени чем давала программа, если-бы дождался ее окончания, думаю шоколад бы закипел. Разморозка куриной грудки наоборот заняла почти в два раза больше времени чем прописано в программе.",
+        "rating": 4
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 10,
+    "fields": {
+        "product": 14,
+        "user": 2,
+        "date": "2025-08-31T16:22:14.188Z",
+        "text": "Користуюсь пів року. Гідна машинка, невагома в руці, не смикає, варіативна насадка. Але через слабку підгонку деталей кілька разів за стрижку доводиться чистити волосся під лезом, за універсальність насадки платиш антенками, бо волосся підіймає погано, а ще звук вібруючого пластику через слабку збірку...",
+        "rating": 4
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 11,
+    "fields": {
+        "product": 17,
+        "user": 2,
+        "date": "2025-08-31T16:49:30.292Z",
+        "text": "Загалом масажером задоволений, але в певних позиціях спостерігається якесь клацання. Ймовірно якісь деталі труться об тканеву поверхню. Побачимо як буде далі.",
+        "rating": 4
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 12,
+    "fields": {
+        "product": 6,
+        "user": 2,
+        "date": "2025-08-31T16:53:29.305Z",
+        "text": "Користуюсь таким чайником півроку -хороший.Компактний,воду гріє швидко,у догляді не вибагливий,зручно знімається кришка і можна легко вимити у середині.Є зручна розмітка на чашки,щоб не кип'ятити зайву воду.Взагалі за такі гроші гарний чайник.",
+        "rating": 4
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 13,
+    "fields": {
+        "product": 26,
+        "user": 2,
+        "date": "2025-08-31T20:23:26.447Z",
+        "text": "Гарна річ. Підходить для домашнього використання",
+        "rating": 4
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 14,
+    "fields": {
+        "product": 29,
+        "user": 2,
+        "date": "2025-08-31T20:52:33.263Z",
+        "text": "В цілому не поганий килимок - доволі теплий, від землі вологістю/холодом не тягне, але товщина й близько не 20мм, тому треба дуже вдало підшукувати місце, бо буде відчуватись кожнісінький камінець/горбочок",
+        "rating": 3
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 15,
+    "fields": {
+        "product": 2,
+        "user": 10,
+        "date": "2025-09-04T18:07:23.277Z",
+        "text": "Користуюся холодильником вже кілька місяців. Дуже задоволена покупкою! Працює тихо, економний у споживанні електроенергії. Зручно, що є система No Frost — тепер не потрібно розморожувати. Усередині продумане розташування полиць, зручні висувні ящики. Морозильна камера досить містка, хоча для великої родини може здатися замало. Дизайн стильний і сучасний, добре вписався в інтер’єр кухні.\r\n\r\nЗ мінусів — інколи чути легкі звуки компресора, але не критично. Загалом холодильник повністю виправдав очікування, рекомендую!",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 16,
+    "fields": {
+        "product": 20,
+        "user": 10,
+        "date": "2025-09-04T18:08:25.388Z",
+        "text": "Користуюся Xiaomi Mi LED Desk Lamp 2 уже кілька тижнів — справжній подарунок для очей й ефективності. Освітлює весь стіл, не мерехтить, кольори – надзвичайно природні завдяки Ra95. Сенсорне управління інтуїтивно зрозуміле, є голосові команди, режим читання і фокус – все, що треба для комфортної роботи. Регулювання ± 25° дозволяє зручно направляти світло. Мінусів не помітила, лампа варта кожної гривні!",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 17,
+    "fields": {
+        "product": 6,
+        "user": 10,
+        "date": "2025-09-04T18:12:11.755Z",
+        "text": "Придбала Tefal Express і користуюся вже кілька тижнів. Нагріває воду дуже швидко — майже миттєво завдяки потужності 2200 Вт. Прибор має приємний ергономічний дизайн: надійний пластиковий корпус, великий індикатор рівня води та зручна бездротова основа. Особливо сподобався алюмінієвий захисний дно — менше накипу і легше чистити. Кришка відкривається плавно та без шипіння — це плюс!\r\n\r\nЄдине, що трохи засмутило — відсутність автоматичного відключення. Інколи залишається увімкненим, якщо забути натиснути кнопку. Загалом, за свої гроші — це гарне поєднання швидкості, практичності та стилю. Рекомендую для щоденного використання!",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 18,
+    "fields": {
+        "product": 30,
+        "user": 10,
+        "date": "2025-09-04T18:17:24.413Z",
+        "text": "Користуюсь Deuter Futura 30 вже кілька місяців — неголосно, але повністю. Легко регулюється, системи вентиляції Aircomfort реально працюють — навіть після тривалих прогулянок спина суха. Ремені виготовлені з якісного матеріалу, утримують форму — незважаючи на використання в дощ і бруд, залишилися майже як нові. Дощовик, передня кишеня для мокрого одягу, карман для цінностей — зручне планування у дрібницях. Жіночий крій SL дійсно пасує точно — нічого не натирає, комфортно навіть із 7 кг вантажу. Мінусів — майже нема. Єдине, хотілося б бокових кишень ближче до рук (але це дрібниця). Рекомендую для похідників, що цінують комфорт, зручність і якість на довгі роки!",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 19,
+    "fields": {
+        "product": 29,
+        "user": 10,
+        "date": "2025-09-04T18:26:23.295Z",
+        "text": "Terra Incognita — відмінний вибір для весняно-осінніх походів та кемпінгів. Легкий (≈ 0,32 кг), компактний у складеному стані та швидко розкладається. Рельєфна поверхня забезпечує додаткову теплоізоляцію й амортизацію, а структура «гармошки» зручна також і як сидіння під час привалів. Особливо ціную, що не збирається у рулон — не \"гуляє\" у спальні мішку і легко вкладається у рюкзак. Ідеальний варіант для практичних мандрівників.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 20,
+    "fields": {
+        "product": 3,
+        "user": 10,
+        "date": "2025-09-04T18:27:40.233Z",
+        "text": "Я придбала LG NeoChef кілька місяців тому — враження найкращі! Інвертор готує їжу надзвичайно рівномірно й без зайвого шуму. EasyClean дійсно робить чистку простішою: жодних засмажень або запахів — глянцева поверхня протирається за хвилину. Особливо вподобав шестикутний столик — чаша ніколи не зрушує навіть, коли ставиш її близько до краю. LED-підсвічування дуже яскраве, а широкий набір режимів — корисна штука, зокрема гриль і йогурт. Єдине — ціна вища за базові моделі, але якість і функціонал повністю це виправдовують. Сміливо рекомендую!",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 21,
+    "fields": {
+        "product": 15,
+        "user": 10,
+        "date": "2025-09-04T18:30:50.084Z",
+        "text": "Користуюсь Oral-B Pro 3 вже кілька місяців — справді хороша електрична щітка середнього класу. Вона рівномірно очищає зуби завдяки 3D-рухам, таймер і індикатор кожні 30 сек допомагають чистити правильно, а датчик тиску вберігає ясна від травм. Особливо сподобалась автономність — одного заряду вистачає на понад два тижні, зручно у поїздках. Є кілька недоліків: шумувата, один кнопковий інтерфейс — але це не заважає ефективності. За ціну — відмінний вибір для тих, хто переходить з простого вручну щітки та цінує функціональність і довговічність.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 22,
+    "fields": {
+        "product": 16,
+        "user": 10,
+        "date": "2025-09-04T18:31:58.362Z",
+        "text": "Користуюся Braun Silk-épil 9 близько 3 місяців — результат хороший. Гнучка голівка з масажем реально робить процедуру комфортнішою, SmartLight допомагає не пропустити навіть найкоротші волоски. Wet&Dry-режим дозволяє використовувати епілятор в душі — болючість дійсно знижується. СensoSmart інтуїтивно показує, коли тиснеш занадто сильно. Зручна комплектація з кількома насадками — для зони бікіні, обличчя, масажу — підходить для повного догляду. Заряду акумулятора вистачає на всі зони, а швидка зарядка — плюс.\r\n\r\nЄ кілька нюансів: перші рази болючі (але звикаєш), тример працює посередньо, кілька користувачів відзначали слабку конструкцію або труднощі з запчастинами. Загалом — чудовий універсальний епілятор для комфортної епіляції вдома.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 23,
+    "fields": {
+        "product": 17,
+        "user": 10,
+        "date": "2025-09-04T18:33:35.485Z",
+        "text": "Масажний пояс Beurer MG 151 — це справжній помічник для зняття напруги та розслаблення м'язів після важкого дня. Він імітує професійний масаж шиацу завдяки 8 обертовим головкам, що обирають напрямок обертання та інтенсивність. Це дозволяє налаштувати масаж під свої потреби",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 24,
+    "fields": {
+        "product": 13,
+        "user": 11,
+        "date": "2025-09-04T18:39:31.885Z",
+        "text": "Користуюсь феном кілька тижнів — дуже задоволена! Компактний, легкий, волосся сушить швидко. Три режими температури/швидкості та режим холодного повітря дозволяють легко укладати волосся, ThermoProtect добре захищає від перегріву. Ідеально для дому та подорожей. Єдине — немає дифузора, але це не критично.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 25,
+    "fields": {
+        "product": 22,
+        "user": 11,
+        "date": "2025-09-04T18:40:22.022Z",
+        "text": "Придбала цей зволожувач для спальні — дуже задоволена! Тиха робота, стильний дизайн і ефективне зволоження без білого нальоту завдяки технології NanoCloud. Підходить для кімнат до 32 м². Рекомендую для комфортного сну та здорового повітря вдома.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 26,
+    "fields": {
+        "product": 24,
+        "user": 11,
+        "date": "2025-09-04T18:42:46.117Z",
+        "text": "Користуюсь цією кавоваркою вже кілька місяців — дуже задоволена! Компактна, зручна у використанні та обслуговуванні. Має вбудовану кавомолку з 13 рівнями помолу, що дозволяє налаштувати міцність напою під власні вподобання. Ручний капучинатор дозволяє готувати смачну піну для капучино та латте. Єдине, що варто врахувати — відсутність автоматичного молочного фрітера, але для мене це не проблема. Рекомендую для тих, хто цінує якісну каву за розумну ціну",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 27,
+    "fields": {
+        "product": 9,
+        "user": 11,
+        "date": "2025-09-04T18:43:41.255Z",
+        "text": "Придбала цей телевізор кілька тижнів тому — дуже задоволена! Чітке 4K-зображення з яскравими кольорами та глибоким чорним завдяки технології Quantum Dot. Плавний рух у динамічних сценах, чудово підходить для спорту та ігор. Завдяки Tizen OS зручний інтерфейс та доступ до численних додатків. Звук чистий і об'ємний, хоча для кращого ефекту можна додати саундбар. Стильний дизайн з тонким профілем, легко впишеться в будь-який інтер'єр. Рекомендую для тих, хто цінує якісне зображення та сучасні функції.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 28,
+    "fields": {
+        "product": 14,
+        "user": 11,
+        "date": "2025-09-04T18:45:25.175Z",
+        "text": "Користуюсь цією машинкою вже кілька місяців — дуже задоволений! Зручна у використанні, легка та має два регульовані гребені для довжини стрижки 3–24 мм та 14–35 мм. Акумулятора вистачає на 50 хвилин роботи, а також є можливість підключення до мережі. Леза з нержавіючої сталі самозаточуються, що забезпечує довговічність та якість стрижки. Машинка також легко миється під водою, що спрощує догляд. Рекомендую для тих, хто цінує якість та комфорт у домашньому догляді за волоссям.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 29,
+    "fields": {
+        "product": 7,
+        "user": 11,
+        "date": "2025-09-04T19:51:19.762Z",
+        "text": "Придбала iPhone 14 рік тому — дуже задоволена! Потужний A15 Bionic чіп забезпечує швидку роботу, а 6,1-дюймовий OLED-екран радує яскравими кольорами. Камера з покращеною нічною зйомкою та новими режимами відео (Action Mode, Cinematic Mode) дозволяє отримувати чудові фото та відео. Батарея тримає цілий день активного використання. Єдине, що варто врахувати — відсутність підтримки фізичної SIM-карти в деяких регіонах. Загалом, iPhone 14 — це надійний та стильний смартфон, який задовольнить більшість користувачів.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 30,
+    "fields": {
+        "product": 2,
+        "user": 11,
+        "date": "2025-09-04T19:52:31.085Z",
+        "text": "Придбала цей холодильник кілька місяців тому — дуже задоволена! Місткий, зручний у використанні та має сучасний дизайн. Інверторний компресор працює тихо, а система No Frost забезпечує рівномірне охолодження без необхідності розморожування. Єдине, що варто врахувати — деякі користувачі відзначають періодичні звуки при роботі компресора, але для мене це не є суттєвим недоліком. Загалом, холодильник повністю виправдовує свою вартість і рекомендую його для щоденного використання.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 31,
+    "fields": {
+        "product": 8,
+        "user": 11,
+        "date": "2025-09-04T19:53:34.655Z",
+        "text": "Придбала цей ноутбук кілька місяців тому — дуже задоволена! Модель з 14-дюймовим екраном має IPS-матрицю з роздільною здатністю Full HD, що забезпечує чітке та яскраве зображення. Виконана в тонкому алюмінієвому корпусі, ноутбук виглядає стильно та має приємну текстуру. Потужний процесор AMD Ryzen 7 5700U у поєднанні з 16 ГБ оперативної пам'яті та 512 ГБ SSD забезпечують швидку роботу навіть при багатозадачності. Клавіатура з підсвіткою зручна для набору тексту, а сенсорний екран додає зручності в роботі. Батарея тримає до 8 годин активного використання, що ідеально підходить для тривалих робочих днів. Єдине, що варто врахувати — відсутність Ethernet-порту, але для мене це не є суттєвим недоліком. Загалом, Lenovo IdeaPad 5 — це потужний та стильний ноутбук, який задовольнить більшість користувачів.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 32,
+    "fields": {
+        "product": 31,
+        "user": 11,
+        "date": "2025-09-04T19:55:52.079Z",
+        "text": "Придбала цей аерогриль кілька місяців тому — дуже задоволена! Завдяки потужності 1400 Вт та об'єму 18 л (з подовжуючим кільцем) він швидко та рівномірно готує страви, зберігаючи їхню поживну цінність та аромат. Інфрачервоні промені дозволяють приготувати їжу з мінімумом жиру. Механічне управління просте та інтуїтивно зрозуміле. Єдине, що варто врахувати — короткий шнур, через що потрібно обирати місце для підключення з урахуванням цього. Загалом, аерогриль виправдав мої очікування і став незамінним помічником на кухні.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 33,
+    "fields": {
+        "product": 18,
+        "user": 11,
+        "date": "2025-09-04T19:57:18.118Z",
+        "text": "Придбала цей стайлер кілька місяців тому — абсолютно задоволена! Він дозволяє створювати локони, випрямляти волосся та надавати об'єм без перегріву, завдяки технології контролю температури. Волосся після укладки виглядає здоровим і блискучим. Насадки змінюються легко, а інтуїтивно зрозуміле управління робить процес укладки приємним. Єдине, що варто врахувати — висока ціна, але якість і результат повністю виправдовують витрати.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 34,
+    "fields": {
+        "product": 28,
+        "user": 11,
+        "date": "2025-09-04T19:58:38.333Z",
+        "text": "Придбала цей намет для кемпінгу з друзями — дуже задоволена! Легка конструкція (вага близько 4,9 кг) та компактні розміри в складеному вигляді (приблизно 54 × 17 × 17 см) роблять його зручним для транспортування. Швидко розкладається завдяки системі Ring&Pin. Водоотштовхувальний матеріал з водяним стовпом 3000 мм забезпечує надійний захист від дощу. Внутрішній простір достатній для трьох осіб з невеликим багажем, а тамбур дозволяє зберігати речі поза спальним місцем. Єдине, що варто врахувати — відсутність додаткових вентиляційних отворів, що може вплинути на циркуляцію повітря в спекотну погоду. Загалом, намет ідеально підходить для короткотривалих подорожей та кемпінгу.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 35,
+    "fields": {
+        "product": 23,
+        "user": 11,
+        "date": "2025-09-04T19:59:32.822Z",
+        "text": "Придбала цю мультиварку кілька місяців тому — дуже задоволена! Містка чаша на 5 л з керамічним покриттям ANATO забезпечує рівномірне прогрівання та легке очищення. Модель оснащена 17 автоматичними програмами, серед яких йогурт, випічка, тушкування, пастеризація та фритюр. Завдяки функціям відкладеного старту та підтримки температури, можна заздалегідь підготувати страви до подачі. У комплекті йде книга рецептів, що спрощує процес приготування. Єдине, що варто врахувати — деякі користувачі відзначають запах пластмаси при першому використанні, але він зникає після кількох циклів готування. Загалом, мультиварка виправдовує свою вартість і є чудовим вибором для щоденного використання.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 36,
+    "fields": {
+        "product": 6,
+        "user": 11,
+        "date": "2025-09-04T20:00:57.587Z",
+        "text": "Придбала цей електрочайник кілька місяців тому — дуже задоволена! Корпус із нержавіючої сталі надає йому елегантного вигляду, а об'єм 1,7 л дозволяє за один раз закип'ятити достатньо води для великої родини чи гостей. Потужність 2400 Вт забезпечує швидкий нагрів, а прихований нагрівальний елемент полегшує очищення від накипу. Чайник оснащений функцією автоматичного відключення та захистом від включення без води, що додає безпеки в експлуатації. Єдине, що варто врахувати — корпус може нагріватися під час роботи, тому рекомендується обережність при використанні. Загалом, Tefal Express 2 KI170D40 — це надійний та стильний прилад, який стане чудовим доповненням до вашої кухні.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.comment",
+    "pk": 37,
+    "fields": {
+        "product": 4,
+        "user": 11,
+        "date": "2025-09-04T20:01:50.835Z",
+        "text": "Придбали цю модель кілька місяців тому — дуже задоволені! Машина працює надзвичайно тихо — навіть віджим майже не чути. Функція дозавантаження — можна без проблем відкрити дверцята у режимі паузи й додати забуту річ — практично незамінна опція. Використовує мінімум води та енергії, що дозволяє економити ресурси. Загалом, Bosch Serie 4 WAN28280UA — це надійний та економічний вибір для будь-якої родини.",
+        "rating": 5
+    }
+},
+{
+    "model": "myapp.booking",
+    "pk": 1,
+    "fields": {
+        "user": 2
+    }
+},
+{
+    "model": "myapp.booking",
+    "pk": 2,
+    "fields": {
+        "user": 3
+    }
+},
+{
+    "model": "myapp.booking",
+    "pk": 3,
+    "fields": {
+        "user": 4
+    }
+},
+{
+    "model": "myapp.booking",
+    "pk": 4,
+    "fields": {
+        "user": 9
+    }
+},
+{
+    "model": "myapp.bookingitem",
+    "pk": 51,
+    "fields": {
+        "booking": 2,
+        "product": 21,
+        "quantity": 1
+    }
+},
+{
+    "model": "myapp.bookingitem",
+    "pk": 52,
+    "fields": {
+        "booking": 2,
+        "product": 3,
+        "quantity": 1
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "date": "2025-08-31T08:06:26.878Z",
+        "total_price": "11694.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Потребує уточнення",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "date": "2025-08-31T14:35:20.774Z",
+        "total_price": "4497.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Потребує уточнення",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 3,
+    "fields": {
+        "user": 2,
+        "date": "2025-08-31T14:53:55.204Z",
+        "total_price": "13298.00",
+        "delivery_method": "nova_poshta_postomat",
+        "delivery_address": "Чернігів",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 4,
+    "fields": {
+        "user": 2,
+        "date": "2025-08-31T15:01:55.651Z",
+        "total_price": "2499.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 5,
+    "fields": {
+        "user": 2,
+        "date": "2025-08-31T15:02:21.134Z",
+        "total_price": "599.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 6,
+    "fields": {
+        "user": 2,
+        "date": "2025-08-31T15:15:37.952Z",
+        "total_price": "1899.00",
+        "delivery_method": "nova_poshta_postomat",
+        "delivery_address": "Чернігів",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 7,
+    "fields": {
+        "user": 2,
+        "date": "2025-08-31T15:18:10.812Z",
+        "total_price": "21999.00",
+        "delivery_method": "nova_poshta_postomat",
+        "delivery_address": "Чернігів",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 8,
+    "fields": {
+        "user": 2,
+        "date": "2025-08-31T15:27:14.191Z",
+        "total_price": "599.00",
+        "delivery_method": "nova_poshta_postomat",
+        "delivery_address": "Чернігів",
+        "payment_method": "card"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 9,
+    "fields": {
+        "user": 2,
+        "date": "2025-08-31T18:11:41.814Z",
+        "total_price": "35894.00",
+        "delivery_method": "nova_poshta_postomat",
+        "delivery_address": "Чернігів Поштомат № 12345",
+        "payment_method": "card"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 10,
+    "fields": {
+        "user": 2,
+        "date": "2025-08-31T19:46:45.694Z",
+        "total_price": "4797.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів Нова пошта № 1",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 11,
+    "fields": {
+        "user": 2,
+        "date": "2025-09-02T17:21:24.769Z",
+        "total_price": "2197.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів Нова пошта № 1",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 12,
+    "fields": {
+        "user": 2,
+        "date": "2025-09-02T18:00:31.082Z",
+        "total_price": "2199.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 13,
+    "fields": {
+        "user": 2,
+        "date": "2025-09-02T18:15:00.252Z",
+        "total_price": "1499.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 14,
+    "fields": {
+        "user": 2,
+        "date": "2025-09-02T18:18:30.989Z",
+        "total_price": "1299.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 15,
+    "fields": {
+        "user": 2,
+        "date": "2025-09-02T22:03:41.974Z",
+        "total_price": "1799.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів Нова пошта № 1",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 16,
+    "fields": {
+        "user": 2,
+        "date": "2025-09-02T22:19:42.417Z",
+        "total_price": "2998.00",
+        "delivery_method": "nova_poshta_postomat",
+        "delivery_address": "Чернігів",
+        "payment_method": "card"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 17,
+    "fields": {
+        "user": 2,
+        "date": "2025-09-02T22:37:30.803Z",
+        "total_price": "5499.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів Нова пошта № 1",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 18,
+    "fields": {
+        "user": 4,
+        "date": "2025-09-02T23:19:52.760Z",
+        "total_price": "3798.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 19,
+    "fields": {
+        "user": 4,
+        "date": "2025-09-02T23:23:03.780Z",
+        "total_price": "3197.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів Нова пошта № 1",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 20,
+    "fields": {
+        "user": 4,
+        "date": "2025-09-02T23:23:26.866Z",
+        "total_price": "5499.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів Нова пошта № 1",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 21,
+    "fields": {
+        "user": 4,
+        "date": "2025-09-02T23:26:51.531Z",
+        "total_price": "3997.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів Нова пошта № 1",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 22,
+    "fields": {
+        "user": 4,
+        "date": "2025-09-02T23:27:22.712Z",
+        "total_price": "599.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів Поштомат № 12345",
+        "payment_method": "card"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 23,
+    "fields": {
+        "user": 4,
+        "date": "2025-09-02T23:27:35.840Z",
+        "total_price": "5499.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів Нова пошта № 1",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 24,
+    "fields": {
+        "user": 4,
+        "date": "2025-09-02T23:38:50.633Z",
+        "total_price": "1499.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 25,
+    "fields": {
+        "user": 4,
+        "date": "2025-09-02T23:39:22.720Z",
+        "total_price": "1198.00",
+        "delivery_method": "nova_poshta_postomat",
+        "delivery_address": "Чернігів Поштомат № 12345",
+        "payment_method": "card"
+    }
+},
+{
+    "model": "myapp.order",
+    "pk": 26,
+    "fields": {
+        "user": 2,
+        "date": "2025-09-03T14:55:44.507Z",
+        "total_price": "1899.00",
+        "delivery_method": "nova_poshta_branch",
+        "delivery_address": "Чернігів Нова пошта № 1",
+        "payment_method": "cash_on_delivery"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 1,
+    "fields": {
+        "order": 1,
+        "product": 14,
+        "quantity": 1,
+        "price": "2499.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 2,
+    "fields": {
+        "order": 1,
+        "product": 15,
+        "quantity": 2,
+        "price": "1899.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 3,
+    "fields": {
+        "order": 1,
+        "product": 17,
+        "quantity": 3,
+        "price": "1799.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 4,
+    "fields": {
+        "order": 2,
+        "product": 15,
+        "quantity": 1,
+        "price": "1899.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 5,
+    "fields": {
+        "order": 2,
+        "product": 20,
+        "quantity": 2,
+        "price": "1299.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 6,
+    "fields": {
+        "order": 3,
+        "product": 17,
+        "quantity": 1,
+        "price": "1799.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 7,
+    "fields": {
+        "order": 3,
+        "product": 12,
+        "quantity": 1,
+        "price": "11499.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 8,
+    "fields": {
+        "order": 4,
+        "product": 14,
+        "quantity": 1,
+        "price": "2499.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 9,
+    "fields": {
+        "order": 5,
+        "product": 29,
+        "quantity": 1,
+        "price": "599.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 10,
+    "fields": {
+        "order": 6,
+        "product": 15,
+        "quantity": 1,
+        "price": "1899.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 11,
+    "fields": {
+        "order": 7,
+        "product": 18,
+        "quantity": 1,
+        "price": "21999.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 12,
+    "fields": {
+        "order": 8,
+        "product": 29,
+        "quantity": 1,
+        "price": "599.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 13,
+    "fields": {
+        "order": 9,
+        "product": 11,
+        "quantity": 2,
+        "price": "13999.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 14,
+    "fields": {
+        "order": 9,
+        "product": 17,
+        "quantity": 3,
+        "price": "1799.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 15,
+    "fields": {
+        "order": 9,
+        "product": 14,
+        "quantity": 1,
+        "price": "2499.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 16,
+    "fields": {
+        "order": 10,
+        "product": 20,
+        "quantity": 2,
+        "price": "1299.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 17,
+    "fields": {
+        "order": 10,
+        "product": 5,
+        "quantity": 1,
+        "price": "2199.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 18,
+    "fields": {
+        "order": 11,
+        "product": 27,
+        "quantity": 2,
+        "price": "799.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 19,
+    "fields": {
+        "order": 11,
+        "product": 29,
+        "quantity": 1,
+        "price": "599.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 20,
+    "fields": {
+        "order": 12,
+        "product": 5,
+        "quantity": 1,
+        "price": "2199.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 21,
+    "fields": {
+        "order": 13,
+        "product": 31,
+        "quantity": 1,
+        "price": "1499.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 22,
+    "fields": {
+        "order": 14,
+        "product": 13,
+        "quantity": 1,
+        "price": "1299.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 23,
+    "fields": {
+        "order": 15,
+        "product": 17,
+        "quantity": 1,
+        "price": "1799.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 24,
+    "fields": {
+        "order": 16,
+        "product": 31,
+        "quantity": 2,
+        "price": "1499.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 25,
+    "fields": {
+        "order": 17,
+        "product": 28,
+        "quantity": 1,
+        "price": "5499.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 26,
+    "fields": {
+        "order": 18,
+        "product": 21,
+        "quantity": 2,
+        "price": "1899.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 27,
+    "fields": {
+        "order": 19,
+        "product": 27,
+        "quantity": 2,
+        "price": "799.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 28,
+    "fields": {
+        "order": 19,
+        "product": 26,
+        "quantity": 1,
+        "price": "1599.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 29,
+    "fields": {
+        "order": 20,
+        "product": 28,
+        "quantity": 1,
+        "price": "5499.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 30,
+    "fields": {
+        "order": 21,
+        "product": 26,
+        "quantity": 2,
+        "price": "1599.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 31,
+    "fields": {
+        "order": 21,
+        "product": 27,
+        "quantity": 1,
+        "price": "799.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 32,
+    "fields": {
+        "order": 22,
+        "product": 29,
+        "quantity": 1,
+        "price": "599.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 33,
+    "fields": {
+        "order": 23,
+        "product": 28,
+        "quantity": 1,
+        "price": "5499.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 34,
+    "fields": {
+        "order": 24,
+        "product": 31,
+        "quantity": 1,
+        "price": "1499.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 35,
+    "fields": {
+        "order": 25,
+        "product": 29,
+        "quantity": 2,
+        "price": "599.00"
+    }
+},
+{
+    "model": "myapp.orderitem",
+    "pk": 36,
+    "fields": {
+        "order": 26,
+        "product": 21,
+        "quantity": 1,
+        "price": "1899.00"
+    }
+},
+{
+    "model": "myapp.userprofile",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "phone": "+380504561289"
+    }
+},
+{
+    "model": "myapp.userprofile",
+    "pk": 2,
+    "fields": {
+        "user": 4,
+        "phone": "+380504871624"
+    }
+},
+{
+    "model": "myapp.userprofile",
+    "pk": 3,
+    "fields": {
+        "user": 8,
+        "phone": "+380507891542"
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 1,
+    "fields": {
+        "user": 3,
+        "order": 15,
+        "message": "Нове замовлення № 15 від 2025-09-02 22:03:41.974438+00:00",
+        "created_at": "2025-09-02T22:03:42.105Z",
+        "is_read": true
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "order": 15,
+        "message": "Нове замовлення № 15 від 2025-09-02 22:03:41.974438+00:00",
+        "created_at": "2025-09-02T22:03:42.250Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "order": 16,
+        "message": "Нове замовлення № 16 від 2025-09-02 22:19:42.417686+00:00",
+        "created_at": "2025-09-02T22:19:42.518Z",
+        "is_read": true
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 4,
+    "fields": {
+        "user": 1,
+        "order": 16,
+        "message": "Нове замовлення № 16 від 2025-09-02 22:19:42.417686+00:00",
+        "created_at": "2025-09-02T22:19:42.656Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 5,
+    "fields": {
+        "user": 3,
+        "order": 17,
+        "message": "Нове замовлення № 17 від 02.09.2025, 22:37",
+        "created_at": "2025-09-02T22:37:30.920Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 6,
+    "fields": {
+        "user": 1,
+        "order": 17,
+        "message": "Нове замовлення № 17 від 02.09.2025, 22:37",
+        "created_at": "2025-09-02T22:37:31.051Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 7,
+    "fields": {
+        "user": 3,
+        "order": 18,
+        "message": "Нове замовлення № 18 від 02.09.2025, 23:19",
+        "created_at": "2025-09-02T23:19:52.863Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 8,
+    "fields": {
+        "user": 1,
+        "order": 18,
+        "message": "Нове замовлення № 18 від 02.09.2025, 23:19",
+        "created_at": "2025-09-02T23:19:52.985Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 9,
+    "fields": {
+        "user": 3,
+        "order": 19,
+        "message": "Нове замовлення № 19 від 02.09.2025, 23:23",
+        "created_at": "2025-09-02T23:23:03.883Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 10,
+    "fields": {
+        "user": 1,
+        "order": 19,
+        "message": "Нове замовлення № 19 від 02.09.2025, 23:23",
+        "created_at": "2025-09-02T23:23:04.055Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 11,
+    "fields": {
+        "user": 3,
+        "order": 20,
+        "message": "Нове замовлення № 20 від 02.09.2025, 23:23",
+        "created_at": "2025-09-02T23:23:26.975Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 12,
+    "fields": {
+        "user": 1,
+        "order": 20,
+        "message": "Нове замовлення № 20 від 02.09.2025, 23:23",
+        "created_at": "2025-09-02T23:23:27.088Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 13,
+    "fields": {
+        "user": 3,
+        "order": 21,
+        "message": "Нове замовлення № 21 від 02.09.2025, 23:26",
+        "created_at": "2025-09-02T23:26:51.647Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 14,
+    "fields": {
+        "user": 1,
+        "order": 21,
+        "message": "Нове замовлення № 21 від 02.09.2025, 23:26",
+        "created_at": "2025-09-02T23:26:51.784Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 15,
+    "fields": {
+        "user": 8,
+        "order": 21,
+        "message": "Нове замовлення № 21 від 02.09.2025, 23:26",
+        "created_at": "2025-09-02T23:26:51.917Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 16,
+    "fields": {
+        "user": 3,
+        "order": 22,
+        "message": "Нове замовлення № 22 від 02.09.2025, 23:27",
+        "created_at": "2025-09-02T23:27:22.812Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 17,
+    "fields": {
+        "user": 1,
+        "order": 22,
+        "message": "Нове замовлення № 22 від 02.09.2025, 23:27",
+        "created_at": "2025-09-02T23:27:22.933Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 18,
+    "fields": {
+        "user": 8,
+        "order": 22,
+        "message": "Нове замовлення № 22 від 02.09.2025, 23:27",
+        "created_at": "2025-09-02T23:27:23.050Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 19,
+    "fields": {
+        "user": 3,
+        "order": 23,
+        "message": "Нове замовлення № 23 від 02.09.2025, 23:27",
+        "created_at": "2025-09-02T23:27:35.937Z",
+        "is_read": true
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 20,
+    "fields": {
+        "user": 1,
+        "order": 23,
+        "message": "Нове замовлення № 23 від 02.09.2025, 23:27",
+        "created_at": "2025-09-02T23:27:36.050Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 21,
+    "fields": {
+        "user": 8,
+        "order": 23,
+        "message": "Нове замовлення № 23 від 02.09.2025, 23:27",
+        "created_at": "2025-09-02T23:27:36.166Z",
+        "is_read": true
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 22,
+    "fields": {
+        "user": 3,
+        "order": 24,
+        "message": "Нове замовлення № 24 від 03.09.2025, 02:38",
+        "created_at": "2025-09-02T23:38:50.732Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 23,
+    "fields": {
+        "user": 1,
+        "order": 24,
+        "message": "Нове замовлення № 24 від 03.09.2025, 02:38",
+        "created_at": "2025-09-02T23:38:50.844Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 24,
+    "fields": {
+        "user": 8,
+        "order": 24,
+        "message": "Нове замовлення № 24 від 03.09.2025, 02:38",
+        "created_at": "2025-09-02T23:38:50.978Z",
+        "is_read": true
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 25,
+    "fields": {
+        "user": 3,
+        "order": 25,
+        "message": "Нове замовлення № 25 від 03.09.2025, 02:39",
+        "created_at": "2025-09-02T23:39:22.822Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 26,
+    "fields": {
+        "user": 1,
+        "order": 25,
+        "message": "Нове замовлення № 25 від 03.09.2025, 02:39",
+        "created_at": "2025-09-02T23:39:22.952Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 27,
+    "fields": {
+        "user": 8,
+        "order": 25,
+        "message": "Нове замовлення № 25 від 03.09.2025, 02:39",
+        "created_at": "2025-09-02T23:39:23.078Z",
+        "is_read": true
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 28,
+    "fields": {
+        "user": 3,
+        "order": 26,
+        "message": "Нове замовлення № 26 від 03.09.2025, 17:55",
+        "created_at": "2025-09-03T14:55:44.599Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 29,
+    "fields": {
+        "user": 1,
+        "order": 26,
+        "message": "Нове замовлення № 26 від 03.09.2025, 17:55",
+        "created_at": "2025-09-03T14:55:44.740Z",
+        "is_read": false
+    }
+},
+{
+    "model": "myapp.ordernotification",
+    "pk": 30,
+    "fields": {
+        "user": 8,
+        "order": 26,
+        "message": "Нове замовлення № 26 від 03.09.2025, 17:55",
+        "created_at": "2025-09-03T14:55:44.847Z",
+        "is_read": false
+    }
+}
+]
